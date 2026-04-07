@@ -4,6 +4,8 @@ import { HashRouter, Link, NavLink, Route, Routes, useLocation, useParams } from
 import { projects, projectCategories, profile } from './data/projects';
 import './App.css';
 
+const asset = (path) => `${process.env.PUBLIC_URL}${path}`;
+
 function ProjectMedia({ project }) {
   if (project.videoUrl) {
     return (
@@ -94,7 +96,7 @@ function AppShell({ children, theme, onToggleTheme }) {
       <main className="layout">
         <aside className="sidebar">
           <div className="sidebar__image-wrap">
-            <img className="sidebar__image" src="/media/hero-photo.png" alt="workspace desk visual" />
+            <img className="sidebar__image" src={asset('/media/hero-photo.png')} alt="workspace desk visual" />
           </div>
           <div className="sidebar__footer">
             <p>Copyright © 2026</p>

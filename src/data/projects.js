@@ -33,6 +33,8 @@ export const profile = {
   github: 'https://github.com/kdtlch3650-ctrl',
 };
 
+const asset = (path) => `${process.env.PUBLIC_URL}${path}`;
+
 export const projectCategories = [
   { id: 'all', label: '전체' },
   { id: 'java', label: 'JAVA' },
@@ -74,7 +76,7 @@ const doctorLinkSections = [
     ],
     documentTitle: 'DoctorLink PDF 보고서',
     documentDescription: '사용자가 전달한 DoctorLink PDF 원본을 바로 열어 볼 수 있습니다.',
-    documentImage: '/media/docs/doctorlink-overview.png',
+    documentImage: asset('/media/docs/doctorlink-overview.png'),
   },
   {
     id: 'planning',
@@ -103,7 +105,7 @@ const doctorLinkSections = [
     ],
     documentTitle: 'WBS 및 기획 자료',
     documentDescription: '팀 구성, 일정표, 기획 흐름이 포함된 DoctorLink PDF 자료입니다.',
-    documentImage: '/media/docs/doctorlink-planning.png',
+    documentImage: asset('/media/docs/doctorlink-planning.png'),
     referenceLinks: [
       {
         label: 'WBS 원본 스프레드시트',
@@ -138,7 +140,7 @@ const doctorLinkSections = [
     ],
     documentTitle: '기술 스택 및 프로세스 자료',
     documentDescription: '기술 스택, 메인 구성 요소, 서비스 프로세스 흐름도가 포함된 DoctorLink PDF입니다.',
-    documentImage: '/media/docs/doctorlink-engineering.png',
+    documentImage: asset('/media/docs/doctorlink-engineering.png'),
     referenceLinks: [
       {
         label: '서비스 프로세스 흐름도 원본',
@@ -172,7 +174,7 @@ const doctorLinkSections = [
     ],
     documentTitle: '협업 인사이트 및 개선 방향',
     documentDescription: '협업 과정 인사이트와 향후 확장 방향이 포함된 DoctorLink PDF 원본입니다.',
-    documentImage: '/media/docs/doctorlink-trouble.png',
+    documentImage: asset('/media/docs/doctorlink-trouble.png'),
   },
   {
     id: 'retrospective',
@@ -201,7 +203,7 @@ const doctorLinkSections = [
     ],
     documentTitle: '결론 및 마무리',
     documentDescription: '기대효과, 협업 인사이트, 결론이 정리된 DoctorLink PDF 문서입니다.',
-    documentImage: '/media/docs/doctorlink-retrospective.png',
+    documentImage: asset('/media/docs/doctorlink-retrospective.png'),
   },
 ];
 
@@ -241,7 +243,7 @@ const oneulFarmSections = [
     ],
     documentTitle: 'OneulFarm 프로젝트 개요',
     documentDescription: '서비스 배경, 목표, 방향성 변화가 정리된 OneulFarm 최종 보고서 페이지입니다.',
-    documentImage: '/media/docs/oneulfarm-overview.png',
+    documentImage: asset('/media/docs/oneulfarm-overview.png'),
   },
   {
     id: 'planning',
@@ -277,7 +279,7 @@ const oneulFarmSections = [
     ],
     documentTitle: '스토리보드 및 기획 자료',
     documentDescription: '기획 단계에서 정리한 메인, 레시피, 장바구니 흐름과 스토리보드 요약 화면입니다.',
-    documentImage: '/media/docs/oneulfarm-planning.png',
+    documentImage: asset('/media/docs/oneulfarm-planning.png'),
     referenceLinks: [
       {
         label: '요구사항 명세서',
@@ -305,7 +307,7 @@ const oneulFarmSections = [
       },
       {
         label: '스토리보드 PDF',
-        href: '/media/oneulfarm-storyboard.pdf',
+        href: asset('/media/oneulfarm-storyboard.pdf'),
       },
     ],
   },
@@ -344,7 +346,7 @@ const oneulFarmSections = [
     ],
     documentTitle: 'AI 챗봇 DFD 및 시스템 설계',
     documentDescription: 'AI 챗봇, 장바구니, 결제, 로그인 흐름을 세부적으로 정리한 DFD 이미지입니다.',
-    documentImage: '/media/docs/oneulfarm-engineering.png',
+    documentImage: asset('/media/docs/oneulfarm-engineering.png'),
     referenceLinks: [
       {
         label: '시스템 아키텍처 원본',
@@ -402,7 +404,7 @@ const oneulFarmSections = [
     ],
     documentTitle: '트러블 슈팅 자료',
     documentDescription: '가격 비교 기준 통일과 외부 API 안정성 보완 과정을 정리한 OneulFarm 보고서 페이지입니다.',
-    documentImage: '/media/docs/oneulfarm-trouble.png',
+    documentImage: asset('/media/docs/oneulfarm-trouble.png'),
     referenceLinks: [
       {
         label: '테스트 케이스',
@@ -437,7 +439,7 @@ const oneulFarmSections = [
     ],
     documentTitle: '회고 및 보완사항',
     documentDescription: '팀 회고와 개인 느낀점, 앞으로의 보완 방향이 정리된 OneulFarm 자료입니다.',
-    documentImage: '/media/docs/oneulfarm-retrospective.png',
+    documentImage: asset('/media/docs/oneulfarm-retrospective.png'),
   },
 ];
 
@@ -477,7 +479,7 @@ const hashTripSections = [
     ],
     documentTitle: 'hashTrip 프로젝트 개요',
     documentDescription: '프로젝트 개요, 문제 정의, 서비스 플로우가 정리된 hashTrip PDF 자료입니다.',
-    documentImage: '/media/docs/hashtrip-overview.png',
+    documentImage: asset('/media/docs/hashtrip-overview.png'),
   },
   {
     id: 'planning',
@@ -506,7 +508,7 @@ const hashTripSections = [
     ],
     documentTitle: '메뉴트리 및 기획 자료',
     documentDescription: '메뉴트리와 사용자 흐름을 중심으로 hashTrip 구조를 한눈에 볼 수 있는 페이지입니다.',
-    documentImage: '/media/docs/hashtrip-planning.png',
+    documentImage: asset('/media/docs/hashtrip-planning.png'),
     referenceLinks: [
       {
         label: 'WBS 원본 문서',
@@ -553,7 +555,7 @@ const hashTripSections = [
     ],
     documentTitle: '기술 스택 및 ERD 자료',
     documentDescription: 'hashTrip에서 사용한 기술 스택과 설계 구조를 보여주는 PDF 자료입니다.',
-    documentImage: '/media/docs/hashtrip-engineering.png',
+    documentImage: asset('/media/docs/hashtrip-engineering.png'),
     referenceLinks: [
       {
         label: '프로젝트 GitHub',
@@ -592,7 +594,7 @@ const hashTripSections = [
     ],
     documentTitle: '트러블 슈팅 자료',
     documentDescription: '추천 로직과 성능 개선 과정이 정리된 hashTrip PDF 자료입니다.',
-    documentImage: '/media/docs/hashtrip-trouble.png',
+    documentImage: asset('/media/docs/hashtrip-trouble.png'),
   },
   {
     id: 'retrospective',
@@ -621,7 +623,7 @@ const hashTripSections = [
     ],
     documentTitle: '회고 및 향후 계획',
     documentDescription: '팀원 회고와 향후 계획이 정리된 hashTrip PDF 자료입니다.',
-    documentImage: '/media/docs/hashtrip-retrospective.png',
+    documentImage: asset('/media/docs/hashtrip-retrospective.png'),
   },
 ];
 
@@ -643,16 +645,16 @@ export const projects = [
     stacks: ['React', 'Java', 'Spring Framework', 'MyBatis', 'OracleDB', 'PortOne', 'OpenAI API', 'GitHub'],
     categories: ['react', 'java'],
     featured: true,
-    thumbnail: '/media/thumb-oneulfarm.png',
+    thumbnail: asset('/media/thumb-oneulfarm.png'),
     liveUrl: '',
     repoUrl: 'https://github.com/YuYoungKwang/oneulFarm',
-    docUrl: '/media/oneulFarm.pdf',
+    docUrl: asset('/media/oneulFarm.pdf'),
     youtubeUrl: 'https://youtu.be/DqfVTOmsjP4',
     videoUrl: 'https://www.youtube.com/embed/DqfVTOmsjP4',
     referenceLinks: [
       { label: '시연 영상', href: 'https://youtu.be/DqfVTOmsjP4' },
       { label: 'GitHub 저장소', href: 'https://github.com/YuYoungKwang/oneulFarm' },
-      { label: '최종 보고서 PDF', href: '/media/oneulFarm.pdf' },
+      { label: '최종 보고서 PDF', href: asset('/media/oneulFarm.pdf') },
     ],
     videoNote: 'OneulFarm 시연 영상을 통해 시세 기반 커머스와 주문 흐름을 한 번에 확인할 수 있습니다.',
     sections: oneulFarmSections,
@@ -672,17 +674,17 @@ export const projects = [
     outcomes: ['문진 공백 최소화', '진료 전 정보 정리', '환자·의료진 모두를 고려한 UX'],
     stacks: ['HTML5', 'CSS', 'React.js', 'JavaScript (ES6+)', 'VS Code', 'GitHub'],
     categories: ['react'],
-    thumbnail: '/media/thumb-doctorlink.png',
+    thumbnail: asset('/media/thumb-doctorlink.png'),
     liveUrl: 'https://kdtlch3650-ctrl.github.io/DoctorLink/',
     repoUrl: 'https://github.com/kdtlch3650-ctrl/DoctorLink',
-    docUrl: '/media/DoctorLink.pdf',
+    docUrl: asset('/media/DoctorLink.pdf'),
     youtubeUrl: 'https://youtu.be/qyc2cOj7X1Y',
     videoUrl: 'https://www.youtube.com/embed/qyc2cOj7X1Y',
     referenceLinks: [
       { label: '시연 영상', href: 'https://youtu.be/qyc2cOj7X1Y' },
       { label: '서비스 배포', href: 'https://kdtlch3650-ctrl.github.io/DoctorLink/' },
       { label: 'GitHub 저장소', href: 'https://github.com/kdtlch3650-ctrl/DoctorLink' },
-      { label: 'PDF 원본', href: '/media/DoctorLink.pdf' },
+      { label: 'PDF 원본', href: asset('/media/DoctorLink.pdf') },
     ],
     videoNote:
       'DoctorLink 시연 영상이 연결되어 있습니다. 포트폴리오 안에서 바로 핵심 흐름을 확인하고, 필요하면 유튜브 원본으로 이동할 수 있습니다.',
@@ -703,16 +705,16 @@ export const projects = [
     outcomes: ['검색 시간 단축', '취향 기반 장소 추천', '여행 계획과 기록 연결 UX'],
     stacks: ['Java 11', 'Spring 5.3.27', 'JSP', 'MyBatis', 'Oracle 19c', 'Git'],
     categories: ['java'],
-    thumbnail: '/media/thumb-hashtrip.png',
+    thumbnail: asset('/media/thumb-hashtrip.png'),
     liveUrl: '',
     repoUrl: 'https://github.com/YuYoungKwang/hifive',
-    docUrl: '/media/hashTrip.pdf',
+    docUrl: asset('/media/hashTrip.pdf'),
     youtubeUrl: 'https://youtu.be/67PwJ7UhVYI',
     videoUrl: 'https://www.youtube.com/embed/67PwJ7UhVYI',
     referenceLinks: [
       { label: '시연 영상', href: 'https://youtu.be/67PwJ7UhVYI' },
       { label: 'GitHub 저장소', href: 'https://github.com/YuYoungKwang/hifive' },
-      { label: 'PDF 원본', href: '/media/hashTrip.pdf' },
+      { label: 'PDF 원본', href: asset('/media/hashTrip.pdf') },
     ],
     videoNote: 'hashTrip 시연 영상이 연결되어 있습니다.',
     sections: hashTripSections,
