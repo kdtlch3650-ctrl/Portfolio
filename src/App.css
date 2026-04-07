@@ -1,4 +1,7 @@
 .site-shell {
+  --shell-top-gap: 1rem;
+  --section-gap: 1rem;
+  --topbar-height: 96px;
   min-height: 100vh;
   padding: 1rem 1.2rem 2rem;
   transition: background-color 0.25s ease, color 0.25s ease;
@@ -51,11 +54,16 @@
 
 .topbar {
   align-items: center;
+  backdrop-filter: blur(16px);
+  background: rgba(245, 245, 243, 0.88);
   display: flex;
   justify-content: space-between;
   margin: 0 auto 1rem;
   max-width: 1440px;
   padding: 0 0.5rem;
+  position: sticky;
+  top: var(--shell-top-gap);
+  z-index: 1000;
 }
 
 .brand {
@@ -100,8 +108,11 @@
 
 .sidebar__image-wrap {
   background: #efefea;
+  height: calc(100vh - var(--shell-top-gap) - var(--topbar-height) - var(--section-gap));
   min-height: 560px;
   overflow: hidden;
+  position: sticky;
+  top: calc(var(--shell-top-gap) + var(--topbar-height) + var(--section-gap));
 }
 
 .sidebar__image {
@@ -126,6 +137,10 @@
 
 .theme-dark .panel {
   background: #21242b;
+}
+
+.theme-dark .topbar {
+  background: rgba(22, 22, 22, 0.84);
 }
 
 .panel__content {
@@ -663,6 +678,7 @@
   .sidebar__image-wrap {
     max-height: 420px;
     min-height: 320px;
+    position: static;
   }
 
   .sidebar__footer {
@@ -703,6 +719,10 @@
   }
 
   .document-card {
+    position: static;
+  }
+
+  .topbar {
     position: static;
   }
 }

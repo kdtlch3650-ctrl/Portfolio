@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { HashRouter, Link, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom';
 
 import { projects, projectCategories, profile } from './data/projects';
@@ -15,23 +15,11 @@ function ProjectMedia({ project }) {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         />
-        <div className="detail-hero__overlay">
-          <strong>PROJECT VIDEO</strong>
-          <span>{project.videoNote}</span>
-        </div>
       </div>
     );
   }
 
-  return (
-    <>
-      <img src={project.thumbnail} alt={`${project.title} preview`} />
-      <div className="detail-hero__overlay">
-        <strong>PROJECT VIDEO</strong>
-        <span>{project.videoNote}</span>
-      </div>
-    </>
-  );
+  return <img src={project.thumbnail} alt={`${project.title} preview`} />;
 }
 
 function ScrollTop() {
@@ -50,11 +38,44 @@ function ScrollTop() {
 
 function AppShell({ children, theme, onToggleTheme }) {
   const location = useLocation();
+  const topbarRef = useRef(null);
+  const [topbarHeight, setTopbarHeight] = useState(96);
+
+  useLayoutEffect(() => {
+    if (!topbarRef.current) {
+      return undefined;
+    }
+
+    const updateTopbarHeight = () => {
+      const nextHeight = Math.ceil(topbarRef.current?.getBoundingClientRect().height ?? 96);
+      setTopbarHeight(nextHeight);
+    };
+
+    updateTopbarHeight();
+
+    const observer =
+      typeof ResizeObserver !== 'undefined'
+        ? new ResizeObserver(() => {
+            updateTopbarHeight();
+          })
+        : null;
+
+    observer?.observe(topbarRef.current);
+    window.addEventListener('resize', updateTopbarHeight);
+
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener('resize', updateTopbarHeight);
+    };
+  }, []);
 
   return (
-    <div className={`site-shell ${theme}`}>
+    <div
+      className={`site-shell ${theme}`}
+      style={{ '--topbar-height': `${topbarHeight}px` }}
+    >
       <ScrollTop />
-      <header className="topbar">
+      <header className="topbar" ref={topbarRef}>
         <Link className="brand" to="/">
           {profile.brand}
         </Link>
