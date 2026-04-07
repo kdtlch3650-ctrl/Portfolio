@@ -262,12 +262,32 @@ function ProjectDetailPage() {
           </div>
           <div className="detail-hero__summary">
             <p>{project.summary}</p>
-            <ul>
-              <li>기간: {project.period}</li>
-              <li>인원: {project.team}</li>
-              <li>역할: {project.role}</li>
-              <li>기여도: {project.contribution}</li>
-            </ul>
+            <div className="detail-meta-list">
+              <p><span>기간</span><strong>{project.period}</strong></p>
+              <p><span>인원</span><strong>{project.team}</strong></p>
+              <p><span>역할</span><strong>{project.role}</strong></p>
+              <p><span>기여도</span><strong>{project.contribution}</strong></p>
+            </div>
+            {project.focusAreas?.length ? (
+              <div className="detail-hero__group">
+                <p className="detail-hero__label">Focus</p>
+                <div className="detail-chip-list">
+                  {project.focusAreas.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+            {project.outcomes?.length ? (
+              <div className="detail-hero__group">
+                <p className="detail-hero__label">Outcome</p>
+                <div className="detail-chip-list detail-chip-list--soft">
+                  {project.outcomes.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+              </div>
+            ) : null}
             {project.youtubeUrl ? (
               <a className="document-card__button detail-hero__button" href={project.youtubeUrl} target="_blank" rel="noreferrer">
                 Open YouTube
@@ -295,11 +315,19 @@ function ProjectDetailPage() {
           <p className="eyebrow">{activeSection.label}</p>
           <h2>{activeSection.title}</h2>
           <p>{activeSection.description}</p>
+          {activeSection.focusPoints?.length ? (
+            <div className="tab-panel__focus">
+              {activeSection.focusPoints.map((point) => (
+                <span key={point}>{point}</span>
+              ))}
+            </div>
+          ) : null}
         </div>
         <div className="tab-panel__body">
           <div className="tab-panel__content">
-            {activeSection.items.map((item) => (
+            {activeSection.items.map((item, index) => (
               <article key={item.title} className="content-block">
+                <p className="content-block__index">{String(index + 1).padStart(2, '0')}</p>
                 <h3>{item.title}</h3>
                 <ul>
                   {item.points.map((point) => (
@@ -335,6 +363,7 @@ function ProjectDetailPage() {
                 <p>메인 소개 탭은 요약 중심으로 두고, 다른 탭에서는 PDF에서 뽑은 핵심 페이지 이미지를 바로 보여주도록 구성했습니다.</p>
               </div>
             )}
+            {showDocumentPreview ? <p className="document-card__hint">이미지를 클릭하면 크게 볼 수 있습니다.</p> : null}
             {referenceLinks.length ? (
               <div className="document-card__links">
                 <p className="document-card__links-title">Related Links</p>
