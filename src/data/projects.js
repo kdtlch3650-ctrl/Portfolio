@@ -1,9 +1,14 @@
 export const profile = {
   brand: "LC's",
   name: 'LEECHANHEE',
-  title: 'Project Archive Portfolio',
+  title: 'Frontend Developer Portfolio',
+  headline: '기능을 끝까지 연결하는 프론트엔드 개발자',
   description:
-    '프로젝트를 클릭하면 구현 결과뿐 아니라 기획, 설계, 트러블 슈팅, 회고까지 하나의 흐름으로 정리된 상세 페이지를 볼 수 있도록 구성했습니다.',
+    '기획 문서부터 구현 결과, 그리고 트러블 슈팅과 회고까지 한 흐름으로 정리하는 포트폴리오를 만들고 있습니다.',
+  intro:
+    '사용자가 실제로 체감하는 예약, 문진, 데이터 흐름을 화면 안에서 자연스럽게 이어 주는 작업을 좋아합니다. React 기반 프로젝트를 중심으로 구조를 정리하고, 구현한 기능을 설명 가능한 결과물로 남기는 데 집중합니다.',
+  strengths: ['React 기반 화면 설계', '예약 / 문진 흐름 구현', '문서화와 발표 정리'],
+  workflow: ['문제 정의를 먼저 정리', '기능 단위를 나눠 구현', '문서와 회고까지 결과물로 정리'],
   email: 'kdtlch3650@gmail.com',
   github: 'https://github.com/kdtlch3650-ctrl',
 };
@@ -253,6 +258,162 @@ const doctorLinkSections = [
   },
 ];
 
+const hashTripSections = [
+  {
+    id: 'overview',
+    label: '메인 소개',
+    title: '공공데이터를 활용한 여행지 추천 및 여행 기록 공유 서비스',
+    description:
+      'hashTrip은 사용자의 취향을 해시태그처럼 분석하고, 그 결과를 장소 추천과 여행 일정 작성 흐름에 연결하는 맞춤형 여행 큐레이션 프로젝트입니다.',
+    focusPoints: ['기획 배경', '서비스 플로우', '기대 효과'],
+    items: [
+      {
+        title: '기획 배경과 문제 정의',
+        points: [
+          '수많은 여행 정보 속에서 나에게 정말 맞는 장소를 찾는 데 시간이 많이 걸린다는 문제를 출발점으로 잡았습니다.',
+          '유명한 장소 위주로 반복되는 일정은 사용자 만족도를 떨어뜨리고, 개인 취향을 반영한 여행 추천 니즈는 계속 커지고 있었습니다.',
+          'MBTI처럼 사용자의 성향을 구조화해 취향에 맞는 장소와 루트를 제안하는 서비스를 목표로 삼았습니다.',
+        ],
+      },
+      {
+        title: '핵심 서비스 프로세스',
+        points: [
+          '10가지 성향 질문으로 여행 스타일을 분석하고, 분석 결과를 태그 형태로 정리합니다.',
+          '분석된 태그를 API와 서비스 내부 장소 데이터에 매핑해 사용자에게 맞는 여행지 후보를 추천합니다.',
+          '추천 결과를 여행 일정 작성과 기록 공유 흐름까지 연결해 하나의 사용자 여정을 완성하도록 설계했습니다.',
+        ],
+      },
+      {
+        title: '기대 효과',
+        points: [
+          '여행 계획에 들어가는 검색 시간과 동선 짜기 시간을 줄이는 것을 기대했습니다.',
+          '내 취향에 맞는 장소를 발견하게 하여 여행 만족도를 높이고자 했습니다.',
+          '축적된 성향 데이터를 바탕으로 이후 더 정교한 추천과 트렌드 분석으로 확장할 수 있는 기반을 만들었습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'hashTrip 프로젝트 개요',
+    documentDescription: '프로젝트 개요, 문제 정의, 서비스 플로우가 정리된 hashTrip PDF 자료입니다.',
+    documentImage: '/media/docs/hashtrip-overview.png',
+  },
+  {
+    id: 'planning',
+    label: '기획 / UX',
+    title: '팀 역할, WBS, 메뉴트리와 사용자 흐름',
+    description:
+      '팀원별 역할 분담과 WBS, 그리고 메뉴트리와 유저 플로우를 기반으로 서비스 구조를 어떻게 설계했는지 정리합니다.',
+    focusPoints: ['팀 역할 분담', 'WBS', 'MenuTree / UserFlow'],
+    items: [
+      {
+        title: '팀 구성과 내 역할',
+        points: [
+          '5인 팀 프로젝트로 진행되었고, 추천 루트 페이지, 메인/관리자 페이지, 마이페이지/상세 페이지, 로그인/회원가입 페이지 등으로 역할을 분담했습니다.',
+          '이찬희는 기획 단계에서 유저 플로우와 스토리보드를 작성했고, 구현 단계에서는 여행 일정 작성 페이지를 맡았습니다.',
+          '프로젝트 전반에서 화면 흐름을 먼저 정리한 뒤 구현으로 연결하는 방식을 경험한 작업이었습니다.',
+        ],
+      },
+      {
+        title: '메뉴 구조와 사용자 흐름',
+        points: [
+          '메인 페이지에서 성향 분석 페이지로 진입하고, 결과를 바탕으로 여행 추천 페이지와 추천 장소 상세 페이지로 이어지도록 설계했습니다.',
+          '사용자는 로그인 이후 여행 일정 페이지에서 나의 여행 계획과 여행 기록을 관리할 수 있도록 구성했습니다.',
+          '관리자 페이지, 마이페이지, 로그인/회원가입, 아이디/비밀번호 찾기까지 공통 흐름을 분리해 서비스 구조를 정리했습니다.',
+        ],
+      },
+    ],
+    documentTitle: '메뉴트리 및 기획 자료',
+    documentDescription: '메뉴트리와 사용자 흐름을 중심으로 hashTrip 구조를 한눈에 볼 수 있는 페이지입니다.',
+    documentImage: '/media/docs/hashtrip-planning.png',
+  },
+  {
+    id: 'engineering',
+    label: '개발 / 설계',
+    title: 'Java 기반 구조와 데이터 설계',
+    description:
+      'Spring MVC 기반 구조, 사용 기술 스택, ERD 중심의 데이터 설계를 통해 맞춤형 여행 추천 기능을 구현한 과정을 정리합니다.',
+    focusPoints: ['Java Spring MVC', 'Oracle / MyBatis', 'ERD와 구현 연결'],
+    items: [
+      {
+        title: '기술 스택',
+        points: [
+          'Java 11, Spring 5.3.27, MyBatis, JSP, HTML5/CSS3, JavaScript, Oracle 19c를 사용했습니다.',
+          '협업과 버전 관리는 Git을 사용했고, 개발 환경은 Eclipse와 VS Code를 병행했습니다.',
+          '공공데이터와 내부 데이터를 연결해 추천 결과를 구성하는 구조를 목표로 했습니다.',
+        ],
+      },
+      {
+        title: '데이터 구조와 구현 관점',
+        points: [
+          'ERD에서는 사용자 기본 정보, 성향 태그 저장용 매핑 테이블, 사용자 인증, 주소 등 핵심 엔티티를 분리해 설계했습니다.',
+          '성향 분석 결과를 태그로 저장하고, 이 태그를 장소 데이터와 연결해 추천 결과를 만드는 흐름이 핵심이었습니다.',
+          '프로젝트를 통해 DB와 API를 직접 연결하며 데이터가 흐르는 구조를 더 체계적으로 이해하게 되었습니다.',
+        ],
+      },
+    ],
+    documentTitle: '기술 스택 및 ERD 자료',
+    documentDescription: 'hashTrip에서 사용한 기술 스택과 설계 구조를 보여주는 PDF 자료입니다.',
+    documentImage: '/media/docs/hashtrip-engineering.png',
+  },
+  {
+    id: 'trouble',
+    label: '트러블 슈팅',
+    title: '추천 로직과 데이터 처리 성능 이슈 해결',
+    description:
+      'hashTrip에서는 추천 정확도와 데이터 로딩 속도 측면에서 실제적인 기술 이슈가 있었고, 이를 로직 개선과 병렬 처리로 해결했습니다.',
+    focusPoints: ['추천 로직 보정', 'SQL 충돌 해소', '병렬 처리 성능 개선'],
+    items: [
+      {
+        title: '태그 추천 로직 충돌 해결',
+        points: [
+          '여행지 태그와 성향 분석 결과를 1:1 단순 비교했을 때, 다중 태그 선택 시 SQL 구문 충돌과 중복 코드 생성 문제가 발생했습니다.',
+          '모든 질문의 중요도를 동일하게 처리하면 사용자의 핵심 취향이 희석되어 추천 신뢰도도 낮아졌습니다.',
+          '이를 해결하기 위해 단순 태그 유무 비교에서 벗어나 질문별 가중치 기반 합산 방식으로 추천 로직을 전면 수정했습니다.',
+        ],
+      },
+      {
+        title: '상세 데이터 로딩 속도 개선',
+        points: [
+          '여행지 상세 정보를 가져오는 과정에서 데이터를 순차적으로 호출하면서 전체 페이지 로딩이 느려지는 문제가 있었습니다.',
+          '한 번에 하나의 작업만 수행하는 구조 때문에 Blocking 현상이 생기고, 전체 처리 효율이 낮아졌습니다.',
+          'CompletableFuture 또는 Parallel Stream 기반 병렬 처리 구조를 도입해 기존 순차 처리 대비 약 70~80% 수준의 성능 향상을 얻었습니다.',
+        ],
+      },
+    ],
+    documentTitle: '트러블 슈팅 자료',
+    documentDescription: '추천 로직과 성능 개선 과정이 정리된 hashTrip PDF 자료입니다.',
+    documentImage: '/media/docs/hashtrip-trouble.png',
+  },
+  {
+    id: 'retrospective',
+    label: '느낀점',
+    title: 'DB와 API 흐름을 체계적으로 이해한 프로젝트',
+    description:
+      '프로젝트를 통해 서비스 전체 구조를 보는 시야가 넓어졌고, 데이터가 실제 화면과 기능으로 연결되는 흐름을 더 명확하게 이해하게 되었습니다.',
+    focusPoints: ['서비스 구조 이해', 'DB와 API 연결 경험', '다음 단계로의 확장'],
+    items: [
+      {
+        title: '프로젝트를 통해 얻은 인사이트',
+        points: [
+          '서비스의 전체 구성을 체계적으로 익히며, 기획과 구현이 하나의 흐름으로 연결된다는 점을 체감했습니다.',
+          '특히 DB와 API를 직접 연결해 보면서 데이터가 흐르는 구조를 명확히 이해하게 되어 큰 보람을 느꼈습니다.',
+          '문제 해결 과정에서 공식 문서의 중요성과 구조를 차근차근 분석하는 습관의 필요성을 배울 수 있었습니다.',
+        ],
+      },
+      {
+        title: '앞으로의 보완 방향',
+        points: [
+          '성향 기반 추천 정확도를 더 높이기 위해 태그 체계와 가중치 모델을 세분화할 수 있습니다.',
+          '추천 결과와 여행 기록을 더 긴 사용자 여정으로 연결해 커뮤니티 경험을 강화할 여지가 있습니다.',
+          '현재 프로젝트 경험을 바탕으로 완성도 높은 추천 서비스와 데이터 기반 화면 설계를 계속 발전시키고자 합니다.',
+        ],
+      },
+    ],
+    documentTitle: '회고 및 향후 계획',
+    documentDescription: '팀원 회고와 향후 계획이 정리된 hashTrip PDF 자료입니다.',
+    documentImage: '/media/docs/hashtrip-retrospective.png',
+  },
+];
+
 export const projects = [
   {
     slug: 'doctorlink',
@@ -269,6 +430,7 @@ export const projects = [
     outcomes: ['문진 공백 최소화', '진료 전 정보 정리', '환자·의료진 모두를 고려한 UX'],
     stacks: ['HTML5', 'CSS', 'React.js', 'JavaScript (ES6+)', 'VS Code', 'GitHub'],
     categories: ['react'],
+    featured: true,
     thumbnail: '/media/thumb-doctorlink.svg',
     liveUrl: 'https://kdtlch3650-ctrl.github.io/DoctorLink/',
     repoUrl: 'https://github.com/kdtlch3650-ctrl/DoctorLink',
@@ -308,25 +470,32 @@ export const projects = [
     sections: sharedSections,
   },
   {
-    slug: 'hifive',
+    slug: 'hashtrip',
     label: 'JAVA PROJECT',
-    title: 'HiFive',
-    subtitle: 'Travel planning service',
-    period: '2026.02',
-    team: '팀 프로젝트',
-    role: 'Full Stack Developer',
-    contribution: '화면 흐름 구현 · 인증 구조 정리 · 도메인 설계 참여',
+    title: 'hashTrip',
+    subtitle: 'Personalized travel curation and travel record community service',
+    period: '2026.02.09 - 2026.03.03',
+    team: '5인 팀 프로젝트',
+    role: 'Planning · Travel Schedule Page Development',
+    contribution: '유저 플로우 작성 · 스토리보드 작성 · 여행 일정 작성 페이지 구현',
     summary:
-      '여행 루트 탐색과 플래너 작성 경험을 JSP 기반으로 구현한 Spring MVC 팀 프로젝트입니다.',
-    stacks: ['Java', 'Spring MVC', 'JSP', 'MyBatis', 'Oracle'],
+      '공공데이터와 성향 분석을 활용해 사용자 취향에 맞는 여행지를 추천하고, 여행 계획과 기록 공유 흐름까지 연결한 맞춤형 여행 큐레이션 프로젝트입니다.',
+    focusAreas: ['성향 분석 기반 추천', '여행 일정 작성 흐름', 'Java Spring MVC 구조 경험'],
+    outcomes: ['검색 시간 단축', '취향 기반 장소 추천', '여행 계획과 기록 연결 UX'],
+    stacks: ['Java 11', 'Spring 5.3.27', 'JSP', 'MyBatis', 'Oracle 19c', 'Git'],
     categories: ['java'],
-    thumbnail: '/media/thumb-hifive.svg',
+    thumbnail: '/media/thumb-hashtrip.png',
     liveUrl: '',
     repoUrl: 'https://github.com/YuYoungKwang/hifive',
-    docUrl: '#',
-    youtubeUrl: '',
-    videoUrl: '',
-    videoNote: '발표 영상 또는 시연 영상을 연결하기 전까지는 대표 썸네일 카드로 유지됩니다.',
-    sections: sharedSections,
+    docUrl: '/media/hashTrip.pdf',
+    youtubeUrl: 'https://youtu.be/67PwJ7UhVYI',
+    videoUrl: 'https://www.youtube.com/embed/67PwJ7UhVYI',
+    referenceLinks: [
+      { label: '시연 영상', href: 'https://youtu.be/67PwJ7UhVYI' },
+      { label: 'GitHub 저장소', href: 'https://github.com/YuYoungKwang/hifive' },
+      { label: 'PDF 원본', href: '/media/hashTrip.pdf' },
+    ],
+    videoNote: 'hashTrip 시연 영상이 연결되어 있습니다.',
+    sections: hashTripSections,
   },
 ];

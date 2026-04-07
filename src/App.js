@@ -127,11 +127,69 @@ function HomePage() {
     return projects.filter((project) => project.categories.includes(activeCategory));
   }, [activeCategory]);
 
+  const featuredProject = projects.find((project) => project.featured) ?? projects[0];
+
   return (
     <div className="panel__content">
+      <section className="home-hero">
+        <div className="home-hero__content">
+          <p className="eyebrow">{profile.name}</p>
+          <h1>{profile.headline}</h1>
+          <p className="home-hero__lead">{profile.intro}</p>
+          <div className="home-hero__actions">
+            <Link className="home-hero__button is-primary" to={`/project/${featuredProject.slug}`}>
+              대표 프로젝트 보기
+            </Link>
+            <a className="home-hero__button" href={`mailto:${profile.email}`}>
+              연락하기
+            </a>
+          </div>
+        </div>
+        <aside className="home-hero__aside">
+          <div className="hero-note">
+            <span>Role</span>
+            <strong>{profile.title}</strong>
+          </div>
+          <div className="hero-note">
+            <span>Featured</span>
+            <strong>{featuredProject.title}</strong>
+          </div>
+          <div className="hero-note">
+            <span>Focus</span>
+            <strong>{featuredProject.focusAreas?.join(' / ')}</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about" className="intro-card intro-card--about">
+        <div>
+          <p className="eyebrow">ABOUT</p>
+          <h2>{profile.description}</h2>
+        </div>
+        <div className="intro-card__grid">
+          <div>
+            <p>{profile.intro}</p>
+          </div>
+          <div className="intro-card__stack">
+            <p className="intro-card__label">Strength</p>
+            <div className="detail-chip-list">
+              {profile.strengths.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+            <p className="intro-card__label">Workflow</p>
+            <ul className="intro-card__list">
+              {profile.workflow.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section className="section-heading">
         <div className="section-heading__title">
-          <span>PROJECT</span>
+          <span>SELECTED WORKS</span>
           <div className="section-heading__line"></div>
         </div>
       </section>
@@ -149,15 +207,13 @@ function HomePage() {
         ))}
       </section>
 
-      <section id="about" className="intro-card">
-        <p className="eyebrow">LEECHANHEE</p>
-        <h1>{profile.title}</h1>
-        <p>{profile.description}</p>
-      </section>
-
       <section className="project-grid">
         {filteredProjects.map((project) => (
-          <Link key={project.slug} className="project-card" to={`/project/${project.slug}`}>
+          <Link
+            key={project.slug}
+            className={`project-card${project.featured ? ' project-card--featured' : ''}`}
+            to={`/project/${project.slug}`}
+          >
             <div className="project-card__thumb">
               <img src={project.thumbnail} alt={`${project.title} thumbnail`} />
             </div>
@@ -177,17 +233,17 @@ function HomePage() {
 
       <section id="board" className="board-section">
         <div className="section-heading__title">
-          <span>BOARD</span>
+          <span>CONTACT</span>
           <div className="section-heading__line"></div>
         </div>
         <div className="board-grid">
           <article>
-            <h3>Strength</h3>
-            <p>화면만 예쁘게 만드는 것보다 흐름과 문서가 함께 읽히는 포트폴리오를 지향합니다.</p>
+            <h3>Introduce</h3>
+            <p>기능 구현뿐 아니라 왜 그렇게 만들었는지 설명할 수 있는 결과물을 만드는 데 집중합니다.</p>
           </article>
           <article>
             <h3>Stack</h3>
-            <p>React, Java, Spring MVC, MyBatis, UI 설계와 프로젝트 문서화까지 함께 다룹니다.</p>
+            <p>React, Java, Spring MVC, MyBatis를 중심으로 화면 흐름과 프로젝트 문서 정리를 함께 다룹니다.</p>
           </article>
           <article>
             <h3>Contact</h3>
