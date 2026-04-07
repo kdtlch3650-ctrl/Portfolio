@@ -19,79 +19,6 @@ export const projectCategories = [
   { id: 'react', label: 'REACT' },
 ];
 
-const sharedSections = [
-  {
-    id: 'overview',
-    label: '메인 소개',
-    title: '프로젝트 개요와 핵심 가치',
-    description: '서비스 배경과 목표, 그리고 프로젝트를 통해 강조하고 싶은 핵심 포인트를 먼저 정리합니다.',
-    items: [
-      {
-        title: 'Overview',
-        points: ['프로젝트 목적과 사용자 문제 정의', '기간, 인원, 역할, 기여도 요약', '핵심 기능과 결과물 중심 소개'],
-      },
-    ],
-    documentTitle: '프로젝트 개요서',
-    documentDescription: '실제 PDF 또는 PPT 원본으로 교체할 수 있는 문서 영역입니다.',
-  },
-  {
-    id: 'planning',
-    label: '기획 / UX',
-    title: '메뉴트리, 시나리오, 스토리보드',
-    description: '문서가 많은 만큼 정보 구조를 묶어서 사용자가 흐름을 한 번에 이해하도록 구성합니다.',
-    items: [
-      {
-        title: 'UX Planning',
-        points: ['메뉴 트리와 사용자 시나리오', '스토리보드와 화면 전개 순서', '기획 단계에서 중요하게 본 사용자 흐름'],
-      },
-    ],
-    documentTitle: '기획 문서',
-    documentDescription: '메뉴트리, 스토리보드, 사용자 시나리오 문서를 연결할 수 있습니다.',
-  },
-  {
-    id: 'engineering',
-    label: '개발 / 설계',
-    title: '개발 환경과 시스템 구조',
-    description: '개발 환경, 아키텍처, 테이블 명세, 플로우차트를 한 섹션에서 묶어 설명합니다.',
-    items: [
-      {
-        title: 'Engineering',
-        points: ['기술 스택과 개발 환경', '시스템 아키텍처와 데이터 구조', '프로세스 플로우차트와 설계 근거'],
-      },
-    ],
-    documentTitle: '설계 문서',
-    documentDescription: '아키텍처, 테이블 명세서, 플로우차트 자료를 연결할 수 있습니다.',
-  },
-  {
-    id: 'trouble',
-    label: '트러블 슈팅',
-    title: '막혔던 지점과 개선 방향',
-    description: '문제 상황, 해결 과정, 남은 보완 포인트를 분리해서 케이스 스터디처럼 보여줍니다.',
-    items: [
-      {
-        title: 'Troubleshooting',
-        points: ['문제 정의와 원인 분석', '해결 방식과 적용 결과', '추가로 개선하고 싶은 포인트'],
-      },
-    ],
-    documentTitle: '트러블 슈팅 문서',
-    documentDescription: '발표 자료나 회고 문서 링크를 넣기 좋은 자리입니다.',
-  },
-  {
-    id: 'retrospective',
-    label: '느낀점',
-    title: '회고와 다음 단계',
-    description: '프로젝트를 통해 배운 점과 다음 버전에서 확장하고 싶은 부분을 정리합니다.',
-    items: [
-      {
-        title: 'Retrospective',
-        points: ['프로젝트를 통해 배운 기준', '협업과 구현에서 얻은 인사이트', '다음 버전의 보완 계획'],
-      },
-    ],
-    documentTitle: '회고 자료',
-    documentDescription: '최종 보고서나 느낀점 정리 PPT를 연결할 수 있습니다.',
-  },
-];
-
 const doctorLinkSections = [
   {
     id: 'overview',
@@ -255,6 +182,204 @@ const doctorLinkSections = [
     documentTitle: '결론 및 마무리',
     documentDescription: '기대효과, 협업 인사이트, 결론이 정리된 DoctorLink PDF 문서입니다.',
     documentImage: '/media/docs/doctorlink-retrospective.png',
+  },
+];
+
+const oneulFarmSections = [
+  {
+    id: 'overview',
+    label: '메인 소개',
+    title: '시세 데이터와 레시피, 구매 흐름을 연결한 농산물 커머스',
+    description:
+      'OneulFarm은 공공 시세 데이터를 실제 구매 판단에 연결하고, 레시피와 식단 추천까지 이어서 사용자가 절약 가치를 체감하도록 설계한 농산물 직거래 프로젝트입니다.',
+    focusPoints: ['서비스 방향 재정의', '절약 가치 경험', '내 구현 범위'],
+    items: [
+      {
+        title: '서비스 방향을 다시 좁힌 과정',
+        points: [
+          '초기에는 시세 분석 기능을 넓게 가져가려 했지만, 발표 피드백을 거치며 상품과 레시피, 소비자 이익을 한 흐름으로 묶는 방향이 더 중요하다는 점을 확인했습니다.',
+          '기획이 진행될수록 단순 시세 정보 제공보다 시세 기반 레시피 재료 판매와 식단 제안처럼 실제 구매 행동으로 이어지는 구조가 서비스 핵심이라는 판단을 내렸습니다.',
+          '결과적으로 OneulFarm은 시세에서 식탁까지 이어지는 경험을 만드는 서비스라는 한 문장으로 정리할 수 있게 되었습니다.',
+        ],
+      },
+      {
+        title: '프로젝트 목표와 핵심 가치',
+        points: [
+          '공공 시세 데이터를 사용자 구매 판단에 연결해 가격 비교와 절약 효과를 더 직관적으로 전달하는 것을 목표로 했습니다.',
+          '레시피 콘텐츠와 상품을 연결해 재료 활용도를 높이고, 레시피 탐색이 실제 장바구니와 결제로 이어지도록 설계했습니다.',
+          'AI 챗봇을 통해 사용자 상황에 맞는 식단을 제안하고, 그 식단이 다시 재료 구매 흐름과 연결되는 구조를 프로젝트 차별점으로 잡았습니다.',
+        ],
+      },
+      {
+        title: '내가 맡은 역할과 확장된 구현 범위',
+        points: [
+          '프로젝트 문서상 초기 담당은 마이페이지, 주문관리, 최종 발표였고, 일정표에는 사용자 구매 행동 분석 모듈과 개인별 절약 가치 리포트, 성과 지표 시각화가 정리되어 있었습니다.',
+          '실제 구현 단계에서는 마이페이지와 주문관리 화면에 더해 개인정보 수정, 배송지 관리, 찜/리뷰 관리, 대시보드 절약 지표, 주문 상세와 배송 흐름 고도화까지 맡았습니다.',
+          '발표 준비 단계에서는 시연 스크립트와 체크리스트, 발표 지원 문서를 정리하며 구현 결과가 발표 메시지로 자연스럽게 이어지도록 마무리했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'OneulFarm 프로젝트 개요',
+    documentDescription: '서비스 배경, 목표, 방향성 변화가 정리된 OneulFarm 최종 보고서 페이지입니다.',
+    documentImage: '/media/docs/oneulfarm-overview.png',
+  },
+  {
+    id: 'planning',
+    label: '기획 / UX',
+    title: '요구사항, 메뉴트리, 유스케이스와 스토리보드',
+    description:
+      '요구사항 명세서부터 메뉴트리, 사용자 시나리오, 스토리보드까지 문서 흐름을 연결해 서비스 구조를 설계했습니다.',
+    focusPoints: ['요구사항 정리', '메뉴 구조와 사용자 흐름', '스토리보드 상세 링크'],
+    items: [
+      {
+        title: '요구사항과 사용자 흐름 설계',
+        points: [
+          '메인, 회원, 시세 분석, 상품, 주문, 레시피, 추천, 마이페이지, 관리자 기능을 큰 축으로 나누고 사용자 사이트와 관리자 사이트를 분리해 요구사항을 정리했습니다.',
+          '사용자는 메인에서 레시피를 보고 장바구니와 결제, 주문 관리, 리뷰 작성까지 이어지고, 관리자는 주문 접수와 취소를 처리하는 흐름으로 유스케이스를 구성했습니다.',
+          '이 구조 덕분에 화면을 개별 페이지가 아니라 하나의 구매 여정으로 바라보며 UX 우선순위를 잡을 수 있었습니다.',
+        ],
+      },
+      {
+        title: '일정 관리와 내 작업 계획',
+        points: [
+          '프로젝트는 기획/설계, 컴포넌트 개발, 로직 고도화, 안정화/테스트, 최종 발표 순으로 진행되었고, WBS와 역할 분담을 기준으로 단계별 작업을 나눴습니다.',
+          '내 일정표에는 사용자 구매 행동 분석 모듈, 개인별 절약 가치 리포트 생성, 성과 지표 시각화와 발표 전략이 잡혀 있었고, 실제 구현도 이 흐름에 맞춰 확장되었습니다.',
+          '문서와 구현을 따로 두지 않고, 기획 단계에서 정의한 사용자 흐름을 화면과 발표 자료까지 연결하는 방식으로 정리했습니다.',
+        ],
+      },
+      {
+        title: '스토리보드를 통해 정리한 화면 구조',
+        points: [
+          '스토리보드에서는 메인, 레시피, 장바구니, 결제 흐름을 중심으로 어떤 정보가 먼저 보여야 하는지와 주요 액션이 어디로 연결되는지를 시각적으로 정리했습니다.',
+          '포트폴리오 안에서는 요약 이미지를 먼저 보여주고, 별도 상세 페이지 링크로 전체 스토리보드 문서를 바로 확인할 수 있도록 구성했습니다.',
+        ],
+      },
+    ],
+    documentTitle: '스토리보드 및 기획 자료',
+    documentDescription: '기획 단계에서 정리한 메인, 레시피, 장바구니 흐름과 스토리보드 요약 화면입니다.',
+    documentImage: '/media/docs/oneulfarm-planning.png',
+    referenceLinks: [
+      {
+        label: '스토리보드 상세 페이지',
+        href: 'https://docs.google.com/presentation/d/1WBMeRCixzqa4nG1pfya41ygAKmS3dcvj9Ws5LGwn-uw/edit?usp=sharing',
+      },
+      {
+        label: '스토리보드 PDF',
+        href: '/media/oneulfarm-storyboard.pdf',
+      },
+    ],
+  },
+  {
+    id: 'engineering',
+    label: '개발 / 설계',
+    title: 'React · Spring · Oracle 구조와 주문/배송 흐름 구현',
+    description:
+      '프론트엔드와 백엔드를 함께 연결하며 마이페이지, 대시보드, 주문/배송 흐름, 관리자 화면까지 구조적으로 확장한 과정입니다.',
+    focusPoints: ['React + Spring 구조', '주문/배송 상태 관리', 'DFD 상세 링크'],
+    items: [
+      {
+        title: '기술 스택과 시스템 아키텍처',
+        points: [
+          '프론트엔드는 React와 JavaScript, 백엔드는 Java Spring Framework와 MyBatis, 데이터베이스는 OracleDB를 사용했습니다.',
+          'KAMIS 시세 데이터, 식품의약품안전처 레시피, PortOne 결제, OpenAI API, OAuth 로그인, 메일 전송 등 외부 서비스가 Spring API 서버와 연결되는 구조로 설계했습니다.',
+          '시스템 아키텍처와 ERD, AI 챗봇 DFD를 함께 정리해 데이터가 어떤 경로로 흐르고 어디에서 구매 경험으로 이어지는지 설명할 수 있게 했습니다.',
+        ],
+      },
+      {
+        title: '직접 구현한 사용자 계정·대시보드 기능',
+        points: [
+          '회원정보 조회/수정, 비밀번호 변경, 프로필 사진 업로드, 배송지 추가·삭제·기본 배송지 관리 같은 마이페이지 기능을 프론트와 백엔드까지 연결했습니다.',
+          '마이페이지 주문관리와 대시보드 요약 API를 연동하고, 월별 절약 흐름 카드와 핵심 절약 금액 강조, 구매 패턴 시각화처럼 절약 가치가 보이는 화면을 다듬었습니다.',
+          '내 활동 탭에서는 찜한 상품, 리뷰 관리, 별점 버튼, 다중 이미지 업로드, 상품 상세 연결까지 이어지는 흐름을 구현해 계정 경험을 넓혔습니다.',
+        ],
+      },
+      {
+        title: '주문·배송·관리자 흐름 고도화',
+        points: [
+          '주문 취소 요청, 운영자 취소 처리, 구매 확정, 주문 상세 이력, 배송 추적 이력, 배송사 전용 관리 화면까지 주문과 배송 상태를 분리해 구조적으로 정리했습니다.',
+          '고객·관리자·배송사 화면에서 같은 주문 데이터를 서로 다른 관점으로 보여주기 위해 주문 상태 이력과 배송 추적 타임라인을 DB와 화면에 함께 연결했습니다.',
+          '시연을 위해 관리자 주문 접수 후 자동 배송 전환 흐름과 관련 문서, 테스트 기준까지 정리해 발표 상황에서도 서비스 흐름이 자연스럽게 이어지도록 만들었습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'AI 챗봇 DFD 및 시스템 설계',
+    documentDescription: 'AI 챗봇, 장바구니, 결제, 로그인 흐름을 세부적으로 정리한 DFD 이미지입니다.',
+    documentImage: '/media/docs/oneulfarm-engineering.png',
+    referenceLinks: [
+      {
+        label: 'DFD 상세 페이지',
+        href: 'https://www.figma.com/board/dB9kASLgFZPd8cGuFF5Tgu/AI%EC%B1%97%EB%B4%87-DFD?node-id=0-1&t=HQfqB1TTgG9DzuYk-1',
+      },
+      {
+        label: '프로젝트 GitHub',
+        href: 'https://github.com/YuYoungKwang/oneulFarm',
+      },
+    ],
+  },
+  {
+    id: 'trouble',
+    label: '트러블 슈팅',
+    title: '데이터 기준 불일치와 외부 API 안정성 이슈 해결',
+    description:
+      'OneulFarm에서는 가격 비교 기준과 외부 연동 구조처럼 서비스 신뢰도에 직접 연결되는 문제를 먼저 다뤘습니다.',
+    focusPoints: ['비교 기준 통일', '외부 API 안정성', '상태 흐름 정리'],
+    items: [
+      {
+        title: '가격 비교 데이터 불일치 해결',
+        points: [
+          '판매 단위와 평균가 산정 단위가 달라 화면마다 다른 비교값이 보이면서 사용자가 절약 금액을 신뢰하기 어려운 문제가 있었습니다.',
+          '이를 해결하기 위해 가격 비교 기준값을 하나로 통일하고, 절약률과 절약 금액 계산도 동일한 기준으로 맞췄습니다.',
+          '프로젝트를 진행하면서 데이터 기준이 한 번만 어긋나도 시세 기반 서비스의 설득력이 크게 떨어진다는 점을 체감했습니다.',
+        ],
+      },
+      {
+        title: '외부 API 연동 속도와 안정성 보완',
+        points: [
+          '외부 API를 직접 여러 번 호출하는 구조에서는 응답 지연, 타임아웃, 연결 오류 때문에 로딩 속도와 기능 안정성이 함께 흔들렸습니다.',
+          '예외 처리, 재시도, fallback, 캐시 도입을 통해 급한 장애를 막고, 중복 호출과 불필요한 연산을 줄이는 방향으로 구조를 정리했습니다.',
+          '이 경험을 통해 외부 연동은 기능 추가보다 실패 상황 설계가 먼저라는 점을 확실히 배우게 되었습니다.',
+        ],
+      },
+      {
+        title: '주문과 배송 상태 흐름 충돌 정리',
+        points: [
+          '실제 구현 과정에서는 주문 상태와 배송 상태가 섞여 고객·관리자 화면 문구와 처리 순서가 어색해지는 문제가 반복적으로 발생했습니다.',
+          '주문 이력, 취소 이력, 배송 추적 이력을 분리하고 공통 파생 로직을 유틸로 정리해 각 화면에서 같은 데이터를 일관되게 해석하도록 개선했습니다.',
+        ],
+      },
+    ],
+    documentTitle: '트러블 슈팅 자료',
+    documentDescription: '가격 비교 기준 통일과 외부 API 안정성 보완 과정을 정리한 OneulFarm 보고서 페이지입니다.',
+    documentImage: '/media/docs/oneulfarm-trouble.png',
+  },
+  {
+    id: 'retrospective',
+    label: '느낀점',
+    title: '기능 수보다 서비스 목적과 초기 계획의 중요성을 배운 프로젝트',
+    description:
+      '프로젝트가 커질수록 화면 수보다 서비스 목적과 데이터 기준, 그리고 초반 설계가 더 중요하다는 점을 크게 느낀 작업이었습니다.',
+    focusPoints: ['서비스 목적 중심 사고', '초기 계획의 중요성', '다음 버전 보완'],
+    items: [
+      {
+        title: '프로젝트를 통해 느낀 점',
+        points: [
+          '주제를 처음에는 넓게 잡았지만 피드백을 통해 방향을 구체화하는 과정에서, 프론트 디자인과 페이지 구성 전반이 결국 서비스 목적 위에서 결정된다는 점을 실감했습니다.',
+          '기능을 많이 넣는 것보다 문제 정의와 핵심 가치가 먼저 정리되어야 화면과 데이터 설계가 더 단단해진다는 점을 배우게 되었습니다.',
+          '이번 프로젝트를 통해 꼼꼼한 초기 계획과 프로토타입, 발표 전 메시지 정리가 실제 구현만큼 중요하다는 점을 확실히 체감했습니다.',
+        ],
+      },
+      {
+        title: '다음 단계에서 보완하고 싶은 점',
+        points: [
+          '가격 비교와 할인율처럼 여러 화면에서 쓰는 데이터는 더 명확한 공통 기준으로 묶어 사용자 혼란을 줄이고 싶습니다.',
+          '레시피 재료와 판매 상품을 연결하는 매핑 정확도를 높이고, 실패·취소 같은 예외 흐름 테스트도 더 촘촘하게 보완하고 싶습니다.',
+          '외부 API 의존 구간은 캐시와 예외 처리 구조를 더 강화해 실제 서비스 환경에서도 안정적으로 운영할 수 있도록 개선하고 싶습니다.',
+        ],
+      },
+    ],
+    documentTitle: '회고 및 보완사항',
+    documentDescription: '팀 회고와 개인 느낀점, 앞으로의 보완 방향이 정리된 OneulFarm 자료입니다.',
+    documentImage: '/media/docs/oneulfarm-retrospective.png',
   },
 ];
 
@@ -444,6 +569,37 @@ const hashTripSections = [
 
 export const projects = [
   {
+    slug: 'oneulfarm',
+    label: 'MAIN PROJECT · REACT + JAVA',
+    title: 'OneulFarm',
+    subtitle: 'Market price driven farm commerce with recipe and AI meal planning',
+    period: '2026.03.09 - 2026.04.03',
+    team: '5인 팀 프로젝트',
+    role: 'Full Stack Developer · MyPage / Order & Delivery Flow · Final Presentation',
+    contribution:
+      '마이페이지 · 주문관리 · 대시보드 API 연동 · 배송지/리뷰/찜 기능 · 주문·배송 흐름 고도화 · 발표 자료/시연 스크립트 정리',
+    summary:
+      '공공 시세 데이터와 레시피, AI 식단 제안을 연결해 사용자가 절약 가치를 체감하도록 만든 농산물 직거래 커머스 프로젝트입니다.',
+    focusAreas: ['시세 기반 절약 가치 경험', '마이페이지와 주문·배송 흐름', '발표용 지표 시각화와 문서 정리'],
+    outcomes: ['가격 비교와 절약 가치 체감', '레시피에서 장바구니·결제까지 연결', 'AI 식단 제안과 구매 흐름 연계'],
+    stacks: ['React', 'Java', 'Spring Framework', 'MyBatis', 'OracleDB', 'PortOne', 'OpenAI API', 'GitHub'],
+    categories: ['react', 'java'],
+    featured: true,
+    thumbnail: '/media/thumb-oneulfarm.png',
+    liveUrl: '',
+    repoUrl: 'https://github.com/YuYoungKwang/oneulFarm',
+    docUrl: '/media/oneulFarm.pdf',
+    youtubeUrl: 'https://youtu.be/DqfVTOmsjP4',
+    videoUrl: 'https://www.youtube.com/embed/DqfVTOmsjP4',
+    referenceLinks: [
+      { label: '시연 영상', href: 'https://youtu.be/DqfVTOmsjP4' },
+      { label: 'GitHub 저장소', href: 'https://github.com/YuYoungKwang/oneulFarm' },
+      { label: '최종 보고서 PDF', href: '/media/oneulFarm.pdf' },
+    ],
+    videoNote: 'OneulFarm 시연 영상을 통해 시세 기반 커머스와 주문 흐름을 한 번에 확인할 수 있습니다.',
+    sections: oneulFarmSections,
+  },
+  {
     slug: 'doctorlink',
     label: 'REACT PROJECT',
     title: 'DoctorLink',
@@ -458,7 +614,6 @@ export const projects = [
     outcomes: ['문진 공백 최소화', '진료 전 정보 정리', '환자·의료진 모두를 고려한 UX'],
     stacks: ['HTML5', 'CSS', 'React.js', 'JavaScript (ES6+)', 'VS Code', 'GitHub'],
     categories: ['react'],
-    featured: true,
     thumbnail: '/media/thumb-doctorlink.svg',
     liveUrl: 'https://kdtlch3650-ctrl.github.io/DoctorLink/',
     repoUrl: 'https://github.com/kdtlch3650-ctrl/DoctorLink',
@@ -474,28 +629,6 @@ export const projects = [
     videoNote:
       'DoctorLink 시연 영상이 연결되어 있습니다. 포트폴리오 안에서 바로 핵심 흐름을 확인하고, 필요하면 유튜브 원본으로 이동할 수 있습니다.',
     sections: doctorLinkSections,
-  },
-  {
-    slug: 'oneulfarm',
-    label: 'REACT + JAVA',
-    title: 'OneulFarm',
-    subtitle: 'Agriculture commerce and analytics',
-    period: '2026.03 - 진행 중',
-    team: '팀 프로젝트',
-    role: 'Frontend / Full Stack Collaboration',
-    contribution: '프론트 구조화 · 화면 설계 · 문서 정리',
-    summary:
-      '가격 분석, 상품 탐색, 주문 플로우를 한 서비스 안에서 연결한 농식품 플랫폼 프로젝트입니다.',
-    stacks: ['React', 'Spring MVC', 'MyBatis', 'PortOne', 'Recharts'],
-    categories: ['react', 'java'],
-    thumbnail: '/media/thumb-oneulfarm.svg',
-    liveUrl: '',
-    repoUrl: 'https://github.com/YuYoungKwang/oneulFarm',
-    docUrl: '#',
-    youtubeUrl: '',
-    videoUrl: '',
-    videoNote: '포트폴리오에서는 영상 또는 발표 녹화 링크를 연결할 예정인 영역입니다.',
-    sections: sharedSections,
   },
   {
     slug: 'hashtrip',
