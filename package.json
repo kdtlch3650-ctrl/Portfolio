@@ -23,6 +23,7 @@
   "predeploy": "npm run build",
   "deploy": "gh-pages -d build"
   },
+  "homepage": "https://kdtlch3650-ctrl.github.io/Portfolio/",
   "eslintConfig": {
     "extends": [
       "react-app",
