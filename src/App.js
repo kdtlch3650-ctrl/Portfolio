@@ -206,6 +206,10 @@ function ProjectDetailPage() {
   const activeSection = project.sections.find((section) => section.id === activeTab) ?? project.sections[0];
   const hasOriginalDocument = Boolean(project.docUrl && project.docUrl !== '#');
   const showDocumentPreview = Boolean(activeSection.documentImage);
+  const referenceLinks = [
+    ...(activeSection.referenceLinks?.filter((link) => link.href) ?? []),
+    ...(project.referenceLinks?.filter((link) => link.href) ?? []),
+  ];
 
   return (
     <div className="panel__content">
@@ -300,6 +304,20 @@ function ProjectDetailPage() {
                 <p>메인 소개 탭은 요약 중심으로 두고, 다른 탭에서는 PDF에서 뽑은 핵심 페이지 이미지를 바로 보여주도록 구성했습니다.</p>
               </div>
             )}
+            {referenceLinks.length ? (
+              <div className="document-card__links">
+                <p className="document-card__links-title">Related Links</p>
+                <ul>
+                  {referenceLinks.map((link) => (
+                    <li key={link.label}>
+                      <a href={link.href} target="_blank" rel="noreferrer">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             {hasOriginalDocument ? (
               <a className="document-card__button" href={project.docUrl} target="_blank" rel="noreferrer">
                 Open Original

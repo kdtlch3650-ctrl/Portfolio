@@ -111,6 +111,14 @@ const doctorLinkSections = [
           '환자와 의료기관 모두에게 가치가 되는 사용자 건강 관리 시스템을 지향했습니다.',
         ],
       },
+      {
+        title: '내가 맡아 구현한 영역',
+        points: [
+          '모바일 메인 진입 구조와 하단 네비게이션을 추가해 모바일 사용자 동선을 분리했습니다.',
+          '문진 작성 페이지를 연결하고 통증 기록 저장, 생활 습관 입력, 제출 흐름을 구현했습니다.',
+          '병원 예약 날짜 저장, 캘린더 이벤트 저장, 사이드바 약 복용 체크 연동처럼 사용자가 바로 체감하는 흐름을 맡아 정리했습니다.',
+        ],
+      },
     ],
     documentTitle: 'DoctorLink PDF 보고서',
     documentDescription: '사용자가 전달한 DoctorLink PDF 원본을 바로 열어 볼 수 있습니다.',
@@ -142,6 +150,12 @@ const doctorLinkSections = [
     documentTitle: 'WBS 및 기획 자료',
     documentDescription: '팀 구성, 일정표, 기획 흐름이 포함된 DoctorLink PDF 자료입니다.',
     documentImage: '/media/docs/doctorlink-planning.png',
+    referenceLinks: [
+      {
+        label: 'WBS 원본 스프레드시트',
+        href: 'https://docs.google.com/spreadsheets/d/1Te2k-kIHp2tZyP7RMNhDuw4vwSXvpsKxGbv_vNvArjw/edit?gid=2053249259#gid=2053249259',
+      },
+    ],
   },
   {
     id: 'engineering',
@@ -159,17 +173,31 @@ const doctorLinkSections = [
         ],
       },
       {
-        title: '메인 구성 요소와 서비스 프로세스',
+        title: '실제 구현 기능과 연결 구조',
         points: [
-          '건강 데이터 저장 및 관리 플랫폼, 사용자 건강 문진, 의사의 환자 관리, 의사 피드백 목표 설정의 4개 축으로 구성했습니다.',
-          '환자는 진료 전 증상·복용 약물·생활 습관 등을 기록하고, 시간 흐름에 따른 건강 변화를 추적할 수 있습니다.',
-          '의료진은 환자의 건강 기록을 열람하고 진료 전 상태를 파악해 효율적인 진료 계획과 환자별 맞춤형 관리를 할 수 있도록 설계했습니다.',
+          '병원 상세 페이지에서 예약 모달을 열고 날짜와 시간을 입력하면 localStorage 기반으로 캘린더 일정이 저장되도록 연결했습니다.',
+          '캘린더 페이지에서는 예약 이벤트와 복약 이벤트를 함께 관리하고, 수정·삭제·초기화와 오늘 복용 완료 처리를 구현했습니다.',
+          '사이드바의 빠른 작업 영역에서 약 복용 체크를 누르면 캘린더 상태와 동기화되도록 CustomEvent와 localStorage 흐름을 맞췄습니다.',
+        ],
+      },
+      {
+        title: '모바일 최적화 작업',
+        points: [
+          '모바일 환경에서 `MobileMainPage`로 진입하도록 라우팅 분기를 넣어 기기별 진입 경험을 분리했습니다.',
+          '하단 탭 네비게이션으로 홈, 문진 작성, 내 건강, 진료내역, 로그인 이동을 묶어 한 손 조작 흐름을 만들었습니다.',
+          '모바일에서 기존 헤더가 겹치지 않도록 스타일을 정리하고 문진 작성 페이지를 별도 화면으로 연결했습니다.',
         ],
       },
     ],
     documentTitle: '기술 스택 및 프로세스 자료',
     documentDescription: '기술 스택, 메인 구성 요소, 서비스 프로세스 흐름도가 포함된 DoctorLink PDF입니다.',
     documentImage: '/media/docs/doctorlink-engineering.png',
+    referenceLinks: [
+      {
+        label: '서비스 프로세스 흐름도 원본',
+        href: 'https://drive.google.com/file/d/17sfOpinnojs19LjRU_cjDvLLl_T3tri4/view?usp=drive_link',
+      },
+    ],
   },
   {
     id: 'trouble',
@@ -187,11 +215,11 @@ const doctorLinkSections = [
         ],
       },
       {
-        title: '제약과 개선 포인트',
+        title: '구현 중 맞닥뜨린 제약과 해결 방식',
         points: [
-          '백엔드가 없는 환경에서 데이터 저장 방식의 제약을 경험하며 시스템 구조 설계 중요성을 인식했습니다.',
-          '향후 개선 방향으로 웨어러블 데이터 연동, 원격 진료 기반 확장, 개인 맞춤 건강 관리, 모바일 최적화를 제시했습니다.',
-          '현재 포트폴리오에서는 이 내용을 보완사항과 확장 계획으로 함께 보여줄 수 있도록 구성했습니다.',
+          '백엔드가 없는 환경이어서 예약과 복약 상태를 localStorage에 저장하고, 페이지 간 상태 차이는 CustomEvent와 focus 이벤트로 보완했습니다.',
+          '모바일 화면에서는 기존 데스크톱 헤더가 겹치는 문제가 있어 모바일 전용 레이아웃과 스타일 분기 작업이 필요했습니다.',
+          '배포 단계에서는 GitHub Pages 경로와 이미지 누락, 게스트 접근 흐름까지 다시 손보며 실제 공개용 동작을 점검했습니다.',
         ],
       },
     ],
@@ -238,7 +266,7 @@ export const projects = [
     period: '2025.12.10 - 2025.12.24',
     team: '4인 팀 프로젝트',
     role: 'Frontend Developer · Final Presentation',
-    contribution: '병원 예약 기능 · 캘린더 기능 · 모바일 페이지 최적화 · 최종 발표',
+    contribution: '병원 예약 날짜/시간 저장 · 캘린더 이벤트 연동 · 모바일 메인/하단 네비 · 문진 작성 페이지 · 최종 발표',
     summary:
       '지속적인 건강 기록을 바탕으로 환자의 사전 문진과 의료진의 환자 관리를 연결해 문진 공백을 줄이는 건강 관리 서비스 프로젝트입니다.',
     stacks: ['HTML5', 'CSS', 'React.js', 'JavaScript (ES6+)', 'VS Code', 'GitHub'],
@@ -249,6 +277,12 @@ export const projects = [
     docUrl: '/media/DoctorLink.pdf',
     youtubeUrl: 'https://youtu.be/qyc2cOj7X1Y',
     videoUrl: 'https://www.youtube.com/embed/qyc2cOj7X1Y',
+    referenceLinks: [
+      { label: '시연 영상', href: 'https://youtu.be/qyc2cOj7X1Y' },
+      { label: '서비스 배포', href: 'https://kdtlch3650-ctrl.github.io/DoctorLink/' },
+      { label: 'GitHub 저장소', href: 'https://github.com/kdtlch3650-ctrl/DoctorLink' },
+      { label: 'PDF 원본', href: '/media/DoctorLink.pdf' },
+    ],
     videoNote:
       'DoctorLink 시연 영상이 연결되어 있습니다. 포트폴리오 안에서 바로 핵심 흐름을 확인하고, 필요하면 유튜브 원본으로 이동할 수 있습니다.',
     sections: doctorLinkSections,

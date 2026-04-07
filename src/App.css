@@ -450,6 +450,36 @@
   margin: 0;
 }
 
+.document-card__links {
+  border-top: 1px solid rgba(55, 66, 82, 0.08);
+  display: grid;
+  gap: 0.6rem;
+  padding-top: 0.9rem;
+}
+
+.document-card__links-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.document-card__links ul {
+  display: grid;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.document-card__links a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
 .document-card__button {
   border: 1px solid currentColor;
   display: inline-flex;
