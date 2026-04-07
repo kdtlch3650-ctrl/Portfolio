@@ -1,0 +1,10 @@
+<svg width="800" height="620" viewBox="0 0 800 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="620" fill="#464646"/>
+  <rect x="54" y="56" width="692" height="508" rx="22" fill="#222"/>
+  <rect x="88" y="96" width="282" height="422" rx="18" fill="#E6E6E6"/>
+  <rect x="398" y="96" width="308" height="104" rx="18" fill="#F5F5F5"/>
+  <rect x="398" y="228" width="308" height="128" rx="18" fill="#D1D1D1"/>
+  <rect x="398" y="384" width="148" height="134" rx="18" fill="#A1A1A1"/>
+  <rect x="558" y="384" width="148" height="134" rx="18" fill="#7D7D7D"/>
+  <text x="398" y="88" fill="#EAEAEA" font-family="Arial" font-size="24">OneulFarm</text>
+</svg>
