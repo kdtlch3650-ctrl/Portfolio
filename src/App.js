@@ -310,6 +310,8 @@ function ProjectDetailPage() {
   const { slug } = useParams();
   const [activeTab, setActiveTab] = useState('overview');
   const [expandedImage, setExpandedImage] = useState(null);
+  const tabBarRef = useRef(null);
+  const tabPanelRef = useRef(null);
   const project = projects.find((item) => item.slug === slug);
 
   useEffect(() => {
@@ -355,6 +357,26 @@ function ProjectDetailPage() {
     ...(activeSection.referenceLinks?.filter((link) => link.href) ?? []),
     ...(project.referenceLinks?.filter((link) => link.href) ?? []),
   ].filter((link, index, list) => list.findIndex((item) => item.href === link.href) === index);
+
+  const handleTabChange = (sectionId) => {
+    setActiveTab(sectionId);
+
+    window.requestAnimationFrame(() => {
+      if (!tabPanelRef.current) {
+        return;
+      }
+
+      const topbarHeight = document.querySelector('.topbar')?.getBoundingClientRect().height ?? 0;
+      const tabBarHeight = tabBarRef.current?.getBoundingClientRect().height ?? 0;
+      const scrollTarget =
+        tabPanelRef.current.getBoundingClientRect().top + window.scrollY - topbarHeight - tabBarHeight - 20;
+
+      window.scrollTo({
+        top: Math.max(scrollTarget, 0),
+        behavior: 'smooth',
+      });
+    });
+  };
 
   return (
     <div className="panel__content">
@@ -422,13 +444,13 @@ function ProjectDetailPage() {
         </div>
       </section>
 
-      <section className="tab-bar">
+      <section className="tab-bar" ref={tabBarRef}>
         {project.sections.map((section, index) => (
           <button
             key={section.id}
             type="button"
             className={`tab-bar__button${activeTab === section.id ? ' is-active' : ''}`}
-            onClick={() => setActiveTab(section.id)}
+            onClick={() => handleTabChange(section.id)}
           >
             <span className="tab-bar__index">{String(index + 1).padStart(2, '0')}</span>
             <span className="tab-bar__label">{section.label}</span>
@@ -436,7 +458,7 @@ function ProjectDetailPage() {
         ))}
       </section>
 
-      <section className="tab-panel">
+      <section className="tab-panel" ref={tabPanelRef}>
         <div className="tab-panel__header">
           <p className="eyebrow">{activeSection.label}</p>
           <h2>{activeSection.title}</h2>
