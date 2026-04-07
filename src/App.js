@@ -306,7 +306,7 @@ function ProjectDetailPage() {
   const referenceLinks = [
     ...(activeSection.referenceLinks?.filter((link) => link.href) ?? []),
     ...(project.referenceLinks?.filter((link) => link.href) ?? []),
-  ];
+  ].filter((link, index, list) => list.findIndex((item) => item.href === link.href) === index);
 
   return (
     <div className="panel__content">

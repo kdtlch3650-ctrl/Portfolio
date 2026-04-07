@@ -141,7 +141,7 @@ const doctorLinkSections = [
         title: '팀 구성과 담당 역할',
         points: [
           '팀명은 Alt F4이며, 프로젝트 총괄·기획, 데이터 수집·모델링, 프론트엔드 구현으로 역할을 나눠 진행했습니다.',
-          '이찬희 담당 범위는 프론트엔드 개발 및 최종 발표, 병원 예약 기능 구현, 캘린더 기능, 모바일 페이지 최적화였습니다.',
+          '내 담당 범위는 프론트엔드 개발 및 최종 발표, 병원 예약 기능 구현, 캘린더 기능 정리였습니다.',
           '헤더/사이드바/메인화면, 환자 관리 페이지, 로그인 및 커뮤니티 기능 등도 팀 단위로 분담해 구현했습니다.',
         ],
       },
@@ -308,8 +308,8 @@ const hashTripSections = [
         title: '팀 구성과 내 역할',
         points: [
           '5인 팀 프로젝트로 진행되었고, 추천 루트 페이지, 메인/관리자 페이지, 마이페이지/상세 페이지, 로그인/회원가입 페이지 등으로 역할을 분담했습니다.',
-          '이찬희는 기획 단계에서 유저 플로우와 스토리보드를 작성했고, 구현 단계에서는 여행 일정 작성 페이지를 중심으로 지도 상세 흐름과 장소 추가 인터랙션을 맡았습니다.',
-          '커밋 기준으로 일정 일차 추가, 장소 개별 추가 버튼, 모달 상단 고정, 루트 카드 UI 개선, 지도 상세 여닫기, 태그-홈 연동 같은 기능을 직접 반영했습니다.',
+          '기획 단계에서는 유저 플로우와 스토리보드를 작성했고, 구현 단계에서는 여행 일정 작성 페이지를 중심으로 지도 상세 흐름과 장소 추가 인터랙션을 맡았습니다.',
+          '일정 일차 추가, 장소 개별 추가 버튼, 모달 상단 고정, 루트 카드 UI 개선, 지도 상세 여닫기, 태그-홈 연동 같은 기능을 직접 반영했습니다.',
         ],
       },
       {
@@ -324,6 +324,16 @@ const hashTripSections = [
     documentTitle: '메뉴트리 및 기획 자료',
     documentDescription: '메뉴트리와 사용자 흐름을 중심으로 hashTrip 구조를 한눈에 볼 수 있는 페이지입니다.',
     documentImage: '/media/docs/hashtrip-planning.png',
+    referenceLinks: [
+      {
+        label: 'WBS 원본 문서',
+        href: 'https://docs.google.com/spreadsheets/d/1W-YvX-o7zpSEqAcT387E-WURf6PBVS7eEtNUlfYEgSY/edit?gid=767084977#gid=767084977',
+      },
+      {
+        label: 'StoryBoard 원본',
+        href: 'https://www.figma.com/design/T1ysqNP4EpwCRVKzT911Oc/2%ED%8C%80-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C?node-id=0-1&p=f',
+      },
+    ],
   },
   {
     id: 'engineering',
@@ -350,7 +360,7 @@ const hashTripSections = [
         ],
       },
       {
-        title: '커밋으로 확인되는 구현 범위',
+        title: '직접 구현한 세부 기능',
         points: [
           '여행 일정 페이지에서 루트 카드 UI 변경, 작성일 추가, 여행 루트 일차 추가, 장소 개별 추가 버튼과 일자별 장소 추가 버튼을 구현했습니다.',
           '지도 영역에서는 중복 이미지 제거, 깨진 이미지 예외 처리, 장소 변경 지도 디테일, 상세 여닫기 기능을 반영해 화면 완성도를 높였습니다.',
@@ -361,6 +371,16 @@ const hashTripSections = [
     documentTitle: '기술 스택 및 ERD 자료',
     documentDescription: 'hashTrip에서 사용한 기술 스택과 설계 구조를 보여주는 PDF 자료입니다.',
     documentImage: '/media/docs/hashtrip-engineering.png',
+    referenceLinks: [
+      {
+        label: '프로젝트 GitHub',
+        href: 'https://github.com/YuYoungKwang/hifive.git',
+      },
+      {
+        label: 'ERD 원본',
+        href: 'https://www.erdcloud.com/d/wHzr3PvNt2YFQscJW',
+      },
+    ],
   },
   {
     id: 'trouble',
