@@ -366,7 +366,7 @@ const oneulFarmSections = [
       },
       {
         label: '프로젝트 GitHub',
-        href: 'https://github.com/YuYoungKwang/oneulFarm',
+        href: 'https://github.com/kdtlch3650-ctrl/oneulFarm',
       },
     ],
   },
@@ -559,7 +559,7 @@ const hashTripSections = [
     referenceLinks: [
       {
         label: '프로젝트 GitHub',
-        href: 'https://github.com/YuYoungKwang/hifive.git',
+        href: 'https://github.com/kdtlch3650-ctrl/hifive.git',
       },
       {
         label: 'ERD 원본',
@@ -647,13 +647,13 @@ export const projects = [
     featured: true,
     thumbnail: asset('/media/thumb-oneulfarm.png'),
     liveUrl: '',
-    repoUrl: 'https://github.com/YuYoungKwang/oneulFarm',
+    repoUrl: 'https://github.com/kdtlch3650-ctrl/oneulFarm',
     docUrl: asset('/media/oneulFarm.pdf'),
     youtubeUrl: 'https://youtu.be/DqfVTOmsjP4',
     videoUrl: 'https://www.youtube.com/embed/DqfVTOmsjP4',
     referenceLinks: [
       { label: '시연 영상', href: 'https://youtu.be/DqfVTOmsjP4' },
-      { label: 'GitHub 저장소', href: 'https://github.com/YuYoungKwang/oneulFarm' },
+      { label: 'GitHub 저장소', href: 'https://github.com/kdtlch3650-ctrl/oneulFarm' },
       { label: '최종 보고서 PDF', href: asset('/media/oneulFarm.pdf') },
     ],
     videoNote: 'OneulFarm 시연 영상을 통해 시세 기반 커머스와 주문 흐름을 한 번에 확인할 수 있습니다.',
@@ -707,13 +707,13 @@ export const projects = [
     categories: ['java'],
     thumbnail: asset('/media/thumb-hashtrip.png'),
     liveUrl: '',
-    repoUrl: 'https://github.com/YuYoungKwang/hifive',
+    repoUrl: 'https://github.com/kdtlch3650-ctrl/hifive',
     docUrl: asset('/media/hashTrip.pdf'),
     youtubeUrl: 'https://youtu.be/67PwJ7UhVYI',
     videoUrl: 'https://www.youtube.com/embed/67PwJ7UhVYI',
     referenceLinks: [
       { label: '시연 영상', href: 'https://youtu.be/67PwJ7UhVYI' },
-      { label: 'GitHub 저장소', href: 'https://github.com/YuYoungKwang/hifive' },
+      { label: 'GitHub 저장소', href: 'https://github.com/kdtlch3650-ctrl/hifive' },
       { label: 'PDF 원본', href: asset('/media/hashTrip.pdf') },
     ],
     videoNote: 'hashTrip 시연 영상이 연결되어 있습니다.',
