@@ -254,14 +254,42 @@ function ProjectsPage() {
 }
 
 function LandingPage() {
+  const motionPhrases = ['ANALYZE', 'STRUCTURE', 'FLOW', 'BUILD'];
+  const [activePhraseIndex, setActivePhraseIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActivePhraseIndex((current) => (current + 1) % motionPhrases.length);
+    }, 2200);
+
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, [motionPhrases.length]);
+
   return (
     <div className="panel__content">
       <section className="home-hero home-hero--minimal">
+        <div className="home-hero__ambient" aria-hidden="true">
+          <div className="home-hero__glow home-hero__glow--one"></div>
+          <div className="home-hero__glow home-hero__glow--two"></div>
+          <div className="home-hero__grid"></div>
+          <div className="home-hero__ring home-hero__ring--one"></div>
+          <div className="home-hero__ring home-hero__ring--two"></div>
+        </div>
         <div className="home-hero__content">
-          <p className="eyebrow">Portfolio / {profile.name}</p>
-          <h1>{profile.name}</h1>
-          <p className="home-hero__lead">{profile.headline}</p>
-          <p className="home-hero__summary">{profile.shortIntro}</p>
+          <p className="eyebrow home-hero__eyebrow">Portfolio / {profile.name}</p>
+          <h1 className="home-hero__title">{profile.name}</h1>
+          <p className="home-hero__motion" aria-live="polite">
+            <span key={motionPhrases[activePhraseIndex]} className="home-hero__motion-word">
+              {motionPhrases[activePhraseIndex]}
+            </span>
+          </p>
+          <div className="home-hero__ticker" aria-label="portfolio keywords">
+            {profile.summaryKeywords.map((keyword) => (
+              <span key={keyword}>{keyword}</span>
+            ))}
+          </div>
           <div className="home-hero__actions">
             <Link className="home-hero__button is-primary" to="/about">
               About
