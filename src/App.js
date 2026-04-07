@@ -184,11 +184,31 @@ function HomePage() {
 function ProjectDetailPage() {
   const { slug } = useParams();
   const [activeTab, setActiveTab] = useState('overview');
+  const [expandedImage, setExpandedImage] = useState(null);
   const project = projects.find((item) => item.slug === slug);
 
   useEffect(() => {
     setActiveTab('overview');
+    setExpandedImage(null);
   }, [slug]);
+
+  useEffect(() => {
+    if (!expandedImage) {
+      return undefined;
+    }
+
+    const handleKeydown = (event) => {
+      if (event.key === 'Escape') {
+        setExpandedImage(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeydown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeydown);
+    };
+  }, [expandedImage]);
 
   if (!project) {
     return (
@@ -294,11 +314,22 @@ function ProjectDetailPage() {
             <h3>{activeSection.documentTitle}</h3>
             <p>{activeSection.documentDescription}</p>
             {showDocumentPreview ? (
-              <img
-                className="document-card__image"
-                src={activeSection.documentImage}
-                alt={`${project.title} ${activeSection.label} document preview`}
-              />
+              <button
+                type="button"
+                className="document-card__image-button"
+                onClick={() =>
+                  setExpandedImage({
+                    src: activeSection.documentImage,
+                    alt: `${project.title} ${activeSection.label} document preview`,
+                  })
+                }
+              >
+                <img
+                  className="document-card__image"
+                  src={activeSection.documentImage}
+                  alt={`${project.title} ${activeSection.label} document preview`}
+                />
+              </button>
             ) : (
               <div className="document-card__placeholder">
                 <p>메인 소개 탭은 요약 중심으로 두고, 다른 탭에서는 PDF에서 뽑은 핵심 페이지 이미지를 바로 보여주도록 구성했습니다.</p>
@@ -326,6 +357,21 @@ function ProjectDetailPage() {
           </aside>
         </div>
       </section>
+      {expandedImage ? (
+        <div className="image-lightbox" onClick={() => setExpandedImage(null)} role="presentation">
+          <button
+            type="button"
+            className="image-lightbox__close"
+            onClick={() => setExpandedImage(null)}
+            aria-label="Close image preview"
+          >
+            ×
+          </button>
+          <div className="image-lightbox__dialog" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true">
+            <img className="image-lightbox__image" src={expandedImage.src} alt={expandedImage.alt} />
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

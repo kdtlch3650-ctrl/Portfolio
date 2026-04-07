@@ -122,6 +122,7 @@ const doctorLinkSections = [
     ],
     documentTitle: 'DoctorLink PDF 보고서',
     documentDescription: '사용자가 전달한 DoctorLink PDF 원본을 바로 열어 볼 수 있습니다.',
+    documentImage: '/media/docs/doctorlink-overview.png',
   },
   {
     id: 'planning',
