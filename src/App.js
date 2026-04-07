@@ -77,7 +77,7 @@ function AppShell({ children, theme, onToggleTheme }) {
       <main className="layout">
         <aside className="sidebar">
           <div className="sidebar__image-wrap">
-            <img className="sidebar__image" src="/media/hero-scene.svg" alt="portfolio visual" />
+            <img className="sidebar__image" src="/media/hero-photo.png" alt="workspace desk visual" />
           </div>
           <div className="sidebar__footer">
             <p>Copyright © 2026</p>
