@@ -4,6 +4,36 @@ import { HashRouter, Link, NavLink, Route, Routes, useLocation, useParams } from
 import { projects, projectCategories, profile } from './data/projects';
 import './App.css';
 
+function ProjectMedia({ project }) {
+  if (project.videoUrl) {
+    return (
+      <div className="detail-hero__video-wrap">
+        <iframe
+          className="detail-hero__video"
+          src={project.videoUrl}
+          title={`${project.title} demo video`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+        <div className="detail-hero__overlay">
+          <strong>PROJECT VIDEO</strong>
+          <span>{project.videoNote}</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <img src={project.thumbnail} alt={`${project.title} preview`} />
+      <div className="detail-hero__overlay">
+        <strong>PROJECT VIDEO</strong>
+        <span>{project.videoNote}</span>
+      </div>
+    </>
+  );
+}
+
 function ScrollTop() {
   const location = useLocation();
 
@@ -174,6 +204,8 @@ function ProjectDetailPage() {
   }
 
   const activeSection = project.sections.find((section) => section.id === activeTab) ?? project.sections[0];
+  const hasOriginalDocument = Boolean(project.docUrl && project.docUrl !== '#');
+  const showDocumentPreview = Boolean(activeSection.documentImage);
 
   return (
     <div className="panel__content">
@@ -202,11 +234,7 @@ function ProjectDetailPage() {
         </div>
         <div className="detail-hero">
           <div className="detail-hero__media">
-            <img src={project.thumbnail} alt={`${project.title} preview`} />
-            <div className="detail-hero__overlay">
-              <strong>PROJECT VIDEO</strong>
-              <span>{project.videoNote}</span>
-            </div>
+            <ProjectMedia project={project} />
           </div>
           <div className="detail-hero__summary">
             <p>{project.summary}</p>
@@ -216,6 +244,11 @@ function ProjectDetailPage() {
               <li>역할: {project.role}</li>
               <li>기여도: {project.contribution}</li>
             </ul>
+            {project.youtubeUrl ? (
+              <a className="document-card__button detail-hero__button" href={project.youtubeUrl} target="_blank" rel="noreferrer">
+                Open YouTube
+              </a>
+            ) : null}
           </div>
         </div>
       </section>
@@ -256,9 +289,22 @@ function ProjectDetailPage() {
             <p className="eyebrow">DOCUMENT</p>
             <h3>{activeSection.documentTitle}</h3>
             <p>{activeSection.documentDescription}</p>
-            <a className="document-card__button" href={project.docUrl} target="_blank" rel="noreferrer">
-              Open Original
-            </a>
+            {showDocumentPreview ? (
+              <img
+                className="document-card__image"
+                src={activeSection.documentImage}
+                alt={`${project.title} ${activeSection.label} document preview`}
+              />
+            ) : (
+              <div className="document-card__placeholder">
+                <p>메인 소개 탭은 요약 중심으로 두고, 다른 탭에서는 PDF에서 뽑은 핵심 페이지 이미지를 바로 보여주도록 구성했습니다.</p>
+              </div>
+            )}
+            {hasOriginalDocument ? (
+              <a className="document-card__button" href={project.docUrl} target="_blank" rel="noreferrer">
+                Open Original
+              </a>
+            ) : null}
           </aside>
         </div>
       </section>
