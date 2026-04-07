@@ -672,7 +672,7 @@ export const projects = [
     outcomes: ['문진 공백 최소화', '진료 전 정보 정리', '환자·의료진 모두를 고려한 UX'],
     stacks: ['HTML5', 'CSS', 'React.js', 'JavaScript (ES6+)', 'VS Code', 'GitHub'],
     categories: ['react'],
-    thumbnail: '/media/thumb-doctorlink.svg',
+    thumbnail: '/media/thumb-doctorlink.png',
     liveUrl: 'https://kdtlch3650-ctrl.github.io/DoctorLink/',
     repoUrl: 'https://github.com/kdtlch3650-ctrl/DoctorLink',
     docUrl: '/media/DoctorLink.pdf',

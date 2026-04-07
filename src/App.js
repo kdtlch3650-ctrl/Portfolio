@@ -196,13 +196,13 @@ function ProjectsPage() {
 
   return (
     <div className="panel__content">
-      <section className="section-heading">
+      <section className="section-heading section-heading--minimal">
         <div className="section-heading__title">
-          <span>SELECTED WORKS</span>
+          <span>PROJECT</span>
           <div className="section-heading__line"></div>
         </div>
         <p className="section-heading__description">
-          대표 프로젝트는 OneulFarm입니다. 각 상세 페이지에서 시연 영상, 문서 이미지, 원본 링크를 함께 확인할 수 있습니다.
+          진행한 프로젝트를 정리했습니다.
         </p>
       </section>
 
@@ -223,7 +223,7 @@ function ProjectsPage() {
         {filteredProjects.map((project) => (
           <Link
             key={project.slug}
-            className={`project-card${project.featured ? ' project-card--featured' : ''}`}
+            className={`project-card project-card--minimal${project.featured ? ' project-card--featured' : ''}`}
             to={`/project/${project.slug}`}
           >
             <div className="project-card__thumb">
@@ -232,10 +232,9 @@ function ProjectsPage() {
             <div className="project-card__body">
               <p className="project-card__meta">{project.period}</p>
               <h2>{project.title}</h2>
-              <p>{project.summary}</p>
               <p className="project-card__role">{project.role}</p>
               <div className="project-card__tags">
-                {project.stacks.slice(0, 4).map((stack) => (
+                {project.stacks.slice(0, 3).map((stack) => (
                   <span key={stack}>{stack}</span>
                 ))}
               </div>
