@@ -1,0 +1,22 @@
+<svg width="900" height="1200" viewBox="0 0 900 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="1200" fill="#1F1F1F"/>
+  <rect x="0" y="0" width="900" height="1200" fill="url(#grain)" opacity="0.24"/>
+  <path d="M118 0H246V1200H118V0Z" fill="#2E2E2E"/>
+  <path d="M260 0H444V1200H260V0Z" fill="#3C3C3C"/>
+  <path d="M464 0H640V1200H464V0Z" fill="#4B4B4B"/>
+  <path d="M658 0H900V1200H658V0Z" fill="#2B2B2B"/>
+  <path d="M0 940L900 510V1200H0V940Z" fill="#111"/>
+  <circle cx="585" cy="221" r="138" fill="#D8D8D8"/>
+  <circle cx="585" cy="205" r="96" fill="#BDBDBD"/>
+  <rect x="504" y="324" width="168" height="234" rx="84" fill="#A7A7A7"/>
+  <rect x="440" y="510" width="296" height="438" rx="142" fill="#909090"/>
+  <path d="M417 808C511 751 668 752 760 810V973H417V808Z" fill="#7A7A7A"/>
+  <path d="M17 808C179 733 375 694 511 686C446 813 354 948 203 1049L17 808Z" fill="#5A5A5A"/>
+  <path d="M258 738C406 619 610 521 777 476L900 592C719 635 507 740 306 877L258 738Z" fill="#606060"/>
+  <defs>
+    <linearGradient id="grain" x1="0" y1="0" x2="900" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>
