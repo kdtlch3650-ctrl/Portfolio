@@ -260,8 +260,28 @@ const oneulFarmSections = [
     documentImage: '/media/docs/oneulfarm-planning.png',
     referenceLinks: [
       {
+        label: '요구사항 명세서',
+        href: 'https://docs.google.com/spreadsheets/d/1WY09qSqDNetawfsRKkiTWXQAq53MvXQbMHVZ7GdSnwI/edit?gid=156209505#gid=156209505',
+      },
+      {
+        label: '메뉴트리 원본',
+        href: 'https://app.diagrams.net/#G1PXGSQnIA-cZc4hoNHSX20dN91GqD2O-n#%7B%22pageId%22%3A%22VyNLXTkTrnrqFs4obHL-%22%7D',
+      },
+      {
+        label: '유스케이스 원본',
+        href: 'https://canva.link/ybwv6zijiuyx6zc',
+      },
+      {
+        label: 'WBS 원본 문서',
+        href: 'https://docs.google.com/spreadsheets/d/1WY09qSqDNetawfsRKkiTWXQAq53MvXQbMHVZ7GdSnwI/edit?gid=1172811657#gid=1172811657',
+      },
+      {
         label: '스토리보드 상세 페이지',
         href: 'https://docs.google.com/presentation/d/1WBMeRCixzqa4nG1pfya41ygAKmS3dcvj9Ws5LGwn-uw/edit?usp=sharing',
+      },
+      {
+        label: '스토리보드 Figma 원본',
+        href: 'https://www.figma.com/design/iQTANKc3lEyPhdvgSBkaIt/%EC%98%A4%EB%8A%98%ED%8C%9C-%EC%8A%A4%ED%86%A0%EB%A6%AC%EB%B3%B4%EB%93%9C?node-id=5-210&t=aRiUODQ0Mv5yYgCD-1',
       },
       {
         label: '스토리보드 PDF',
@@ -307,6 +327,18 @@ const oneulFarmSections = [
     documentImage: '/media/docs/oneulfarm-engineering.png',
     referenceLinks: [
       {
+        label: '시스템 아키텍처 원본',
+        href: 'https://www.figma.com/board/3DA1PbA0J58eG2HIPOTEnX/%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90?node-id=0-1&t=rDDYZlpcM89BqaS7-1',
+      },
+      {
+        label: 'ERD 원본',
+        href: 'https://mermaid.live/edit#pako:eNrdW21v2zgS_iuGgQVaoC1iO2_ON0aibcLWSyk6bYoAgtbWJcbGds6x29tt-t-PpF4sShxKdrIH7OVDgWSeociZZ4YzI_Vne7aex-2rdryxF9H9JlrerVr8xxuwcBpgGrR-Jn8QP-7Uucb0Xaf_viVkoeu1_PFefIOoNUK0--7sJAUQWyPtnHAxdhCZaITds7P3LR8FwReP2sDSLrHGLnKwTp2L_ZHnQjLqTSBRwBCbBnuhkLzrvG8x7PhhtqPw1t0jGHEw13L8lkUxYtgOEdNJp75tkNp4gsvSwnHFgag3IBMcEgcNcTilsN0UoMlEChB_ZZCbVKDDNx2yWx9XKVHBBuRbAXY98a5LAG4TlAB-3a1U0oWBZxE0CZFleVOXARRUQWUyarg6GMPmuCE2pgYrSHlYQ-ocV2L3sURRDMMXt6cWCy0OGXr0FrBKJjYG5x6kcATep24nwAayfcL-KG5R65PMmMk6ehpLjEfJkLiAV6cuYRqihl2RYKyx4OAXTIYjCBQgzlWfEktP94B51jj8zG4LKUOw3MaBRYnPiOdWkwkJwgCjwHPRBEpD4qnlXPQmBJLkRbZNcQBl9VR6bCwJalFsEZ9gl5nyzx4EJWth4W_EDy3PxlC6S3fbqZF3tW6w8QBNJ-xtsrligdyIwPnF1njSJzeYhwBfNeBM1LiLYeoEIRpSjB0MJsFc_hqfJY9SE3vBVPIZts4WicScr2S2B3afXlTgzgu5RJ-8hS1rb7vaW858r4H3WfkeK-idieuJspCXDMVrpWBUfkO4h2feqdh2gMNrxKwRYFQpO9yo__sEnZ_GlKkzjJJoM0hXgQC5WoIoHmCKXSt5WEMo8xgvMEpYEf0FTOAiPxh5TPAAIuCQIhssO6e-PyE8QPX8kztCFpvyjdTuPMXlBkGOqIwA8MQbkoARK-A5NqiCzgTG8hyHBAG_ykKqHE9ZqYDSLpWgPDbip8z3Bj_UJoGFeKmtf-JJEaIlRXJ548kEXU-wAUJFleYSd2jgVsoA46YV2wtE6PODjoclyuSLAESR8ZKzwZDOmhcHau5Ia54R9zpcPmYoOH3k6WVwVHo5yZ9hcl8OMVZoiXf49WYfUcJ1988RHHC45ShJPViL5tzyaAO25woG6IC4EHFMuNREABh_9bEluCCbrkRDn2ZVeJbyhNJxFWruOm2BJG9s19NFtqZSKRUUpJBvoaYwS8em9ofwnh6qLGUYSoAhBB1Ex5iVUnbT5gPdDMG2Qsgd4prl6CsgT3L2CLk8gNXsKTNQ3VWVZCCP5yn8qsYw9ZQwMA8rH_AUl7ym8qv1Qid3dFbNQL1EDSMEY8bEtWHG7LdLkTs24eSoorKVrCy0PJc3BYynAGXOBHCTZ3KXGehXkhcLeovx7uNvmk8kzncMBarz6gK1GOXaSyYtS3xEZQqEgynZ7RD5-mAK0I3I3lQfML0TcR3aw3Lz0DBcZBcMtUaJEExjyRD1K7-zxKWQguHJVLaaEtXwuEIdFnneOBRHArhmk8GAWLyXhi5zC014H4ADaL5pmmu-OifxOpGBozJ6aNv8JpEinzuk3tQ3bUwCjFM0CqfHTtJ2iBXG-BZsS4Rc33coDIR7wHSTDR1zqI1EqjOZKEmFB1kItPLR1eznKXIZKZL_TQwgJwfQnE4KXzPxSRbQ5oteLi7XeJrOyNhhii5NjubNqGwUNsDYWPmWV_nnjB33LpeGfQUhTCGxBxiYkTNncFzdZZj8KDnfNKvQBo3i8GB6LfkFVsCy8DMU0t308hbG1JMPvt4b99O3hrlsKj3UE0oUZms4mI08uwZUDtaSx1KUchmUeltStVWxqyMQa41WyqIbMFMe_MfaKSlQptQwM5EGYJS3pcLXrgcYMt8K3NoGI-L7phe5YgF8lJ2-kGA0IQFEp0x8YM6vD-yDStWQG5Cfj8C03wMMO21SWBQX0rtVvmoB-drkNAHDUAUmRAefoDD7F-oB_tyk1j58z8ZXKnuAYf_Z8YCQ0tfk5lcbB44I0uO88XigsYuSW0S0obxEoce0bjcEfwFbNyF881BterhqLaAD8UUQ41FWoqjluQy77O_-yEVjTCOrixBjXGaW_794XdiQjJJODnfcaJLcXlDboGCO4-dp8v4hCG8xohVpN5PKJ2nNkzDTMjQEzV5f6Yu7N2m9xGuh8Bq5LqbgK1YhNA9neHk7wf8IEqqZf0Lc8SGJv9Fckf9LYW9g1z68avrttxaNH6PtYr16flg8PZe_W3x5-fhx_RP8puyqddd-iJ7v2nV62RczTRTK32wIneh-E8dmtfKrOaG2jFbRfY2enG0J8PrHyoxMpwkC-_QYzWrWzYtRgf8jjp_M8PQyFOAfm8U2bmBUNVsJzU08W2_m8by1WAl1w3dvRcOlX6KJBWbr1TZaqHYw6qrfUsglom18v94s_kqOUP3irfro9NbSkEOnU33k024z44r83N8XUZ26hiZP0ewPzpN5q_7h-pczCdeenlvbdUt8CnzQKs7edOvlU7SJn1P3GVbYT_ZkdMyFz7frGqXC8EPynTNl08hmCpUbPkxTowrt3XPOToNyIRg4pePF9wqXVBLU-Pc-XsWbaFslpPIutIGDltF29sAP8GOxfVDXSl9DlF2UDKjlHjbrnZoCqirVBjGxwL93i03cTFe2Y5pAqioADhIpZLmMV_Pa59W4qLgh_T4LYb94fNw9b4WP5q3f_1QXkgkaNqwuZRUgYNAU9SoTYzhqFqvZ426ueqOg9PKizLWS7LKoBFlVI5_xCJV5_MgNWghO7QRTbvKl7I1ZtGr9Hrc28fdF_COel50icRU_6jNw-wOn7WLevtpudvGH9jLeLCPxa1sWdHft7UO85Lku2fG_ot3jVmj-4mpP0erber3MNDn37x-yX3ZPc-7n9D9K5AjOuHhjrXerbfuq0-vIJdpXP9v_aV997F1efuqd9i77l_1O_-Ti9Pz8Q_vP9lW_--nyot_tn51enJ_3Lk4vfn1o_yWf2vl02ut1zi9O-v3-Wfe8f3H567_C279N',
+      },
+      {
+        label: '테이블 명세서',
+        href: 'https://docs.google.com/spreadsheets/d/1WY09qSqDNetawfsRKkiTWXQAq53MvXQbMHVZ7GdSnwI/edit?gid=1576334451#gid=1576334451',
+      },
+      {
         label: 'DFD 상세 페이지',
         href: 'https://www.figma.com/board/dB9kASLgFZPd8cGuFF5Tgu/AI%EC%B1%97%EB%B4%87-DFD?node-id=0-1&t=HQfqB1TTgG9DzuYk-1',
       },
@@ -351,6 +383,12 @@ const oneulFarmSections = [
     documentTitle: '트러블 슈팅 자료',
     documentDescription: '가격 비교 기준 통일과 외부 API 안정성 보완 과정을 정리한 OneulFarm 보고서 페이지입니다.',
     documentImage: '/media/docs/oneulfarm-trouble.png',
+    referenceLinks: [
+      {
+        label: '테스트 케이스',
+        href: 'https://docs.google.com/spreadsheets/d/1WY09qSqDNetawfsRKkiTWXQAq53MvXQbMHVZ7GdSnwI/edit?gid=651143941#gid=651143941',
+      },
+    ],
   },
   {
     id: 'retrospective',
