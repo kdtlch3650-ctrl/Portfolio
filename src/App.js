@@ -319,14 +319,15 @@ function ProjectDetailPage() {
       </section>
 
       <section className="tab-bar">
-        {project.sections.map((section) => (
+        {project.sections.map((section, index) => (
           <button
             key={section.id}
             type="button"
             className={`tab-bar__button${activeTab === section.id ? ' is-active' : ''}`}
             onClick={() => setActiveTab(section.id)}
           >
-            {section.label}
+            <span className="tab-bar__index">{String(index + 1).padStart(2, '0')}</span>
+            <span className="tab-bar__label">{section.label}</span>
           </button>
         ))}
       </section>
