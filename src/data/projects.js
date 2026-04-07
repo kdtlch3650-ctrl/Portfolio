@@ -1,7 +1,7 @@
 export const profile = {
   brand: "LC's",
   name: 'LEECHANHEE',
-  title: 'Developer Portfolio',
+  title: '개발자 포트폴리오',
   headline: '서비스를 분석하고 구조를 이해한 뒤 구현하는 개발자',
   description:
     '문서와 데이터 흐름을 바탕으로 서비스 구조를 빠르게 파악하고, 그 이해를 구현과 발표까지 연결하는 강점이 있습니다.',
@@ -34,7 +34,7 @@ export const profile = {
 };
 
 export const projectCategories = [
-  { id: 'all', label: 'All' },
+  { id: 'all', label: '전체' },
   { id: 'java', label: 'JAVA' },
   { id: 'react', label: 'REACT' },
 ];
@@ -61,7 +61,7 @@ const doctorLinkSections = [
         points: [
           '환자의 상태 기록과 사전 문진을 연결해 지속적인 건강 기록을 만드는 서비스입니다.',
           '문진을 기록으로, 기록을 진료로 연결하는 구조를 핵심 메시지로 설정했습니다.',
-          '환자와 의료기관 모두에게 가치가 되는 사용자 건강 관리 시스템을 지향했습니다.',
+          '환자와 의료진 모두에게 도움이 되는 건강 관리 서비스를 지향했습니다.',
         ],
       },
       {
@@ -194,7 +194,7 @@ const doctorLinkSections = [
         title: '프로젝트를 통해 얻은 인사이트',
         points: [
           '초기 소통과 방향 설정, 기능 우선순위 관리가 프로젝트 품질과 속도에 직접 영향을 준다는 점을 배웠습니다.',
-          '협업 도구 활용 경험과 백엔드 필요성 인식을 통해 프론트엔드 구현 너머의 구조를 보게 되었습니다.',
+          '협업 도구 활용 경험과 백엔드 필요성 인식을 통해 화면 구현을 넘어 서비스 구조를 함께 보게 되었습니다.',
           '문진을 기록으로, 기록을 진료로 연결하는 서비스라는 한 문장 메시지를 중심으로 프로젝트를 설명할 수 있게 되었습니다.',
         ],
       },
@@ -421,7 +421,7 @@ const oneulFarmSections = [
       {
         title: '프로젝트를 통해 느낀 점',
         points: [
-          '주제를 처음에는 넓게 잡았지만 피드백을 통해 방향을 구체화하는 과정에서, 프론트 디자인과 페이지 구성 전반이 결국 서비스 목적 위에서 결정된다는 점을 실감했습니다.',
+          '주제를 처음에는 넓게 잡았지만 피드백을 통해 방향을 구체화하는 과정에서, 화면 구성과 기능 설계 역시 서비스 목적 위에서 결정된다는 점을 실감했습니다.',
           '기능을 많이 넣는 것보다 문제 정의와 핵심 가치가 먼저 정리되어야 화면과 데이터 설계가 더 단단해진다는 점을 배우게 되었습니다.',
           '이번 프로젝트를 통해 꼼꼼한 초기 계획과 프로토타입, 발표 전 메시지 정리가 실제 구현만큼 중요하다는 점을 확실히 체감했습니다.',
         ],
@@ -628,12 +628,12 @@ const hashTripSections = [
 export const projects = [
   {
     slug: 'oneulfarm',
-    label: 'MAIN PROJECT · REACT + JAVA',
+    label: '메인 프로젝트 · REACT + JAVA',
     title: 'OneulFarm',
-    subtitle: 'Market price driven farm commerce with recipe and AI meal planning',
+    subtitle: '시세 데이터와 레시피, AI 식단 추천을 결합한 농산물 커머스',
     period: '2026.03.09 - 2026.04.03',
     team: '5인 팀 프로젝트',
-    role: 'Full Stack Developer · MyPage / Order & Delivery Flow · Final Presentation',
+    role: '풀스택 구현 · 마이페이지 / 주문·배송 흐름 · 최종 발표',
     contribution:
       '마이페이지 · 주문관리 · 대시보드 API 연동 · 배송지/리뷰/찜 기능 · 주문·배송 흐름 고도화 · 발표 자료/시연 스크립트 정리',
     summary:
@@ -659,12 +659,12 @@ export const projects = [
   },
   {
     slug: 'doctorlink',
-    label: 'REACT PROJECT',
+    label: 'REACT 프로젝트',
     title: 'DoctorLink',
-    subtitle: 'Pre-visit medical questionnaire and health record service',
+    subtitle: '사전 문진과 건강 기록을 연결한 의료 보조 서비스',
     period: '2025.12.10 - 2025.12.24',
     team: '4인 팀 프로젝트',
-    role: 'Frontend Developer · Final Presentation',
+    role: '프론트엔드 개발 · 최종 발표',
     contribution: '병원 예약 날짜/시간 저장 · 캘린더 이벤트 연동 · 문진 작성 페이지 · 사이드바 복약 체크 연동 · 최종 발표',
     summary:
       '지속적인 건강 기록을 바탕으로 환자의 사전 문진과 의료진의 환자 관리를 연결해 문진 공백을 줄이는 건강 관리 서비스 프로젝트입니다.',
@@ -690,12 +690,12 @@ export const projects = [
   },
   {
     slug: 'hashtrip',
-    label: 'JAVA PROJECT',
+    label: 'JAVA 프로젝트',
     title: 'hashTrip',
-    subtitle: 'Personalized travel curation and travel record community service',
+    subtitle: '성향 기반 여행 추천과 일정 기록 서비스',
     period: '2026.02.09 - 2026.03.03',
     team: '5인 팀 프로젝트',
-    role: 'Planning · Travel Schedule / Map UX Development',
+    role: '기획 · 여행 일정 / 지도 UX 개발',
     contribution: '유저 플로우 작성 · 스토리보드 작성 · 여행 일정 작성 페이지 · 지도 상세 흐름 · 장소 추가 인터랙션 · 루트 카드 UI 개선',
     summary:
       '공공데이터와 성향 분석을 활용해 사용자 취향에 맞는 여행지를 추천하고, 여행 계획과 기록 공유 흐름까지 연결한 맞춤형 여행 큐레이션 프로젝트입니다.',

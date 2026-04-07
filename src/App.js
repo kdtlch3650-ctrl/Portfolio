@@ -88,9 +88,6 @@ function AppShell({ children, theme, onToggleTheme }) {
           <NavLink className={({ isActive }) => `nav__link${isActive ? ' is-active' : ''}`} to="/projects">
             Project
           </NavLink>
-          <NavLink className={({ isActive }) => `nav__link${isActive ? ' is-active' : ''}`} to="/contact">
-            Contact
-          </NavLink>
         </nav>
       </header>
 
@@ -178,6 +175,16 @@ function AboutPage() {
             ))}
           </div>
         </section>
+
+        <section className="about-card about-card--minimal">
+          <h2>연락처</h2>
+          <div className="contact-actions">
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            <a href={profile.github} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+          </div>
+        </section>
       </section>
     </div>
   );
@@ -198,7 +205,7 @@ function ProjectsPage() {
     <div className="panel__content">
       <section className="section-heading section-heading--minimal">
         <div className="section-heading__title">
-          <span>PROJECT</span>
+          <span>PROJECTS</span>
           <div className="section-heading__line"></div>
         </div>
         <p className="section-heading__description">
@@ -241,43 +248,6 @@ function ProjectsPage() {
             </div>
           </Link>
         ))}
-      </section>
-    </div>
-  );
-}
-
-function ContactPage() {
-  const homeStacks = ['HTML/CSS', 'JavaScript', 'React', 'Java', 'Spring Framework', 'MyBatis', 'OracleDB', 'Git/GitHub'];
-
-  return (
-    <div className="panel__content">
-      <section className="board-section">
-        <div className="section-heading__title">
-          <span>CONTACT</span>
-          <div className="section-heading__line"></div>
-        </div>
-        <div className="board-grid">
-          <article>
-            <h3>Approach</h3>
-            <p>서비스의 구조와 데이터 흐름을 먼저 이해하고, 그 기준 위에서 구현 범위를 정리하는 방식으로 작업합니다.</p>
-          </article>
-          <article>
-            <h3>Core Stack</h3>
-            <div className="board-chip-list">
-              {homeStacks.map((stack) => (
-                <span key={stack}>{stack}</span>
-              ))}
-            </div>
-          </article>
-          <article>
-            <h3>Contact</h3>
-            <p>{profile.name}</p>
-            <a href={`mailto:${profile.email}`}>{profile.email}</a>
-            <a href={profile.github} target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-          </article>
-        </div>
       </section>
     </div>
   );
@@ -360,7 +330,7 @@ function ProjectDetailPage() {
     <div className="panel__content">
       <section className="detail-header">
         <Link className="back-link" to="/">
-          ← Back to Project
+          ← 프로젝트 목록으로
         </Link>
         <div className="detail-header__top">
           <div>
@@ -371,7 +341,7 @@ function ProjectDetailPage() {
           <div className="detail-header__links">
             {project.liveUrl ? (
               <a href={project.liveUrl} target="_blank" rel="noreferrer">
-                Live Site
+                서비스 보기
               </a>
             ) : null}
             {project.repoUrl ? (
@@ -395,7 +365,7 @@ function ProjectDetailPage() {
             </div>
             {project.focusAreas?.length ? (
               <div className="detail-hero__group">
-                <p className="detail-hero__label">Focus</p>
+                <p className="detail-hero__label">주요 포인트</p>
                 <div className="detail-chip-list">
                   {project.focusAreas.map((item) => (
                     <span key={item}>{item}</span>
@@ -405,7 +375,7 @@ function ProjectDetailPage() {
             ) : null}
             {project.outcomes?.length ? (
               <div className="detail-hero__group">
-                <p className="detail-hero__label">Outcome</p>
+                <p className="detail-hero__label">기대 효과</p>
                 <div className="detail-chip-list detail-chip-list--soft">
                   {project.outcomes.map((item) => (
                     <span key={item}>{item}</span>
@@ -415,7 +385,7 @@ function ProjectDetailPage() {
             ) : null}
             {project.youtubeUrl ? (
               <a className="document-card__button detail-hero__button" href={project.youtubeUrl} target="_blank" rel="noreferrer">
-                Open YouTube
+                유튜브에서 보기
               </a>
             ) : null}
           </div>
@@ -492,7 +462,7 @@ function ProjectDetailPage() {
             {showDocumentPreview ? <p className="document-card__hint">이미지를 클릭하면 크게 볼 수 있습니다.</p> : null}
             {referenceLinks.length ? (
               <div className="document-card__links">
-                <p className="document-card__links-title">Related Links</p>
+                <p className="document-card__links-title">관련 링크</p>
                 <ul>
                   {referenceLinks.map((link) => (
                     <li key={link.label}>
@@ -506,7 +476,7 @@ function ProjectDetailPage() {
             ) : null}
             {hasOriginalDocument ? (
               <a className="document-card__button" href={project.docUrl} target="_blank" rel="noreferrer">
-                Open Original
+                원본 문서 보기
               </a>
             ) : null}
           </aside>
@@ -546,7 +516,6 @@ function PortfolioApp() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
           <Route path="/project/:slug" element={<ProjectDetailPage />} />
         </Routes>
       </AppShell>
