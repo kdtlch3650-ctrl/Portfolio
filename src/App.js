@@ -37,7 +37,6 @@ function ScrollTop() {
 }
 
 function AppShell({ children, theme, onToggleTheme }) {
-  const location = useLocation();
   const topbarRef = useRef(null);
   const [topbarHeight, setTopbarHeight] = useState(96);
 
@@ -80,18 +79,18 @@ function AppShell({ children, theme, onToggleTheme }) {
           {profile.brand}
         </Link>
         <nav className="nav">
-          <NavLink className={({ isActive }) => `nav__link${isActive && location.pathname === '/' ? ' is-active' : ''}`} to="/">
+          <NavLink className={({ isActive }) => `nav__link${isActive ? ' is-active' : ''}`} to="/">
             Home
           </NavLink>
-          <a className="nav__link" href="#about">
+          <NavLink className={({ isActive }) => `nav__link${isActive ? ' is-active' : ''}`} to="/about">
             About
-          </a>
-          <NavLink className={({ isActive }) => `nav__link${isActive ? ' is-active' : ''}`} to="/">
+          </NavLink>
+          <NavLink className={({ isActive }) => `nav__link${isActive ? ' is-active' : ''}`} to="/projects">
             Project
           </NavLink>
-          <a className="nav__link" href="#board">
-            Board
-          </a>
+          <NavLink className={({ isActive }) => `nav__link${isActive ? ' is-active' : ''}`} to="/contact">
+            Contact
+          </NavLink>
         </nav>
       </header>
 
@@ -116,7 +115,75 @@ function AppShell({ children, theme, onToggleTheme }) {
   );
 }
 
-function HomePage() {
+function AboutPage() {
+  const homeStacks = ['HTML/CSS', 'JavaScript', 'React', 'Java', 'Spring Framework', 'MyBatis', 'OracleDB', 'Git/GitHub'];
+
+  return (
+    <div className="panel__content">
+      <section className="about-page about-page--minimal">
+        <header className="about-page__header">
+          <p className="eyebrow">ABOUT</p>
+          <h1>{profile.name}</h1>
+          <p>{profile.shortIntro}</p>
+        </header>
+
+        <section className="about-card about-card--minimal">
+          <h2>소개</h2>
+          <p>{profile.description}</p>
+        </section>
+
+        <section className="about-grid about-grid--minimal">
+          <article className="about-card about-card--minimal">
+            <h2>강점</h2>
+            <div className="detail-chip-list">
+              {profile.strengths.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+            <h3>업무 방식</h3>
+            <ul className="intro-card__list">
+              {profile.workflow.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="about-card about-card--minimal">
+            <h2>기술 스택</h2>
+            <div className="detail-chip-list detail-chip-list--soft">
+              {homeStacks.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+            <h3>자격증</h3>
+            <div className="detail-chip-list">
+              {profile.certifications.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </article>
+        </section>
+
+        <section className="about-card about-card--minimal">
+          <h2>학력 / 교육</h2>
+          <div className="timeline-list">
+            {profile.education.map((item) => (
+              <article key={`${item.period}-${item.title}`} className="timeline-item">
+                <p className="timeline-item__period">{item.period}</p>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      </section>
+    </div>
+  );
+}
+
+function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
 
   const filteredProjects = useMemo(() => {
@@ -127,71 +194,16 @@ function HomePage() {
     return projects.filter((project) => project.categories.includes(activeCategory));
   }, [activeCategory]);
 
-  const featuredProject = projects.find((project) => project.featured) ?? projects[0];
-
   return (
     <div className="panel__content">
-      <section className="home-hero">
-        <div className="home-hero__content">
-          <p className="eyebrow">{profile.name}</p>
-          <h1>{profile.headline}</h1>
-          <p className="home-hero__lead">{profile.intro}</p>
-          <div className="home-hero__actions">
-            <Link className="home-hero__button is-primary" to={`/project/${featuredProject.slug}`}>
-              대표 프로젝트 보기
-            </Link>
-            <a className="home-hero__button" href={`mailto:${profile.email}`}>
-              연락하기
-            </a>
-          </div>
-        </div>
-        <aside className="home-hero__aside">
-          <div className="hero-note">
-            <span>Role</span>
-            <strong>{profile.title}</strong>
-          </div>
-          <div className="hero-note">
-            <span>Featured</span>
-            <strong>{featuredProject.title}</strong>
-          </div>
-          <div className="hero-note">
-            <span>Focus</span>
-            <strong>{featuredProject.focusAreas?.join(' / ')}</strong>
-          </div>
-        </aside>
-      </section>
-
-      <section id="about" className="intro-card intro-card--about">
-        <div>
-          <p className="eyebrow">ABOUT</p>
-          <h2>{profile.description}</h2>
-        </div>
-        <div className="intro-card__grid">
-          <div>
-            <p>{profile.intro}</p>
-          </div>
-          <div className="intro-card__stack">
-            <p className="intro-card__label">Strength</p>
-            <div className="detail-chip-list">
-              {profile.strengths.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
-            <p className="intro-card__label">Workflow</p>
-            <ul className="intro-card__list">
-              {profile.workflow.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
       <section className="section-heading">
         <div className="section-heading__title">
           <span>SELECTED WORKS</span>
           <div className="section-heading__line"></div>
         </div>
+        <p className="section-heading__description">
+          대표 프로젝트는 OneulFarm입니다. 각 상세 페이지에서 시연 영상, 문서 이미지, 원본 링크를 함께 확인할 수 있습니다.
+        </p>
       </section>
 
       <section className="filters">
@@ -221,6 +233,7 @@ function HomePage() {
               <p className="project-card__meta">{project.period}</p>
               <h2>{project.title}</h2>
               <p>{project.summary}</p>
+              <p className="project-card__role">{project.role}</p>
               <div className="project-card__tags">
                 {project.stacks.slice(0, 4).map((stack) => (
                   <span key={stack}>{stack}</span>
@@ -230,28 +243,64 @@ function HomePage() {
           </Link>
         ))}
       </section>
+    </div>
+  );
+}
 
-      <section id="board" className="board-section">
+function ContactPage() {
+  const homeStacks = ['HTML/CSS', 'JavaScript', 'React', 'Java', 'Spring Framework', 'MyBatis', 'OracleDB', 'Git/GitHub'];
+
+  return (
+    <div className="panel__content">
+      <section className="board-section">
         <div className="section-heading__title">
           <span>CONTACT</span>
           <div className="section-heading__line"></div>
         </div>
         <div className="board-grid">
           <article>
-            <h3>Introduce</h3>
-            <p>기능 구현뿐 아니라 왜 그렇게 만들었는지 설명할 수 있는 결과물을 만드는 데 집중합니다.</p>
+            <h3>Approach</h3>
+            <p>서비스의 구조와 데이터 흐름을 먼저 이해하고, 그 기준 위에서 구현 범위를 정리하는 방식으로 작업합니다.</p>
           </article>
           <article>
-            <h3>Stack</h3>
-            <p>React, Java, Spring MVC, MyBatis를 중심으로 화면 흐름과 프로젝트 문서 정리를 함께 다룹니다.</p>
+            <h3>Core Stack</h3>
+            <div className="board-chip-list">
+              {homeStacks.map((stack) => (
+                <span key={stack}>{stack}</span>
+              ))}
+            </div>
           </article>
           <article>
             <h3>Contact</h3>
+            <p>{profile.name}</p>
             <a href={`mailto:${profile.email}`}>{profile.email}</a>
             <a href={profile.github} target="_blank" rel="noreferrer">
               GitHub
             </a>
           </article>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function LandingPage() {
+  return (
+    <div className="panel__content">
+      <section className="home-hero home-hero--minimal">
+        <div className="home-hero__content">
+          <p className="eyebrow">Portfolio / {profile.name}</p>
+          <h1>{profile.name}</h1>
+          <p className="home-hero__lead">{profile.headline}</p>
+          <p className="home-hero__summary">{profile.shortIntro}</p>
+          <div className="home-hero__actions">
+            <Link className="home-hero__button is-primary" to="/about">
+              About
+            </Link>
+            <Link className="home-hero__button" to="/projects">
+              Project
+            </Link>
+          </div>
         </div>
       </section>
     </div>
@@ -495,7 +544,10 @@ function PortfolioApp() {
         }
       >
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/project/:slug" element={<ProjectDetailPage />} />
         </Routes>
       </AppShell>
