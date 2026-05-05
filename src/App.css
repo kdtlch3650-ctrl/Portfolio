@@ -778,6 +778,23 @@
   margin: 0;
 }
 
+.detail-header__title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.detail-header__title-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.detail-header__title-wrap {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
 .intro-card p,
 .detail-header__subtitle,
 .tab-panel__header > p:last-child {
@@ -829,6 +846,7 @@
   aspect-ratio: 1.2 / 1;
   background: #434343;
   overflow: hidden;
+  position: relative;
 }
 
 .project-card--minimal .project-card__thumb {
@@ -840,6 +858,33 @@
   object-fit: cover;
   transition: transform 0.5s ease, filter 0.3s ease;
   width: 100%;
+}
+
+.project-card__badge,
+.detail-header__badge {
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(47, 52, 64, 0.88);
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  padding: 0.42rem 0.65rem;
+  text-transform: uppercase;
+}
+
+.project-card__badge {
+  left: 0.8rem;
+  position: absolute;
+  top: 0.8rem;
+}
+
+.detail-header__badge {
+  font-size: 0.68rem;
+  transform: translateY(0.03rem);
 }
 
 .project-card:hover .project-card__thumb img {
@@ -989,17 +1034,41 @@
 
 .detail-header__links {
   display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
 .detail-header__links a {
-  border-bottom: 1px solid transparent;
+  align-items: center;
+  border: 1px solid rgba(68, 77, 90, 0.12);
+  display: inline-flex;
   font-weight: 700;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  justify-content: center;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  width: fit-content;
+  word-break: break-all;
+}
+
+.detail-header__links--primary {
+  background: #2f3440;
+  border-color: #2f3440;
+  color: #fff;
+}
+
+.detail-header__links--primary:hover {
+  box-shadow: 0 14px 28px rgba(43, 49, 58, 0.14);
 }
 
 .detail-header__links a:hover {
-  border-color: currentColor;
+  box-shadow: 0 12px 24px rgba(43, 49, 58, 0.08);
+  transform: translateY(-1px);
+}
+
+.detail-header__links a:not(.detail-header__links--primary) {
+  background: rgba(255, 255, 255, 0.65);
 }
 
 .detail-hero {

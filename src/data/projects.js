@@ -1,5 +1,5 @@
 export const profile = {
-  brand: "LC's",
+  brand: "CHL's",
   name: 'LEECHANHEE',
   title: '개발자 포트폴리오',
   headline: '서비스를 분석하고 구조를 이해한 뒤 구현하는 개발자',
@@ -975,7 +975,7 @@ export const projects = [
     videoUrl: 'https://www.youtube.com/embed/qyc2cOj7X1Y',
     referenceLinks: [
       { label: '시연 영상', href: 'https://youtu.be/qyc2cOj7X1Y' },
-      { label: '서비스 배포', href: 'https://kdtlch3650-ctrl.github.io/DoctorLink/' },
+      { label: '배포 페이지', href: 'https://kdtlch3650-ctrl.github.io/DoctorLink/' },
       { label: 'GitHub 저장소', href: 'https://github.com/kdtlch3650-ctrl/DoctorLink' },
       { label: 'PDF 원본', href: asset('/media/DoctorLink.pdf') },
     ],
