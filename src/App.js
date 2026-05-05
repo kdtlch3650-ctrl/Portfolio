@@ -4,7 +4,11 @@ import { HashRouter, Link, NavLink, Route, Routes, useLocation, useParams } from
 import { projects, projectCategories, profile } from './data/projects';
 import './App.css';
 
-const asset = (path) => `${process.env.PUBLIC_URL}${path}`;
+const asset = (path) => {
+  const base = (process.env.PUBLIC_URL || '').replace(/\/$/, '');
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return `${base}${normalizedPath}`;
+};
 
 function ProjectMedia({ project }) {
   if (project.videoUrl) {

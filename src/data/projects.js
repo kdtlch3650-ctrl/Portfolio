@@ -33,7 +33,11 @@ export const profile = {
   github: 'https://github.com/kdtlch3650-ctrl',
 };
 
-const asset = (path) => `${process.env.PUBLIC_URL}${path}`;
+const asset = (path) => {
+  const base = (process.env.PUBLIC_URL || '').replace(/\/$/, '');
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return `${base}${normalizedPath}`;
+};
 
 export const projectCategories = [
   { id: 'all', label: '전체' },
@@ -660,6 +664,295 @@ export const projects = [
     sections: oneulFarmSections,
   },
   {
+    slug: 'tricky-quiz',
+    label: '풀스택 프로젝트 · REACT + JAVA',
+    title: 'TRICKY-QUIZ',
+    subtitle: 'Google OAuth와 O/X 퀴즈, 랭킹을 연결한 학습형 퀴즈 서비스',
+    period: '2026.04 - 2026.05',
+    team: '개인 프로젝트',
+    role: '서비스 구조 설계 · 프론트/백엔드 연동 · 결과/랭킹 흐름 구현',
+    contribution:
+      'Google OAuth 로그인 · 카테고리별 O/X 퀴즈 흐름 · 결과/랭킹 화면 연동 · 모바일 대응 UI · 배포 문서 정리',
+    summary:
+      'Google OAuth로 로그인하고 카테고리별 O/X 퀴즈를 풀며 결과와 랭킹을 확인하는 학습형 퀴즈 서비스입니다.',
+    focusAreas: ['Google OAuth 로그인', '카테고리별 O/X 퀴즈', '결과와 랭킹이 이어지는 흐름'],
+    outcomes: ['로그인부터 결과 확인까지 단일 흐름', '학습과 게임성을 함께 고려한 UX', '프론트·백엔드 분리 구조 경험'],
+    stacks: ['React', 'TypeScript', 'Vite', 'Spring Boot', 'Spring Security OAuth2', 'PostgreSQL', 'Docker Compose'],
+    categories: ['react', 'java'],
+    thumbnail: asset('/media/thumb-tricky-quiz.png'),
+    liveUrl: 'https://kdtlch3650-ctrl.github.io/tricky-quiz/',
+    repoUrl: 'https://github.com/kdtlch3650-ctrl/tricky-quiz',
+    sections: [
+      {
+        id: 'overview',
+        label: '메인 소개',
+        title: 'Google 로그인과 O/X 퀴즈를 연결한 학습형 서비스',
+        description:
+          'TRICKY-QUIZ는 Google OAuth로 로그인하고, 카테고리별 O/X 퀴즈를 풀며 결과와 랭킹을 확인하는 서비스입니다.',
+        focusPoints: ['Google OAuth 로그인', '카테고리별 문제 제공', '결과와 랭킹 저장'],
+        items: [
+          {
+            title: '기획 배경과 문제 정의',
+            points: [
+              '단순히 정답만 확인하는 퀴즈보다, 사용자가 다시 들어와서 도전하고 싶어지는 흐름을 만들고자 했습니다.',
+              '로그인, 문제 풀이, 결과 확인, 랭킹 조회가 자연스럽게 이어지는 구조를 목표로 삼았습니다.',
+              'O/X 형식으로 진입 장벽은 낮추되, 카테고리별 난이도와 결과 기록으로 반복 참여 동기를 주는 방향으로 설계했습니다.',
+            ],
+          },
+          {
+            title: '서비스 흐름',
+            points: [
+              'Google OAuth 로그인 후 카테고리를 선택하고 퀴즈를 시작합니다.',
+              '문제를 풀면 정답 여부와 해설을 확인하고, 결과는 랭킹 흐름으로 이어집니다.',
+              '모바일에서도 버튼과 카드 배치가 깨지지 않도록 반응형 UI를 유지했습니다.',
+            ],
+          },
+          {
+            title: '기대 효과',
+            points: [
+              '학습형 퀴즈와 게임 요소를 함께 담아 짧게 즐기고 다시 돌아올 수 있는 구조를 만들었습니다.',
+              '결과와 랭킹을 연결해 사용자의 참여 동기를 높이는 방향을 반영했습니다.',
+              '포트폴리오 관점에서는 인증, 상태 관리, 화면 전환, API 연동을 한 번에 보여줄 수 있는 프로젝트가 되었습니다.',
+            ],
+          },
+        ],
+        documentTitle: 'TRICKY-QUIZ 대표 화면',
+        documentDescription: 'Google 로그인과 퀴즈 흐름을 한눈에 볼 수 있는 메인 화면입니다.',
+        documentImage: asset('/media/thumb-tricky-quiz.png'),
+        referenceLinks: [
+          {
+            label: '배포 페이지',
+            href: 'https://kdtlch3650-ctrl.github.io/tricky-quiz/',
+          },
+          {
+            label: '프로젝트 README',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/README.md',
+          },
+          {
+            label: '프로젝트 계획',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/01-project-plan.md',
+          },
+          {
+            label: '요구사항 명세서',
+            href: 'https://docs.google.com/spreadsheets/d/1KPJ_9YYDqnzsyehJ1-3U9esVwqNnbyYsiAjQ9bHbCH4/edit?usp=sharing',
+          },
+        ],
+      },
+      {
+        id: 'planning',
+        label: '기획 / UX',
+        title: '화면 흐름과 역할 분리',
+        description:
+          '메뉴 구조와 API 흐름을 먼저 정리해 프론트엔드와 백엔드가 맡아야 할 책임을 분리했습니다.',
+        focusPoints: ['메뉴 구조 정리', 'OAuth 기반 진입 흐름', '모바일 대응'],
+        items: [
+          {
+            title: '화면 구성',
+            points: [
+              '홈, 로그인, 카테고리 선택, 퀴즈 진행, 결과, 랭킹 흐름으로 서비스의 기본 진입 구조를 나눴습니다.',
+              '각 화면이 서로 독립적으로 보이지 않도록 로그인 상태와 퀴즈 결과가 자연스럽게 이어지게 구성했습니다.',
+              '퀴즈 서비스의 핵심은 문제를 빨리 보여주는 것보다, 사용자가 흐름을 잃지 않게 만드는 것이라고 판단했습니다.',
+            ],
+          },
+          {
+            title: '문서화와 설계 습관',
+            points: [
+              '프로젝트 계획, 요구사항, 화면 설계, 메뉴 트리, API 명세, 로드맵, 테스트 계획까지 문서로 나눠 관리했습니다.',
+              '기능을 먼저 만들기보다, 화면과 데이터 흐름을 먼저 정리해야 구현이 흔들리지 않는다는 점을 실무적으로 체감했습니다.',
+              '초보 개발자 관점에서도 따라가기 쉬운 구조를 만들기 위해 기능 단위를 작게 쪼개는 방식을 유지했습니다.',
+            ],
+          },
+        ],
+        documentTitle: '화면 설계 참고 자료',
+        documentDescription: '퀴즈 흐름과 핵심 화면 구성을 확인할 수 있는 대표 화면 자료입니다.',
+        documentImage: asset('/media/thumb-tricky-quiz.png'),
+        referenceLinks: [
+          {
+            label: '화면 설계서',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/03-screen-design.md',
+          },
+          {
+            label: '화면 설계 (시각화)',
+            href: 'https://www.figma.com/design/JzKnADCUhdFHORv541y0DP/tricky-quiz-%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84?node-id=0-1&t=LDMm76jVqBf9Zmsc-1',
+          },
+          {
+            label: '메뉴 트리',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/04-menu-tree.md',
+          },
+          {
+            label: '메뉴 트리 (시각화)',
+            href: 'https://www.figma.com/board/LLE8nVUt3aERqy6TJOrVHw/%EB%A9%94%EB%89%B4-%ED%8A%B8%EB%A6%AC?node-id=0-1&t=tFt6oiVYzyM4z7YK-1',
+          },
+          {
+            label: '사용자 유저플로우 (시각화)',
+            href: 'https://www.figma.com/board/WdNGANEuOwlQHiOKIhcYk6/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=TrKYB9GXMxTmnX0B-1',
+          },
+          {
+            label: '로드맵',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/08-roadmap.md',
+          },
+        ],
+      },
+      {
+        id: 'engineering',
+        label: '개발 / 설계',
+        title: 'React + Spring Boot 기반 풀스택 구조',
+        description:
+          '프론트엔드는 Vite 기반 React + TypeScript, 백엔드는 Spring Boot + OAuth2 + PostgreSQL로 분리해 구성했습니다.',
+        focusPoints: ['React/TypeScript/Vite', 'Spring Security OAuth2', 'PostgreSQL/Docker'],
+        items: [
+          {
+            title: '기술 스택',
+            points: [
+              'Frontend는 React, TypeScript, Vite를 사용해 빠른 개발 환경과 명확한 컴포넌트 구조를 확보했습니다.',
+              'Backend는 Spring Boot와 Spring Security OAuth2를 사용해 Google 로그인과 API 분리를 구현했습니다.',
+              'Database는 PostgreSQL, Infra는 Docker Compose를 사용해 로컬 환경에서도 동일하게 실행할 수 있도록 했습니다.',
+            ],
+          },
+          {
+            title: 'API와 데이터 흐름',
+            points: [
+              '카테고리 조회, 퀴즈 문제 조회, 결과 제출, 랭킹 조회 흐름을 분리해 화면과 데이터의 책임을 나눴습니다.',
+              '프론트는 응답 데이터를 바로 화면 상태로 연결하고, 백엔드는 퀴즈/유저/랭킹 도메인을 분리하는 방향으로 설계했습니다.',
+              '기능이 늘어나도 화면별 역할이 무너지지 않도록 API 응답 형태를 먼저 정리한 뒤 구현했습니다.',
+            ],
+          },
+          {
+            title: '배포와 검증',
+            points: [
+              '프론트엔드는 GitHub Pages 기준으로 배포 가능하게 구성했고, 백엔드는 로컬과 컨테이너 실행을 함께 고려했습니다.',
+              '문제 은행과 랭킹 데이터는 데모 데이터와 실제 API를 구분해 관리할 수 있게 구조를 나눴습니다.',
+              '개발 후에는 카테고리별 퀴즈 진행, 결과 확인, 랭킹 확인 흐름을 반복 검증하며 동작 범위를 확인했습니다.',
+            ],
+          },
+        ],
+        documentTitle: '기술 구조 미리보기',
+        documentDescription: 'React, Spring Boot, PostgreSQL로 구성한 풀스택 구조를 요약한 화면입니다.',
+        documentImage: asset('/media/thumb-tricky-quiz.png'),
+        referenceLinks: [
+          {
+            label: '기술 스택',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/05-tech-stack.md',
+          },
+          {
+            label: 'DB 설계',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/06-database-design.md',
+          },
+          {
+            label: 'ERD (시각화)',
+            href: 'https://drive.google.com/file/d/1Skwmrr6G4MO5LNRt_-wZ00GbTrfBXWcg/view?usp=sharing',
+          },
+          {
+            label: '테이블명세서',
+            href: 'https://docs.google.com/spreadsheets/d/1LcSbtoZYwTN2SffkXg9lTdyw1kV6wSQjgHjYmQSTzRI/edit?usp=sharing',
+          },
+          {
+            label: 'API 명세',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/07-api-spec.md',
+          },
+        ],
+      },
+      {
+        id: 'trouble',
+        label: '트러블 슈팅',
+        title: '로그인과 퀴즈 상태를 연결하며 겪은 이슈',
+        description:
+          '구현보다 먼저 상태 흐름과 인증 구조를 맞추는 과정에서 발견한 문제를 어떻게 정리했는지 설명합니다.',
+        focusPoints: ['인증 흐름 정리', '상태 동기화', '문제/결과 분리'],
+        items: [
+          {
+            title: '상태 흐름 충돌 정리',
+            points: [
+              'Google OAuth 로그인 이후 카테고리 선택과 퀴즈 진행 상태가 꼬이지 않도록 화면 진입 지점을 분리했습니다.',
+              '로그인 상태와 퀴즈 진행 상태를 같이 다루면 화면 전환이 복잡해지므로, 상태 책임을 더 작게 나눴습니다.',
+              '문제 풀이 결과와 랭킹 반영 시점을 분리해 사용자가 흐름을 잃지 않도록 정리했습니다.',
+            ],
+          },
+          {
+            title: '응답과 화면 구조 보정',
+            points: [
+              '퀴즈 응답 형태가 화면에서 바로 쓰이도록 정리해 중간 가공을 최소화했습니다.',
+              '문제별 정답과 해설을 같은 카드 흐름 안에서 보여주도록 배치해 사용자가 다시 찾지 않아도 되게 했습니다.',
+              '모바일에서는 버튼 밀도와 카드 간격을 조정해 한 화면에 필요한 정보가 과하게 겹치지 않도록 보정했습니다.',
+            ],
+          },
+        ],
+        documentTitle: '트러블 슈팅 자료',
+        documentDescription: '로그인, 상태, 응답 구조를 정리한 참고 링크와 문서 자료입니다.',
+        documentImage: asset('/media/thumb-tricky-quiz.png'),
+        referenceLinks: [
+          {
+            label: '테스트케이스',
+            href: 'https://docs.google.com/spreadsheets/d/1mV7YmM_DHA_KmUq72hfjmdo5noZTF4epx7f-teHFLZM/edit?usp=sharing',
+          },
+          {
+            label: '트러블 슈팅 계획',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/09-dev-log.md',
+          },
+          {
+            label: '테스트 계획',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/10-test-plan.md',
+          },
+          {
+            label: '오픈 질문',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/11-open-questions.md',
+          },
+          {
+            label: 'GitHub 저장소',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz',
+          },
+        ],
+      },
+      {
+        id: 'feeling',
+        label: '느낀점',
+        title: '작은 퀴즈 서비스로 서비스 구조를 더 크게 본 경험',
+        description:
+          '기능은 단순해 보여도 로그인, 문제, 결과, 랭킹이 연결되면 서비스 구조가 훨씬 중요해진다는 점을 배웠습니다.',
+        focusPoints: ['서비스 구조 이해', '문서화 습관', '다음 확장 방향'],
+        items: [
+          {
+            title: '프로젝트를 통해 느낀 점',
+            points: [
+              'O/X 퀴즈처럼 단순한 기능도 인증과 데이터 흐름이 붙으면 생각보다 설계가 중요하다는 걸 체감했습니다.',
+              '화면을 먼저 만들기보다 문서와 흐름을 먼저 정리해야 구현 중 방향이 흔들리지 않는다는 점을 배웠습니다.',
+              '작은 서비스라도 포트폴리오에서는 문제 정의, 구조, 결과를 분명하게 설명하는 능력이 중요하다는 걸 느꼈습니다.',
+            ],
+          },
+          {
+            title: '다음 버전에서 보완하고 싶은 점',
+            points: [
+              '관리자 화면을 더해 문제 등록과 수정 흐름까지 연결하면 서비스가 더 완성도 있게 보일 수 있습니다.',
+              '오답 분석과 카테고리별 통계를 붙이면 학습형 서비스 성격이 더 분명해집니다.',
+              '결과와 랭킹 화면을 더 시각적으로 다듬으면 재참여 동기를 높이는 데 도움이 됩니다.',
+            ],
+          },
+        ],
+        documentTitle: '느낀점 정리 자료',
+        documentDescription: '프로젝트를 통해 배운 점과 다음 확장 방향을 정리한 링크 모음입니다.',
+        documentImage: asset('/media/thumb-tricky-quiz.png'),
+        referenceLinks: [
+          {
+            label: '프로젝트 계획',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/01-project-plan.md',
+          },
+          {
+            label: '기술 스택',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/05-tech-stack.md',
+          },
+          {
+            label: 'API 명세',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/07-api-spec.md',
+          },
+          {
+            label: '배포 페이지',
+            href: 'https://kdtlch3650-ctrl.github.io/tricky-quiz/',
+          },
+        ],
+      },
+    ],
+  },
+  {
     slug: 'doctorlink',
     label: 'REACT 프로젝트',
     title: 'DoctorLink',
@@ -720,3 +1013,5 @@ export const projects = [
     sections: hashTripSections,
   },
 ];
+
+
