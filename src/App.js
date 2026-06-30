@@ -512,7 +512,18 @@ function ProjectDetailPage() {
                   </ul>
                 </div>
                 {isLearningSection && item.image ? (
-                  <img className="content-block__image" src={item.image} alt={`${project.title} ${item.title}`} />
+                  <button
+                    type="button"
+                    className="content-block__image-button"
+                    onClick={() =>
+                      setExpandedImage({
+                        src: item.image,
+                        alt: `${project.title} ${item.title}`,
+                      })
+                    }
+                  >
+                    <img className="content-block__image" src={item.image} alt={`${project.title} ${item.title}`} />
+                  </button>
                 ) : null}
               </article>
             ))}

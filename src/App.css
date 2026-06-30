@@ -1382,6 +1382,21 @@
   width: 100%;
 }
 
+.content-block__image-button {
+  background: transparent;
+  border: 0;
+  cursor: zoom-in;
+  display: block;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.content-block__image-button:focus-visible {
+  outline: 3px solid rgba(47, 52, 64, 0.45);
+  outline-offset: 4px;
+}
+
 .content-block__text {
   display: grid;
   gap: 0.4rem;
