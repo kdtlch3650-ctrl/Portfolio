@@ -313,14 +313,14 @@ function LandingPage() {
 
 function ProjectDetailPage() {
   const { slug } = useParams();
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState('learning-goals');
   const [expandedImage, setExpandedImage] = useState(null);
   const tabBarRef = useRef(null);
   const tabPanelRef = useRef(null);
   const project = projects.find((item) => item.slug === slug);
 
   useEffect(() => {
-    setActiveTab('overview');
+    setActiveTab('learning-goals');
     setExpandedImage(null);
   }, [slug]);
 
@@ -358,6 +358,7 @@ function ProjectDetailPage() {
   const activeSection = project.sections.find((section) => section.id === activeTab) ?? project.sections[0];
   const hasOriginalDocument = Boolean(project.docUrl && project.docUrl !== '#');
   const showDocumentPreview = Boolean(activeSection.documentImage);
+  const isLearningSection = activeSection.id === 'learning-goals';
   const referenceLinks = [
     ...(activeSection.referenceLinks?.filter((link) => link.href) ?? []),
     ...(project.referenceLinks?.filter((link) => link.href) ?? []),
@@ -466,13 +467,13 @@ function ProjectDetailPage() {
             className={`tab-bar__button${activeTab === section.id ? ' is-active' : ''}`}
             onClick={() => handleTabChange(section.id)}
           >
-            <span className="tab-bar__index">{String(index + 1).padStart(2, '0')}</span>
+            <span className="tab-bar__index">{String(index).padStart(2, '0')}</span>
             <span className="tab-bar__label">{section.label}</span>
           </button>
         ))}
       </section>
 
-      <section className="tab-panel" ref={tabPanelRef}>
+      <section className={`tab-panel${isLearningSection ? ' tab-panel--learning' : ''}`} ref={tabPanelRef}>
         <div className="tab-panel__header">
           <p className="eyebrow">{activeSection.label}</p>
           <h2>{activeSection.title}</h2>
@@ -485,20 +486,31 @@ function ProjectDetailPage() {
             </div>
           ) : null}
         </div>
-        <div className="tab-panel__body">
-          <div className="tab-panel__content">
+        <div className={`tab-panel__body${isLearningSection ? ' tab-panel__body--learning' : ''}`}>
+          <div className={`tab-panel__content${isLearningSection ? ' tab-panel__content--learning' : ''}`}>
             {activeSection.items.map((item, index) => (
-              <article key={item.title} className="content-block">
-                <p className="content-block__index">{String(index + 1).padStart(2, '0')}</p>
-                <h3>{item.title}</h3>
-                <ul>
-                  {item.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
+              <article
+                key={item.title}
+                className={`content-block${isLearningSection ? ' content-block--learning' : ''}${
+                  isLearningSection && item.image ? ' content-block--with-image' : ''
+                }`}
+              >
+                <div className={isLearningSection ? 'content-block__text' : undefined}>
+                  <p className="content-block__index">{String(index + 1).padStart(2, '0')}</p>
+                  <h3>{item.title}</h3>
+                  <ul>
+                    {item.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+                {isLearningSection && item.image ? (
+                  <img className="content-block__image" src={item.image} alt={`${project.title} ${item.title}`} />
+                ) : null}
               </article>
             ))}
           </div>
+          {!isLearningSection ? (
           <aside className="document-card">
             <p className="eyebrow">DOCUMENT</p>
             <h3>{activeSection.documentTitle}</h3>
@@ -546,6 +558,7 @@ function ProjectDetailPage() {
               </a>
             ) : null}
           </aside>
+          ) : null}
         </div>
       </section>
       {expandedImage ? (

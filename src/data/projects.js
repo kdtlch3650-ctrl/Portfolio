@@ -45,7 +45,74 @@ export const projectCategories = [
   { id: 'react', label: 'REACT' },
 ];
 
+const learningGoalSection = ({
+  title,
+  description,
+  focusPoints,
+  items,
+  documentTitle,
+  documentDescription,
+  documentImage,
+  referenceLinks = [],
+}) => ({
+  id: 'learning-goals',
+  label: '학습 목표',
+  title,
+  description,
+  focusPoints,
+  items,
+  documentTitle,
+  documentDescription,
+  documentImage,
+  referenceLinks,
+});
+
 const doctorLinkSections = [
+  learningGoalSection({
+    title: 'React 기반 의료 서비스 화면 흐름 학습',
+    description:
+      'DoctorLink는 건강 기록, 사전 문진, 병원 예약 흐름을 React 화면 안에서 자연스럽게 연결하는 경험을 목표로 진행한 프로젝트입니다.',
+    focusPoints: ['React 화면 구성', '사용자 입력 흐름', '의료 서비스 UX'],
+    items: [
+      {
+        title: '사전 문진 입력 흐름',
+        image: asset('/media/docs/doctorlink-overview.png'),
+        points: [
+          '진료 전 건강 상태와 생활 기록을 미리 정리하면 환자와 의료진 모두에게 도움이 된다는 문제의식에서 출발했습니다.',
+          '의료 서비스처럼 입력 단계가 많은 화면에서 사용자가 이탈하지 않도록 흐름을 나누는 방법을 학습하고자 했습니다.',
+        ],
+      },
+      {
+        title: '예약과 캘린더 연동',
+        image: asset('/media/docs/doctorlink-planning.png'),
+        points: [
+          'React 컴포넌트 기반으로 예약, 문진, 복약 체크, 캘린더 화면을 연결하는 방식을 경험했습니다.',
+          '백엔드가 없는 환경에서 localStorage와 이벤트 흐름으로 화면 간 상태를 맞추는 방법을 익혔습니다.',
+        ],
+      },
+      {
+        title: '로컬 상태 관리 구조',
+        image: asset('/media/docs/doctorlink-engineering.png'),
+        points: [
+          'React 페이지 컴포넌트를 중심으로 사용자 입력 흐름을 나누고, 캘린더와 사이드바 상태를 로컬 저장소에 연결했습니다.',
+          '배포된 정적 React 프로젝트에서 사용자가 바로 확인할 수 있는 서비스 화면을 구성했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'DoctorLink 학습 목표',
+    documentDescription: '의료 서비스 화면 흐름과 React 상태 관리 학습 방향을 요약했습니다.',
+    documentImage: asset('/media/docs/doctorlink-engineering.png'),
+    referenceLinks: [
+      {
+        label: '서비스 프로세스 흐름도 원본',
+        href: 'https://drive.google.com/file/d/17sfOpinnojs19LjRU_cjDvLLl_T3tri4/view?usp=drive_link',
+      },
+      {
+        label: '배포 페이지',
+        href: 'https://kdtlch3650-ctrl.github.io/DoctorLink/',
+      },
+    ],
+  }),
   {
     id: 'overview',
     label: '메인 소개',
@@ -68,13 +135,6 @@ const doctorLinkSections = [
           '환자의 상태 기록과 사전 문진을 연결해 지속적인 건강 기록을 만드는 서비스입니다.',
           '문진을 기록으로, 기록을 진료로 연결하는 구조를 핵심 메시지로 설정했습니다.',
           '환자와 의료진 모두에게 도움이 되는 건강 관리 서비스를 지향했습니다.',
-        ],
-      },
-      {
-        title: '내가 맡아 구현한 영역',
-        points: [
-          '문진 작성 페이지를 연결하고 통증 기록 저장, 생활 습관 입력, 제출 흐름을 구현했습니다.',
-          '병원 예약 날짜 저장, 캘린더 이벤트 저장, 사이드바 약 복용 체크 연동처럼 사용자가 바로 체감하는 흐름을 맡아 정리했습니다.',
         ],
       },
     ],
@@ -212,6 +272,51 @@ const doctorLinkSections = [
 ];
 
 const oneulFarmSections = [
+  learningGoalSection({
+    title: '커머스 흐름과 외부 API 연결 구조 학습',
+    description:
+      'OneulFarm은 농산물 시세, 레시피, 주문, 결제, 배송 흐름이 하나의 커머스 서비스 안에서 어떻게 연결되는지 학습하기 위해 진행한 프로젝트입니다.',
+    focusPoints: ['풀스택 커머스 흐름', '외부 API 연동', '주문/배송 상태 관리'],
+    items: [
+      {
+        title: '공공 API 연동',
+        image: asset('/media/docs/oneulfarm-engineering.png'),
+        points: [
+          '공공 시세 데이터를 단순 정보가 아니라 실제 구매 판단과 절약 경험으로 연결하는 구조를 확인하고자 했습니다.',
+          '사용자 계정, 상품, 주문, 결제, 배송이 이어지는 커머스 흐름을 프로젝트 단위로 경험하는 것이 목표였습니다.',
+        ],
+      },
+      {
+        title: '커머스 주문 흐름',
+        image: asset('/media/docs/oneulfarm-overview.png'),
+        points: [
+          'React와 Spring Framework, MyBatis, OracleDB를 연결해 화면과 데이터가 이어지는 풀스택 구조를 학습했습니다.',
+          'KAMIS, 레시피 API, PortOne, OpenAI API처럼 외부 서비스를 실제 기능에 붙일 때 필요한 예외 흐름을 경험했습니다.',
+        ],
+      },
+      {
+        title: '데이터 기준 정리',
+        image: asset('/media/docs/oneulfarm-trouble.png'),
+        points: [
+          'React 화면에서 Spring API를 호출하고, MyBatis를 통해 OracleDB의 회원, 주문, 배송 데이터를 다루는 구조로 구현했습니다.',
+          '시세 데이터와 레시피, 장바구니, 결제, 배송 상태를 연결해 사용자가 구매 흐름을 끝까지 따라갈 수 있게 설계했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'OneulFarm 학습 목표',
+    documentDescription: '커머스 서비스 구조와 외부 API 연동에서 학습한 핵심 방향을 요약했습니다.',
+    documentImage: asset('/media/docs/oneulfarm-engineering.png'),
+    referenceLinks: [
+      {
+        label: '시스템 아키텍처 원본',
+        href: 'https://www.figma.com/board/3DA1PbA0J58eG2HIPOTEnX/%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90?node-id=0-1&t=rDDYZlpcM89BqaS7-1',
+      },
+      {
+        label: '프로젝트 GitHub',
+        href: 'https://github.com/kdtlch3650-ctrl/oneulFarm',
+      },
+    ],
+  }),
   {
     id: 'overview',
     label: '메인 소개',
@@ -234,14 +339,6 @@ const oneulFarmSections = [
           '공공 시세 데이터를 사용자 구매 판단에 연결해 가격 비교와 절약 효과를 더 직관적으로 전달하는 것을 목표로 했습니다.',
           '레시피 콘텐츠와 상품을 연결해 재료 활용도를 높이고, 레시피 탐색이 실제 장바구니와 결제로 이어지도록 설계했습니다.',
           'AI 챗봇을 통해 사용자 상황에 맞는 식단을 제안하고, 그 식단이 다시 재료 구매 흐름과 연결되는 구조를 프로젝트 차별점으로 잡았습니다.',
-        ],
-      },
-      {
-        title: '내가 맡은 역할과 확장된 구현 범위',
-        points: [
-          '프로젝트 문서상 초기 담당은 마이페이지, 주문관리, 최종 발표였고, 일정표에는 사용자 구매 행동 분석 모듈과 개인별 절약 가치 리포트, 성과 지표 시각화가 정리되어 있었습니다.',
-          '실제 구현 단계에서는 마이페이지와 주문관리 화면에 더해 개인정보 수정, 배송지 관리, 찜/리뷰 관리, 대시보드 절약 지표, 주문 상세와 배송 흐름 고도화까지 맡았습니다.',
-          '발표 준비 단계에서는 시연 스크립트와 체크리스트, 발표 지원 문서를 정리하며 구현 결과가 발표 메시지로 자연스럽게 이어지도록 마무리했습니다.',
         ],
       },
     ],
@@ -448,6 +545,51 @@ const oneulFarmSections = [
 ];
 
 const hashTripSections = [
+  learningGoalSection({
+    title: 'Java 기반 추천 서비스 구조 학습',
+    description:
+      'hashTrip은 사용자 성향과 공공데이터를 연결해 여행지를 추천하고, 추천 결과를 일정 작성 흐름으로 이어가는 Java 웹 서비스 구조를 학습한 프로젝트입니다.',
+    focusPoints: ['Spring MVC 구조', '추천 데이터 흐름', 'DB/API 연결'],
+    items: [
+      {
+        title: '공공데이터 추천 흐름',
+        image: asset('/media/docs/hashtrip-overview.png'),
+        points: [
+          '많은 여행 정보 중 사용자 취향에 맞는 장소를 빠르게 찾도록 돕는 추천 흐름을 구현하고자 했습니다.',
+          '성향 분석 결과가 실제 추천 결과와 일정 작성 화면으로 이어지는 서비스 구조를 경험하는 것이 목표였습니다.',
+        ],
+      },
+      {
+        title: 'Spring MVC 데이터 구조',
+        image: asset('/media/docs/hashtrip-engineering.png'),
+        points: [
+          'Java Spring MVC, JSP, MyBatis, OracleDB 기반의 전통적인 웹 서비스 구조를 학습했습니다.',
+          '성향 태그, 장소 데이터, 추천 조건을 DB와 API 흐름 안에서 어떻게 연결하는지 경험했습니다.',
+        ],
+      },
+      {
+        title: '일정 작성과 지도 UX',
+        image: asset('/media/docs/hashtrip-planning.png'),
+        points: [
+          'Spring MVC 컨트롤러와 JSP 화면, MyBatis 매퍼, OracleDB를 연결해 추천 결과와 여행 일정 데이터를 다뤘습니다.',
+          '공공데이터와 내부 장소 데이터를 활용해 성향 기반 추천 결과를 만들고, 일정 작성 화면으로 연결했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'hashTrip 학습 목표',
+    documentDescription: 'Java 기반 웹 서비스와 추천 데이터 흐름에서 학습한 방향을 요약했습니다.',
+    documentImage: asset('/media/docs/hashtrip-engineering.png'),
+    referenceLinks: [
+      {
+        label: '프로젝트 GitHub',
+        href: 'https://github.com/kdtlch3650-ctrl/hifive.git',
+      },
+      {
+        label: 'ERD 원본',
+        href: 'https://www.erdcloud.com/d/wHzr3PvNt2YFQscJW',
+      },
+    ],
+  }),
   {
     id: 'overview',
     label: '메인 소개',
@@ -470,14 +612,6 @@ const hashTripSections = [
           '10가지 성향 질문으로 여행 스타일을 분석하고, 분석 결과를 태그 형태로 정리합니다.',
           '분석된 태그를 API와 서비스 내부 장소 데이터에 매핑해 사용자에게 맞는 여행지 후보를 추천합니다.',
           '추천 결과를 여행 일정 작성과 기록 공유 흐름까지 연결해 하나의 사용자 여정을 완성하도록 설계했습니다.',
-        ],
-      },
-      {
-        title: '기대 효과',
-        points: [
-          '여행 계획에 들어가는 검색 시간과 동선 짜기 시간을 줄이는 것을 기대했습니다.',
-          '내 취향에 맞는 장소를 발견하게 하여 여행 만족도를 높이고자 했습니다.',
-          '축적된 성향 데이터를 바탕으로 이후 더 정교한 추천과 트렌드 분석으로 확장할 수 있는 기반을 만들었습니다.',
         ],
       },
     ],
@@ -683,6 +817,57 @@ export const projects = [
     liveUrl: 'https://kdtlch3650-ctrl.github.io/tricky-quiz/',
     repoUrl: 'https://github.com/kdtlch3650-ctrl/tricky-quiz',
     sections: [
+      learningGoalSection({
+        title: 'OAuth와 풀스택 서비스 흐름 학습',
+        description:
+          'TRICKY-QUIZ는 개인 프로젝트로 Google 로그인, 퀴즈 진행, 결과 저장, 랭킹 조회가 이어지는 서비스 흐름을 직접 설계하고 구현하기 위해 만들었습니다.',
+        focusPoints: ['Google OAuth', 'React/Spring 분리 구조', '결과/랭킹 데이터 흐름'],
+        items: [
+          {
+            title: 'Google OAuth 로그인',
+            points: [
+              '로그인 후 사용자가 퀴즈를 풀고 결과를 확인하는 짧지만 완결된 서비스 흐름을 직접 만들고자 했습니다.',
+              '프론트엔드와 백엔드를 분리한 개인 프로젝트에서 인증, 상태, API, 배포 흐름을 한 번에 점검하는 것이 목표였습니다.',
+            ],
+          },
+          {
+            title: '퀴즈 진행 화면 흐름',
+            points: [
+              'Google OAuth와 Spring Security OAuth2를 활용해 로그인 기반 진입 흐름을 구성하는 방법을 학습했습니다.',
+              'React, TypeScript, Vite, Spring Boot, PostgreSQL을 나누어 사용하며 화면 상태와 서버 데이터를 연결하는 경험을 쌓았습니다.',
+            ],
+          },
+          {
+            title: '결과 저장과 랭킹',
+            image: asset('/media/docs/tricky-quiz-result.png'),
+            points: [
+              'React 화면에서 카테고리 선택, 퀴즈 진행, 결과 확인을 담당하고 Spring Boot API가 사용자, 문제, 랭킹 데이터를 처리하도록 나눴습니다.',
+              'PostgreSQL과 Docker Compose를 기준으로 로컬 실행 환경을 잡고, 프론트엔드는 GitHub Pages 배포 흐름까지 연결했습니다.',
+            ],
+          },
+        ],
+        documentTitle: 'TRICKY-QUIZ 학습 목표',
+        documentDescription: 'OAuth, 풀스택 분리 구조, 결과 저장 흐름을 중심으로 학습 방향을 요약했습니다.',
+        documentImage: asset('/media/thumb-tricky-quiz.png'),
+        referenceLinks: [
+          {
+            label: '기술 스택',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/05-tech-stack.md',
+          },
+          {
+            label: 'DB 설계',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/06-database-design.md',
+          },
+          {
+            label: 'API 명세',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/07-api-spec.md',
+          },
+          {
+            label: '배포 페이지',
+            href: 'https://kdtlch3650-ctrl.github.io/tricky-quiz/',
+          },
+        ],
+      }),
       {
         id: 'overview',
         label: '메인 소개',
@@ -705,14 +890,6 @@ export const projects = [
               'Google OAuth 로그인 후 카테고리를 선택하고 퀴즈를 시작합니다.',
               '문제를 풀면 정답 여부와 해설을 확인하고, 결과는 랭킹 흐름으로 이어집니다.',
               '모바일에서도 버튼과 카드 배치가 깨지지 않도록 반응형 UI를 유지했습니다.',
-            ],
-          },
-          {
-            title: '기대 효과',
-            points: [
-              '학습형 퀴즈와 게임 요소를 함께 담아 짧게 즐기고 다시 돌아올 수 있는 구조를 만들었습니다.',
-              '결과와 랭킹을 연결해 사용자의 참여 동기를 높이는 방향을 반영했습니다.',
-              '포트폴리오 관점에서는 인증, 상태 관리, 화면 전환, API 연동을 한 번에 보여줄 수 있는 프로젝트가 되었습니다.',
             ],
           },
         ],
