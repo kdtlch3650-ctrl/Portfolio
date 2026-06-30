@@ -1314,13 +1314,12 @@
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(239, 243, 247, 0.72));
 }
 
-.layout--wide .tab-panel--learning {
-  margin-left: calc(clamp(1.5rem, 3vw, 4rem) * -0.55);
-  margin-right: calc(clamp(1.5rem, 3vw, 4rem) * -0.55);
-}
-
 .tab-panel__body--learning {
   align-items: stretch;
+  grid-template-columns: 1fr;
+}
+
+.layout--wide .tab-panel__body--learning {
   grid-template-columns: 1fr;
 }
 
@@ -1356,10 +1355,6 @@
   min-height: 100%;
   overflow: hidden;
   position: relative;
-}
-
-.layout--wide .content-block--learning {
-  padding: 1.45rem;
 }
 
 .content-block--learning.content-block--with-image {
