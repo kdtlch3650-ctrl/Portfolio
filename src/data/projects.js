@@ -854,7 +854,7 @@ const csasSections = [
     ],
     documentTitle: '서비스 구조 학습',
     documentDescription: '프론트엔드, Spring Boot, AI 분석 서버 사이의 책임 분리를 정리했습니다.',
-    documentImage: csasPptAsset('screen2.png'),
+    documentImage: asset('/media/docs/csas-data-flow.png'),
   },
   {
     id: 'engineering',
@@ -888,6 +888,7 @@ const csasSections = [
     ],
     documentTitle: 'CSAS 데이터 흐름',
     documentDescription: '이미지 업로드, AI 분석, S3, Weaviate로 이어지는 데이터 흐름을 시각화했습니다.',
+    documentImage: asset('/media/docs/csas-system-architecture.png'),
   },
   {
     id: 'trouble',
@@ -914,7 +915,6 @@ const csasSections = [
     ],
     documentTitle: 'CSAS 트러블 슈팅 관점',
     documentDescription: '이미지 저장, 분석 결과 저장, 사진첩 조회에서 확인해야 하는 경계 문제를 정리했습니다.',
-    documentImage: csasPptAsset('screen4.png'),
   },
   {
     id: 'feeling',
