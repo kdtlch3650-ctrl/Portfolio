@@ -11,6 +11,13 @@ const asset = (path) => {
 };
 
 function ProjectMedia({ project }) {
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+  const galleryImages = project.galleryImages ?? [];
+
+  useEffect(() => {
+    setActiveGalleryIndex(0);
+  }, [project.slug]);
+
   if (project.videoUrl) {
     return (
       <div className="detail-hero__video-wrap">
@@ -21,6 +28,56 @@ function ProjectMedia({ project }) {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         />
+      </div>
+    );
+  }
+
+  if (galleryImages.length > 0) {
+    const activeImage = galleryImages[activeGalleryIndex] ?? galleryImages[0];
+    const moveGallery = (step) => {
+      setActiveGalleryIndex((currentIndex) => (currentIndex + step + galleryImages.length) % galleryImages.length);
+    };
+
+    return (
+      <div className="project-gallery">
+        <img className="project-gallery__image" src={activeImage.src} alt={activeImage.alt ?? `${project.title} preview`} />
+        {galleryImages.length > 1 ? (
+          <>
+            <button
+              className="project-gallery__control project-gallery__control--prev"
+              type="button"
+              onClick={() => moveGallery(-1)}
+              aria-label="이전 이미지 보기"
+            >
+              {'<'}
+            </button>
+            <button
+              className="project-gallery__control project-gallery__control--next"
+              type="button"
+              onClick={() => moveGallery(1)}
+              aria-label="다음 이미지 보기"
+            >
+              {'>'}
+            </button>
+            <div className="project-gallery__dots" aria-label="이미지 목록">
+              {galleryImages.map((image, index) => (
+                <button
+                  key={image.src}
+                  className={`project-gallery__dot${index === activeGalleryIndex ? ' is-active' : ''}`}
+                  type="button"
+                  onClick={() => setActiveGalleryIndex(index)}
+                  aria-label={`${image.label ?? `${index + 1}번 이미지`} 보기`}
+                />
+              ))}
+            </div>
+          </>
+        ) : null}
+        <div className="project-gallery__meta">
+          <span>{activeImage.label ?? project.title}</span>
+          <span>
+            {activeGalleryIndex + 1} / {galleryImages.length}
+          </span>
+        </div>
       </div>
     );
   }

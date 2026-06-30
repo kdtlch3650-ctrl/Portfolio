@@ -39,6 +39,8 @@ const asset = (path) => {
   return `${base}${normalizedPath}`;
 };
 
+const csasPptAsset = (fileName) => `https://yuyoungkwang.github.io/CSAS_PPT/${fileName}`;
+
 export const projectCategories = [
   { id: 'all', label: '전체' },
   { id: 'java', label: 'JAVA' },
@@ -1501,7 +1503,29 @@ export const projects = [
     outcomes: ['사용자 인증 기반 API 흐름 정리', 'S3와 Weaviate 저장 구조 이해', 'AI 분석 결과의 서비스 데이터화'],
     stacks: ['React', 'Spring Boot', 'Python', 'PyTorch', 'EfficientNet-B0', 'SegFormer', 'AWS S3', 'Weaviate', 'Docker'],
     categories: ['ai', 'infra', 'react', 'java'],
-    thumbnail: asset('/media/thumb-csas.svg'),
+    thumbnail: csasPptAsset('screen4.png'),
+    galleryImages: [
+      {
+        label: '분석 앨범',
+        src: csasPptAsset('screen4.png'),
+        alt: 'CSAS 분석 앨범 화면',
+      },
+      {
+        label: '메인 화면',
+        src: csasPptAsset('screen1.png'),
+        alt: 'CSAS 메인 화면',
+      },
+      {
+        label: '촬영 분석',
+        src: csasPptAsset('screen2.png'),
+        alt: 'CSAS 균열 사진 촬영 및 분석 화면',
+      },
+      {
+        label: '해결방안',
+        src: csasPptAsset('solution_total.png'),
+        alt: 'CSAS AI 이미지 분석과 사진 관리 해결방안',
+      },
+    ],
     liveUrl: '',
     presentationUrl: 'https://yuyoungkwang.github.io/CSAS_PPT/',
     repoUrl: 'https://github.com/YuYoungKwang/CSAS',
