@@ -827,7 +827,7 @@ const csasSections = [
     ],
     documentTitle: 'CSAS 프로젝트 개요',
     documentDescription: 'AI 분석 기능을 실제 서비스 흐름과 사진첩 기능에 연결한 프로젝트입니다.',
-    documentImage: asset('/media/thumb-csas.svg'),
+    documentImage: csasPptAsset('solution_total.png'),
   },
   {
     id: 'planning',
@@ -854,7 +854,7 @@ const csasSections = [
     ],
     documentTitle: '서비스 구조 학습',
     documentDescription: '프론트엔드, Spring Boot, AI 분석 서버 사이의 책임 분리를 정리했습니다.',
-    documentImage: asset('/media/docs/csas-api-boundary.svg'),
+    documentImage: csasPptAsset('screen2.png'),
   },
   {
     id: 'engineering',
@@ -888,7 +888,6 @@ const csasSections = [
     ],
     documentTitle: 'CSAS 데이터 흐름',
     documentDescription: '이미지 업로드, AI 분석, S3, Weaviate로 이어지는 데이터 흐름을 시각화했습니다.',
-    documentImage: asset('/media/docs/csas-infra-flow.svg'),
   },
   {
     id: 'trouble',
@@ -915,7 +914,7 @@ const csasSections = [
     ],
     documentTitle: 'CSAS 트러블 슈팅 관점',
     documentDescription: '이미지 저장, 분석 결과 저장, 사진첩 조회에서 확인해야 하는 경계 문제를 정리했습니다.',
-    documentImage: asset('/media/docs/csas-ai-pipeline.svg'),
+    documentImage: csasPptAsset('screen4.png'),
   },
   {
     id: 'feeling',
@@ -942,7 +941,6 @@ const csasSections = [
     ],
     documentTitle: 'CSAS 회고',
     documentDescription: 'AI 기능을 인증, 저장소, 사진첩 기능에 연결하며 배운 점을 정리했습니다.',
-    documentImage: asset('/media/docs/csas-infra-flow.svg'),
   },
 ];
 
