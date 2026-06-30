@@ -43,8 +43,10 @@ function ScrollTop() {
 }
 
 function AppShell({ children, theme, onToggleTheme }) {
+  const location = useLocation();
   const topbarRef = useRef(null);
   const [topbarHeight, setTopbarHeight] = useState(96);
+  const isProjectWorkspace = location.pathname === '/projects' || location.pathname.startsWith('/project/');
 
   useLayoutEffect(() => {
     if (!topbarRef.current) {
@@ -76,7 +78,7 @@ function AppShell({ children, theme, onToggleTheme }) {
 
   return (
     <div
-      className={`site-shell ${theme}`}
+      className={`site-shell ${theme}${isProjectWorkspace ? ' site-shell--project-workspace' : ''}`}
       style={{ '--topbar-height': `${topbarHeight}px` }}
     >
       <ScrollTop />
@@ -97,16 +99,18 @@ function AppShell({ children, theme, onToggleTheme }) {
         </nav>
       </header>
 
-      <main className="layout">
-        <aside className="sidebar">
-          <div className="sidebar__image-wrap">
-            <img className="sidebar__image" src={asset('/media/hero-photo.png')} alt="workspace desk visual" />
-          </div>
-          <div className="sidebar__footer">
-            <p>Copyright © 2026</p>
-            <p>{profile.name}</p>
-          </div>
-        </aside>
+      <main className={`layout${isProjectWorkspace ? ' layout--wide' : ''}`}>
+        {!isProjectWorkspace ? (
+          <aside className="sidebar">
+            <div className="sidebar__image-wrap">
+              <img className="sidebar__image" src={asset('/media/hero-photo.png')} alt="workspace desk visual" />
+            </div>
+            <div className="sidebar__footer">
+              <p>Copyright © 2026</p>
+              <p>{profile.name}</p>
+            </div>
+          </aside>
+        ) : null}
 
         <section className="panel">{children}</section>
       </main>

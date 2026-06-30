@@ -97,6 +97,10 @@
   z-index: 1000;
 }
 
+.site-shell--project-workspace .topbar {
+  max-width: 1640px;
+}
+
 .brand {
   font-size: clamp(2rem, 3vw, 3.5rem);
   font-weight: 800;
@@ -144,6 +148,11 @@
   min-height: calc(100vh - 108px);
 }
 
+.layout--wide {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 1640px;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -189,6 +198,10 @@
   min-height: 100%;
   padding: 5rem 3rem 3rem;
   position: relative;
+}
+
+.layout--wide .panel {
+  padding: 4.2rem clamp(1.5rem, 3vw, 4rem) 3.5rem;
 }
 
 .theme-dark .panel {
@@ -934,6 +947,23 @@
   padding: 0.35rem 0.55rem;
 }
 
+.layout--wide .project-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.layout--wide .project-card--minimal {
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  min-height: 220px;
+}
+
+.layout--wide .project-card--featured {
+  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+}
+
+.layout--wide .project-card__body {
+  align-content: center;
+}
+
 .board-section,
 .tab-panel {
   display: grid;
@@ -1077,6 +1107,12 @@
   grid-template-columns: 1fr;
 }
 
+.layout--wide .detail-hero {
+  align-items: stretch;
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+}
+
 .detail-hero__media {
   box-shadow: 0 22px 44px rgba(43, 49, 58, 0.1);
   overflow: hidden;
@@ -1121,6 +1157,10 @@
   display: grid;
   gap: 0.8rem;
   padding: 1.2rem;
+}
+
+.layout--wide .detail-hero__summary {
+  align-content: start;
 }
 
 .detail-hero__summary > p:first-child,
@@ -1259,6 +1299,10 @@
   display: grid;
   gap: 1.25rem;
   grid-template-columns: minmax(0, 1fr) 300px;
+}
+
+.layout--wide .tab-panel__body {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
 }
 
 .tab-panel__content {
@@ -1787,6 +1831,14 @@
   .tab-panel__body,
   .project-grid,
   .board-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .layout--wide .detail-hero,
+  .layout--wide .project-grid,
+  .layout--wide .tab-panel__body,
+  .layout--wide .project-card--minimal,
+  .layout--wide .project-card--featured {
     grid-template-columns: 1fr;
   }
 
