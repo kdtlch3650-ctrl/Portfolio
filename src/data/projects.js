@@ -43,6 +43,8 @@ export const projectCategories = [
   { id: 'all', label: '전체' },
   { id: 'java', label: 'JAVA' },
   { id: 'react', label: 'REACT' },
+  { id: 'ai', label: 'AI' },
+  { id: 'infra', label: '인프라' },
 ];
 
 const learningGoalSection = ({
@@ -765,6 +767,460 @@ const hashTripSections = [
   },
 ];
 
+const csasSections = [
+  learningGoalSection({
+    title: 'AI 분석 서버와 클라우드 배포 구조 학습',
+    description:
+      'CSAS는 시설물 이미지에서 균열을 감지하는 AI 기능을 서비스 형태로 연결하면서, 프론트엔드, Spring Boot API, FastAPI AI 서버, EKS 배포 흐름을 분리해 이해하는 것을 목표로 한 프로젝트입니다.',
+    focusPoints: ['AI 추론 서버 분리', 'Spring Boot와 FastAPI 연동', 'Docker/ECR/EKS 배포 흐름'],
+    items: [
+      {
+        title: 'AI 균열 감지 파이프라인',
+        image: asset('/media/docs/csas-ai-pipeline.svg'),
+        points: [
+          '사용자가 업로드한 시설물 이미지를 단순 파일 저장으로 끝내지 않고, AI 서버로 전달해 분석 결과를 다시 서비스 응답으로 연결하는 흐름을 학습했습니다.',
+          '모델 자체보다 먼저 이미지 업로드, 분석 요청, 결과 반환의 책임을 나누어야 서비스 구조가 유지된다는 점을 확인했습니다.',
+        ],
+      },
+      {
+        title: 'Spring Boot와 FastAPI 역할 분리',
+        image: asset('/media/docs/csas-api-boundary.svg'),
+        points: [
+          'Spring Boot는 사용자 요청, 이미지 메타데이터, 서비스 API 흐름을 담당하고 FastAPI는 AI 모델 추론에 집중하도록 역할을 나누는 구조를 학습했습니다.',
+          'AI 기능을 백엔드 안에 모두 넣기보다 별도 서버로 분리하면 모델 교체와 API 책임이 명확해진다는 장점을 확인했습니다.',
+        ],
+      },
+      {
+        title: 'Docker, ECR, EKS 배포 흐름',
+        image: asset('/media/docs/csas-infra-flow.svg'),
+        points: [
+          '프론트엔드, 백엔드, Python AI 서버를 각각 컨테이너 이미지로 만들고 ECR을 거쳐 EKS 워크로드로 배포하는 흐름을 정리했습니다.',
+          '로컬 실행과 클라우드 배포의 차이를 문서화하면서 환경 변수, 이미지 태그, Kubernetes 매니페스트의 역할을 구분했습니다.',
+        ],
+      },
+    ],
+    referenceLinks: [
+      {
+        label: 'GitHub 저장소',
+        href: 'https://github.com/YuYoungKwang/CSAS',
+      },
+      {
+        label: 'Kubernetes 설정',
+        href: 'https://github.com/YuYoungKwang/CSAS/tree/main/k8s',
+      },
+      {
+        label: 'EKS 배포 워크플로',
+        href: 'https://github.com/YuYoungKwang/CSAS/blob/main/.github/workflows/deploy-eks.yml',
+      },
+    ],
+  }),
+  {
+    id: 'overview',
+    label: '메인 소개',
+    title: 'AI 기반 시설물 균열 감지 서비스',
+    description:
+      'CSAS는 사용자가 시설물 이미지를 업로드하면 AI 서버가 균열 여부를 분석하고, 서비스 서버가 분석 결과를 관리하는 구조의 프로젝트입니다.',
+    focusPoints: ['이미지 업로드', 'AI 분석 결과', '서비스 API와 배포 구조'],
+    items: [
+      {
+        title: '프로젝트 목적',
+        points: [
+          '시설물 점검 이미지를 사람이 직접 확인하는 흐름을 보조하기 위해 AI 분석 기능을 서비스에 연결하는 것을 목표로 했습니다.',
+          '단순 모델 실행 예제가 아니라 사용자가 이미지를 올리고 결과를 확인할 수 있는 서비스 흐름까지 포함해 설계했습니다.',
+        ],
+      },
+      {
+        title: '구성 방식',
+        points: [
+          '프론트엔드는 이미지 업로드와 결과 확인 화면을 담당하고, Spring Boot는 서비스 API와 데이터 흐름을 관리합니다.',
+          'FastAPI 서버는 AI 모델 추론 역할을 맡고, 인프라 영역에서는 Docker 이미지와 EKS 배포 구조를 정리했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'CSAS 프로젝트 개요',
+    documentDescription: 'AI 분석 기능을 실제 서비스 흐름과 배포 구조에 연결한 프로젝트입니다.',
+    documentImage: asset('/media/thumb-csas.svg'),
+    referenceLinks: [
+      {
+        label: 'GitHub 저장소',
+        href: 'https://github.com/YuYoungKwang/CSAS',
+      },
+    ],
+  },
+  {
+    id: 'planning',
+    label: '기획 / 구조',
+    title: 'AI 모델 실행보다 먼저 서비스 책임을 나누는 구조 설계',
+    description:
+      'AI 결과를 보여주는 화면만 만드는 것이 아니라, 어떤 서버가 어떤 책임을 가져야 유지보수하기 쉬운지에 초점을 맞춰 구조를 나누었습니다.',
+    focusPoints: ['요청 흐름 정리', '서버 책임 분리', '결과 데이터 관리'],
+    items: [
+      {
+        title: '서비스 흐름 정리',
+        points: [
+          '사용자는 이미지를 업로드하고, 서비스는 업로드된 이미지 정보를 기준으로 AI 분석 요청을 생성합니다.',
+          'AI 서버는 분석 결과를 반환하고, 백엔드는 이 결과를 사용자에게 보여줄 수 있는 응답 형태로 정리합니다.',
+        ],
+      },
+      {
+        title: '역할 분리 기준',
+        points: [
+          'Spring Boot는 사용자 요청과 서비스 데이터 관리에 적합하고, FastAPI는 Python 기반 AI 모델을 실행하기에 적합하다고 판단했습니다.',
+          '두 서버를 분리하면 AI 모델이 변경되어도 서비스 API 전체를 크게 바꾸지 않아도 되는 장점이 있습니다.',
+        ],
+      },
+    ],
+    documentTitle: '서비스 구조 학습',
+    documentDescription: '프론트엔드, Spring Boot, FastAPI 사이의 책임 분리를 정리했습니다.',
+    documentImage: asset('/media/docs/csas-api-boundary.svg'),
+  },
+  {
+    id: 'engineering',
+    label: '개발 / 인프라',
+    title: 'Spring Boot, FastAPI, Docker, EKS를 연결한 배포 구조',
+    description:
+      'AI 기능을 로컬에서만 실행하는 데서 끝내지 않고, 컨테이너 이미지와 Kubernetes 매니페스트를 통해 배포 가능한 구조로 정리했습니다.',
+    focusPoints: ['컨테이너 분리', 'ECR 이미지 관리', 'EKS 워크로드 배포'],
+    items: [
+      {
+        title: '기술 스택',
+        points: [
+          '프론트엔드는 React, 백엔드는 Spring Boot, AI 서버는 Python FastAPI와 PyTorch 기반으로 구성했습니다.',
+          '각 서버를 독립적인 컨테이너로 다루면서 실행 환경과 배포 단위를 명확히 나누었습니다.',
+        ],
+      },
+      {
+        title: 'EKS 배포 흐름',
+        points: [
+          'Docker 이미지를 ECR에 올리고, EKS에서는 frontend, backend, python AI 서버를 각각 Kubernetes 리소스로 배포하는 흐름을 정리했습니다.',
+          '배포 문서와 워크플로를 통해 어떤 단계에서 이미지 빌드, 푸시, 매니페스트 적용이 일어나는지 확인할 수 있게 했습니다.',
+        ],
+      },
+      {
+        title: '외부 리소스 관리',
+        points: [
+          'AI 모델 파일과 이미지 저장소처럼 크거나 민감한 리소스는 애플리케이션 코드와 분리해 관리하는 방향을 검토했습니다.',
+          'S3, OpenSearch, Kubernetes Secret처럼 배포 환경에서 필요한 요소를 프로젝트 구조 안에서 구분했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'CSAS 인프라 흐름',
+    documentDescription: 'Docker, ECR, EKS로 이어지는 배포 단계를 시각화했습니다.',
+    documentImage: asset('/media/docs/csas-infra-flow.svg'),
+    referenceLinks: [
+      {
+        label: 'Kubernetes 설정',
+        href: 'https://github.com/YuYoungKwang/CSAS/tree/main/k8s',
+      },
+      {
+        label: 'EKS 배포 워크플로',
+        href: 'https://github.com/YuYoungKwang/CSAS/blob/main/.github/workflows/deploy-eks.yml',
+      },
+    ],
+  },
+  {
+    id: 'trouble',
+    label: '트러블 슈팅',
+    title: 'AI 서버와 배포 환경을 연결할 때 생기는 경계 문제 정리',
+    description:
+      'AI 기능은 모델 코드만으로 끝나지 않기 때문에, 파일 전달 방식, 서버 간 API 계약, 배포 환경 설정을 함께 맞추는 과정이 중요했습니다.',
+    focusPoints: ['파일 전달 방식', '서버 간 API 계약', '배포 설정 관리'],
+    items: [
+      {
+        title: '이미지 전달 경계',
+        points: [
+          '프론트엔드에서 업로드한 이미지가 Spring Boot를 거쳐 FastAPI까지 전달될 때, 파일 자체와 이미지 메타데이터를 구분해야 했습니다.',
+          'AI 서버가 필요한 입력 형식과 서비스 서버가 관리해야 하는 데이터 형식이 다르기 때문에 API 계약을 명확히 잡는 것이 중요했습니다.',
+        ],
+      },
+      {
+        title: '배포 환경 차이',
+        points: [
+          '로컬 Docker Compose에서는 쉽게 연결되던 서버도 EKS에서는 서비스 이름, 포트, Secret, 이미지 태그를 명확히 맞춰야 합니다.',
+          '배포 자동화는 편리하지만, 먼저 수동 배포 흐름을 이해해야 문제가 생겼을 때 어느 단계에서 실패했는지 찾을 수 있습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'CSAS 트러블 슈팅 관점',
+    documentDescription: 'AI 서버 연동과 EKS 배포에서 확인해야 하는 경계 문제를 정리했습니다.',
+    documentImage: asset('/media/docs/csas-ai-pipeline.svg'),
+  },
+  {
+    id: 'feeling',
+    label: '느낀점',
+    title: 'AI 기능은 모델보다 서비스 연결 구조가 먼저 중요하다는 점을 학습',
+    description:
+      'AI 프로젝트라고 해서 모델 정확도만 중요한 것이 아니라, 사용자가 결과를 확인할 수 있도록 API, 저장소, 배포 환경이 함께 맞아야 한다는 점을 배웠습니다.',
+    focusPoints: ['서비스화 관점', '배포 구조 이해', '다음 개선 방향'],
+    items: [
+      {
+        title: '프로젝트를 통해 배운 점',
+        points: [
+          'AI 모델을 실행하는 것과 AI 기능을 서비스로 제공하는 것은 다른 문제이며, 서버 간 책임 분리가 특히 중요하다는 점을 확인했습니다.',
+          'EKS 배포를 고려하면 코드뿐 아니라 이미지 빌드, 환경 변수, Secret, 매니페스트까지 하나의 흐름으로 이해해야 합니다.',
+        ],
+      },
+      {
+        title: '다음 개선 방향',
+        points: [
+          'AI 분석 결과를 더 명확한 데이터 모델로 저장하고, 사용자 화면에서 분석 이력을 확인할 수 있는 방향으로 확장할 수 있습니다.',
+          '배포 과정에서는 수동 적용과 자동 배포의 책임을 나누어 더 안전한 운영 흐름으로 개선할 수 있습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'CSAS 회고',
+    documentDescription: 'AI 기능을 서비스와 인프라에 연결하며 배운 점을 정리했습니다.',
+    documentImage: asset('/media/docs/csas-infra-flow.svg'),
+  },
+];
+
+const youtubeMoodSections = [
+  learningGoalSection({
+    title: '자연어 감정 분석과 추천 서비스 인프라 학습',
+    description:
+      'YouTube Mood는 사용자가 입력한 감정과 상황 문장을 AI가 분석하고, 그 결과를 YouTube 음악 추천으로 연결하는 흐름을 학습하기 위해 진행한 프로젝트입니다.',
+    focusPoints: ['감정 분류 AI', 'YouTube 추천 API 연동', 'Docker/Kubernetes/EKS 구조'],
+    items: [
+      {
+        title: '자연어 감정 분석',
+        image: asset('/media/docs/youtube-mood-ai-flow.svg'),
+        points: [
+          '사용자의 문장을 단순 키워드 검색으로 처리하지 않고, 감정 그룹과 분위기 태그로 변환해 추천 검색 조건을 만드는 흐름을 학습했습니다.',
+          'KOTE 기반 데이터와 RoBERTa 계열 모델을 사용하면서 모델 결과를 서비스에서 이해할 수 있는 형태로 가공하는 과정을 경험했습니다.',
+        ],
+      },
+      {
+        title: '추천 API 흐름',
+        image: asset('/media/docs/youtube-mood-recommendation-flow.svg'),
+        points: [
+          'React 화면에서 받은 감정 문장이 FastAPI를 거쳐 YouTube Data API 검색 조건으로 바뀌고, 다시 추천 결과로 돌아오는 흐름을 구성했습니다.',
+          'AI 결과를 바로 보여주는 것이 아니라 추천 품질을 높이기 위한 검색어, 장르, 톤 정보로 변환하는 구조를 정리했습니다.',
+        ],
+      },
+      {
+        title: '인프라 확장 학습',
+        image: asset('/media/docs/youtube-mood-infra-flow.svg'),
+        points: [
+          '로컬 Docker Compose 실행에서 시작해 Kubernetes, EKS, OpenSearch 저장 구조까지 단계적으로 문서화했습니다.',
+          '기능을 먼저 작게 검증한 뒤 배포 구조를 넓히는 방식이 포트폴리오 프로젝트에서 더 안전하다는 점을 확인했습니다.',
+        ],
+      },
+    ],
+    referenceLinks: [
+      {
+        label: 'GitHub 저장소',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood',
+      },
+      {
+        label: 'AI 연동 문서',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/12-ai-service-integration.md',
+      },
+      {
+        label: 'EKS 문서',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/25-eks-draft.md',
+      },
+    ],
+  }),
+  {
+    id: 'overview',
+    label: '메인 소개',
+    title: '감정 문장을 음악 추천으로 연결하는 AI 추천 서비스',
+    description:
+      'YouTube Mood는 사용자가 지금의 감정이나 상황을 자연어로 입력하면, AI가 분위기를 분석하고 YouTube 음악과 플레이리스트 추천으로 연결하는 프로젝트입니다.',
+    focusPoints: ['자연어 감정 입력', 'AI 분위기 분석', 'YouTube 음악 추천'],
+    items: [
+      {
+        title: '프로젝트 목적',
+        points: [
+          '사용자가 직접 장르나 키워드를 고르지 않아도 현재 감정에 맞는 음악을 찾을 수 있는 추천 흐름을 만드는 것이 목표였습니다.',
+          '감정 분석 결과를 단순 라벨로 끝내지 않고, 실제 YouTube 검색과 플레이리스트 추천으로 이어지도록 구성했습니다.',
+        ],
+      },
+      {
+        title: '서비스 흐름',
+        points: [
+          'React 화면에서 감정 문장을 입력하면 FastAPI 백엔드가 AI 분석과 YouTube Data API 호출을 담당합니다.',
+          '추천 결과는 분위기 태그, 장르 키워드, 영상 목록 형태로 사용자에게 돌아오도록 설계했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'YouTube Mood 프로젝트 개요',
+    documentDescription: '자연어 감정 분석을 YouTube 음악 추천으로 연결한 서비스입니다.',
+    documentImage: asset('/media/thumb-youtube-mood.png'),
+    referenceLinks: [
+      {
+        label: 'GitHub 저장소',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood',
+      },
+      {
+        label: '프로젝트 계획',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/01-project-plan.md',
+      },
+    ],
+  },
+  {
+    id: 'planning',
+    label: '기획 / UX',
+    title: '사용자 감정을 추천 조건으로 바꾸는 흐름 설계',
+    description:
+      '사용자가 입력한 문장을 그대로 검색하는 방식보다, 감정 그룹과 추천 의도를 분리해 더 설명 가능한 추천 흐름을 만드는 데 초점을 맞췄습니다.',
+    focusPoints: ['사용자 입력 흐름', '감정 그룹 정의', '추천 결과 표현'],
+    items: [
+      {
+        title: '사용자 입력 구조',
+        points: [
+          '사용자는 “퇴근 후 차분한 음악이 듣고 싶다”처럼 자연어 문장을 입력하고, 서비스는 문장에서 감정과 상황을 추출합니다.',
+          '입력값을 감정 그룹, 분위기 태그, 장르 키워드로 나누면 추천 결과를 설명하기 쉬워집니다.',
+        ],
+      },
+      {
+        title: '추천 화면 방향',
+        points: [
+          '추천 결과를 영상 목록만 보여주는 데서 끝내지 않고, 왜 이 추천이 나왔는지 이해할 수 있도록 분위기와 키워드를 함께 표시하는 방향을 잡았습니다.',
+          '국내 음악 중심 옵션과 전역 추천 옵션을 구분해 사용자가 원하는 추천 범위를 선택할 수 있게 설계했습니다.',
+        ],
+      },
+    ],
+    documentTitle: '기획 문서',
+    documentDescription: '요구사항, 사용자 흐름, 화면 초안으로 추천 서비스 방향을 정리했습니다.',
+    documentImage: asset('/media/docs/youtube-mood-recommendation-flow.svg'),
+    referenceLinks: [
+      {
+        label: '사용자 요구사항',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/02-user-requirements.md',
+      },
+      {
+        label: '사용자 흐름',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/03-user-flow.md',
+      },
+      {
+        label: '화면 초안',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/04-screen-draft.md',
+      },
+    ],
+  },
+  {
+    id: 'engineering',
+    label: '개발 / 인프라',
+    title: 'FastAPI AI 추천 서버와 배포 문서화',
+    description:
+      'AI 모델을 서비스 API와 연결하고, 로컬 실행부터 Kubernetes/EKS 확장까지 단계적으로 정리했습니다.',
+    focusPoints: ['FastAPI 추천 API', 'PyTorch/Transformers 모델', 'Docker/Kubernetes/EKS'],
+    items: [
+      {
+        title: 'AI 추천 구조',
+        points: [
+          'FastAPI 서버에서 감정 분류 모델을 불러오고, 분석 결과를 YouTube 검색어와 추천 조건으로 변환하는 흐름을 구성했습니다.',
+          '모델 로딩은 그룹 감정 모델, 원본 모델, fallback 순서로 처리해 로컬 개발 중에도 서비스가 완전히 멈추지 않도록 방향을 잡았습니다.',
+        ],
+      },
+      {
+        title: '검증 방식',
+        points: [
+          '추천 테스트 케이스를 작성해 감정 입력이 어떤 검색어와 추천 결과로 이어지는지 반복 확인했습니다.',
+          'README 기준 16개의 추천 테스트가 통과하는 상태를 확인하며 추천 흐름의 기본 동작을 검증했습니다.',
+        ],
+      },
+      {
+        title: '인프라 문서화',
+        points: [
+          'Docker Compose로 로컬 실행 흐름을 정리하고, Kubernetes와 EKS 문서로 배포 단계를 확장했습니다.',
+          'OpenSearch 저장 구조는 추천 이력과 검색 기록을 나중에 다루기 위한 초안으로 분리해 정리했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'AI와 인프라 설계',
+    documentDescription: 'AI 연동, Docker, Kubernetes, EKS, OpenSearch 관련 문서를 연결했습니다.',
+    documentImage: asset('/media/docs/youtube-mood-infra-flow.svg'),
+    referenceLinks: [
+      {
+        label: 'AI 연동 문서',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/12-ai-service-integration.md',
+      },
+      {
+        label: 'Docker 가이드',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/18-docker-guide.md',
+      },
+      {
+        label: 'EKS 초안',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/25-eks-draft.md',
+      },
+      {
+        label: 'OpenSearch 초안',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/20-opensearch-index-draft.md',
+      },
+    ],
+  },
+  {
+    id: 'trouble',
+    label: '트러블 슈팅',
+    title: '모델 결과를 서비스 추천으로 바꾸는 과정에서 확인한 문제',
+    description:
+      'AI 모델이 감정을 맞히는 것과 사용자가 납득할 만한 추천 결과를 제공하는 것은 다른 문제이기 때문에, 중간 변환 로직과 fallback 흐름을 중요하게 다뤘습니다.',
+    focusPoints: ['모델 로딩 안정성', '추천 품질 검증', '서비스 fallback'],
+    items: [
+      {
+        title: '모델 결과 해석',
+        points: [
+          '모델이 반환한 감정 라벨을 그대로 사용자에게 보여주기보다, 추천 검색어와 분위기 태그로 바꾸는 과정이 필요했습니다.',
+          '이 중간 변환 로직이 명확해야 추천 결과가 왜 나왔는지 설명할 수 있습니다.',
+        ],
+      },
+      {
+        title: 'fallback 흐름',
+        points: [
+          '모델 파일이나 환경 설정이 준비되지 않은 상황에서도 서비스 구조를 확인할 수 있도록 fallback 방향을 정리했습니다.',
+          '추천 테스트 케이스를 통해 감정 입력이 예상 가능한 추천 흐름으로 이어지는지 반복 확인했습니다.',
+        ],
+      },
+    ],
+    documentTitle: '트러블 슈팅 문서',
+    documentDescription: '모델 오류 분석과 추천 테스트 케이스를 통해 검증한 내용을 연결했습니다.',
+    documentImage: asset('/media/docs/youtube-mood-ai-flow.svg'),
+    referenceLinks: [
+      {
+        label: '트러블 슈팅',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/13-troubleshooting.md',
+      },
+      {
+        label: '모델 오류 분석',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/17-model-error-analysis.md',
+      },
+      {
+        label: '추천 테스트 케이스',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/14-recommendation-test-cases.md',
+      },
+    ],
+  },
+  {
+    id: 'feeling',
+    label: '느낀점',
+    title: 'AI 추천 서비스는 모델, API, UX가 함께 맞아야 완성된다는 점을 학습',
+    description:
+      '감정 분석 모델만 준비되어도 추천 서비스가 완성되는 것은 아니며, 사용자 입력, 중간 변환, 외부 API 호출, 결과 표현이 하나의 흐름으로 연결되어야 한다는 점을 배웠습니다.',
+    focusPoints: ['AI 서비스화', '추천 검증', '인프라 단계화'],
+    items: [
+      {
+        title: '프로젝트를 통해 배운 점',
+        points: [
+          'AI 기능은 모델 정확도뿐 아니라 사용자에게 어떤 형태로 설명되고 전달되는지가 중요하다는 점을 확인했습니다.',
+          '추천 서비스는 결과가 주관적이기 때문에 테스트 케이스와 예시 입력을 통해 품질을 반복 확인하는 과정이 필요했습니다.',
+        ],
+      },
+      {
+        title: '다음 개선 방향',
+        points: [
+          '추천 이력과 사용자 피드백을 저장하면 추천 품질을 개선할 수 있고, OpenSearch 같은 검색 저장소를 실제 서비스 흐름에 연결할 수 있습니다.',
+          'EKS 배포 문서는 단계별로 충분히 쪼개져 있으므로, 다음 단계에서는 실제 운영 환경 검증과 자동화 범위를 좁혀 진행하는 것이 좋습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'YouTube Mood 회고',
+    documentDescription: 'AI 추천 기능을 서비스와 인프라까지 연결하며 배운 점을 정리했습니다.',
+    documentImage: asset('/media/docs/youtube-mood-recommendation-flow.svg'),
+  },
+];
+
 export const projects = [
   {
     slug: 'oneulfarm',
@@ -1128,6 +1584,83 @@ export const projects = [
         ],
       },
     ],
+  },
+  {
+    slug: 'csas',
+    label: 'AI / 인프라 프로젝트',
+    title: 'CSAS',
+    subtitle: 'AI 기반 시설물 균열 감지와 EKS 배포 구조를 연결한 서비스',
+    period: '2026.06 - 진행 중',
+    team: '팀 프로젝트',
+    role: 'AI 서비스 구조 분석 · Spring/FastAPI 연동 흐름 정리 · EKS 배포 구조 학습',
+    contribution:
+      '이미지 업로드 분석 흐름 정리 · Spring Boot와 FastAPI 책임 분리 · Docker/ECR/EKS 배포 흐름 문서화 · AI 서버 서비스화 방향 정리',
+    summary:
+      '시설물 이미지를 업로드하면 AI 서버가 균열 여부를 분석하고, 서비스 서버가 결과를 관리하는 구조를 학습한 AI/인프라 프로젝트입니다.',
+    focusAreas: ['AI 균열 감지 서비스 구조', 'Spring Boot와 FastAPI 역할 분리', 'Docker/ECR/EKS 배포 흐름'],
+    outcomes: ['AI 서버와 서비스 API 책임 분리', 'EKS 배포 단계 문서화', '모델/이미지 리소스 관리 방향 정리'],
+    stacks: ['React', 'Spring Boot', 'FastAPI', 'PyTorch', 'Docker', 'ECR', 'EKS', 'S3', 'OpenSearch'],
+    categories: ['ai', 'infra', 'react', 'java'],
+    thumbnail: asset('/media/thumb-csas.svg'),
+    liveUrl: '',
+    repoUrl: 'https://github.com/YuYoungKwang/CSAS',
+    referenceLinks: [
+      { label: 'GitHub 저장소', href: 'https://github.com/YuYoungKwang/CSAS' },
+      { label: 'Kubernetes 설정', href: 'https://github.com/YuYoungKwang/CSAS/tree/main/k8s' },
+      {
+        label: 'EKS 배포 워크플로',
+        href: 'https://github.com/YuYoungKwang/CSAS/blob/main/.github/workflows/deploy-eks.yml',
+      },
+    ],
+    sections: csasSections,
+  },
+  {
+    slug: 'youtube-mood',
+    label: 'AI / 인프라 프로젝트',
+    title: 'YouTube Mood',
+    subtitle: '자연어 감정 분석으로 YouTube 음악과 플레이리스트를 추천하는 서비스',
+    period: '2026.06 - 진행 중',
+    team: '개인 프로젝트',
+    role: 'AI 추천 로직 · FastAPI 백엔드 · React UI · Docker/Kubernetes 인프라 문서화',
+    contribution:
+      '감정 분류 모델 연동 · 추천 검색어 생성 흐름 설계 · YouTube Data API 연동 · Docker Compose/k8s/EKS 문서화 · 추천 테스트 케이스 정리',
+    summary:
+      '사용자의 감정 문장을 AI가 분석해 분위기 태그와 장르 키워드로 변환하고, YouTube 음악 추천으로 연결하는 AI 추천 서비스입니다.',
+    focusAreas: ['자연어 감정 분석', 'YouTube 추천 API 흐름', 'Docker/Kubernetes/EKS 인프라 학습'],
+    outcomes: ['감정 그룹 기반 추천 검색어 생성', '추천 테스트 케이스 16개 검증', 'EKS/OpenSearch 확장 문서화'],
+    stacks: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'FastAPI',
+      'PyTorch',
+      'Transformers',
+      'YouTube Data API',
+      'Docker',
+      'Kubernetes',
+      'EKS',
+      'OpenSearch',
+    ],
+    categories: ['ai', 'infra', 'react'],
+    thumbnail: asset('/media/thumb-youtube-mood.png'),
+    liveUrl: '',
+    repoUrl: 'https://github.com/kdtlch3650-ctrl/youtube-mood',
+    referenceLinks: [
+      { label: 'GitHub 저장소', href: 'https://github.com/kdtlch3650-ctrl/youtube-mood' },
+      {
+        label: 'AI 연동 문서',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/12-ai-service-integration.md',
+      },
+      {
+        label: 'Docker 가이드',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/18-docker-guide.md',
+      },
+      {
+        label: 'EKS 초안',
+        href: 'https://github.com/kdtlch3650-ctrl/youtube-mood/blob/feature/ai-mood-recommendation/docs/25-eks-draft.md',
+      },
+    ],
+    sections: youtubeMoodSections,
   },
   {
     slug: 'doctorlink',

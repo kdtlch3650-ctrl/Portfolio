@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">YouTube Mood AI flow</title>
+  <desc id="desc">Natural language mood input to recommendation keywords</desc>
+  <rect width="1280" height="720" fill="#f8fafc"/>
+  <rect x="88" y="88" width="1104" height="544" rx="42" fill="#111827"/>
+  <text x="128" y="158" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#f9fafb">YouTube Mood AI Flow</text>
+  <g font-family="Arial, sans-serif" font-weight="800" text-anchor="middle">
+    <rect x="136" y="278" width="226" height="120" rx="24" fill="#f97316"/>
+    <text x="249" y="344" font-size="22" fill="#fff7ed">Mood Text</text>
+    <rect x="526" y="248" width="226" height="180" rx="24" fill="#7c3aed"/>
+    <text x="639" y="322" font-size="22" fill="#f5f3ff">RoBERTa</text>
+    <text x="639" y="354" font-size="17" fill="#ddd6fe">emotion group</text>
+    <rect x="916" y="278" width="226" height="120" rx="24" fill="#0284c7"/>
+    <text x="1029" y="330" font-size="22" fill="#e0f2fe">Keywords</text>
+    <text x="1029" y="362" font-size="17" fill="#bae6fd">genre + tone</text>
+  </g>
+  <path d="M382 338h120M772 338h120" stroke="#e5e7eb" stroke-width="13" stroke-linecap="round"/>
+  <path d="M502 338l-28-19v38zM892 338l-28-19v38z" fill="#e5e7eb"/>
+  <text x="640" y="526" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#cbd5e1">Learning focus: turn vague emotion into searchable recommendation signals.</text>
+</svg>
