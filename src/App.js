@@ -363,6 +363,9 @@ function ProjectDetailPage() {
   const hasOriginalDocument = Boolean(project.docUrl && project.docUrl !== '#');
   const showDocumentPreview = Boolean(activeSection.documentImage);
   const isLearningSection = activeSection.id === 'learning-goals';
+  const primaryActionUrl = project.liveUrl || project.presentationUrl;
+  const primaryActionLabel = project.liveUrl ? '배포 페이지' : project.presentationUrl ? '상세 PPT' : '';
+  const primaryBadgeLabel = project.liveUrl ? 'LIVE' : project.presentationUrl ? 'PPT' : '';
   const referenceLinks = [
     ...(activeSection.referenceLinks?.filter((link) => link.href) ?? []),
     ...(project.referenceLinks?.filter((link) => link.href) ?? []),
@@ -398,21 +401,21 @@ function ProjectDetailPage() {
           <div>
             <p className="eyebrow">{project.label}</p>
             <h1 className="detail-header__title-wrap">
-              {project.liveUrl ? (
-                <a className="detail-header__title-link" href={project.liveUrl} target="_blank" rel="noreferrer">
+              {primaryActionUrl ? (
+                <a className="detail-header__title-link" href={primaryActionUrl} target="_blank" rel="noreferrer">
                   {project.title}
                 </a>
               ) : (
                 project.title
               )}
-              {project.liveUrl ? <span className="detail-header__badge">LIVE</span> : null}
+              {primaryBadgeLabel ? <span className="detail-header__badge">{primaryBadgeLabel}</span> : null}
             </h1>
             <p className="detail-header__subtitle">{project.subtitle}</p>
           </div>
           <div className="detail-header__links">
-            {project.liveUrl ? (
-              <a className="detail-header__links--primary" href={project.liveUrl} target="_blank" rel="noreferrer">
-                배포 페이지
+            {primaryActionUrl ? (
+              <a className="detail-header__links--primary" href={primaryActionUrl} target="_blank" rel="noreferrer">
+                {primaryActionLabel}
               </a>
             ) : null}
             {project.repoUrl ? (
