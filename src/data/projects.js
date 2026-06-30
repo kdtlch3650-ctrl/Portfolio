@@ -1530,6 +1530,14 @@ export const projects = [
     referenceLinks: [
       { label: 'GitHub 저장소', href: 'https://github.com/YuYoungKwang/CSAS' },
       { label: '발표자료', href: 'https://yuyoungkwang.github.io/CSAS_PPT/' },
+      {
+        label: '요구사항 명세서',
+        href: 'https://docs.google.com/spreadsheets/d/1aiqu87V2KDY0PBbYnfstAkHWHa6vCQV71QRniigLyPE/edit?gid=569124936#gid=569124936',
+      },
+      {
+        label: '모델 연구 보고서',
+        href: 'https://docs.google.com/document/d/12EZSaN4Y_FY36i_SUjerE4h7nlRUxR_4VTxXz1jEcUk/edit?tab=t.0',
+      },
     ],
     sections: csasSections,
   },
