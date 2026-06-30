@@ -1132,9 +1132,10 @@
 }
 
 .project-gallery {
+  aspect-ratio: 16 / 10;
   background: linear-gradient(135deg, rgba(244, 247, 238, 0.96), rgba(220, 236, 196, 0.82));
   display: grid;
-  min-height: clamp(360px, 52vw, 560px);
+  min-height: 0;
   place-items: center;
   position: relative;
 }
@@ -1142,8 +1143,10 @@
 .detail-hero__media .project-gallery__image {
   box-sizing: border-box;
   display: block;
+  height: 100%;
   object-fit: contain;
   padding: clamp(0.75rem, 2vw, 1.5rem);
+  width: 100%;
 }
 
 .project-gallery__control {

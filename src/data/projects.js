@@ -1503,7 +1503,7 @@ export const projects = [
     outcomes: ['사용자 인증 기반 API 흐름 정리', 'S3와 Weaviate 저장 구조 이해', 'AI 분석 결과의 서비스 데이터화'],
     stacks: ['React', 'Spring Boot', 'Python', 'PyTorch', 'EfficientNet-B0', 'SegFormer', 'AWS S3', 'Weaviate', 'Docker'],
     categories: ['ai', 'infra', 'react', 'java'],
-    thumbnail: csasPptAsset('screen4.png'),
+    thumbnail: csasPptAsset('solution_total.png'),
     galleryImages: [
       {
         label: '분석 앨범',
