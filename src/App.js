@@ -451,7 +451,7 @@ function ProjectDetailPage() {
   return (
     <div className="panel__content">
       <section className="detail-header">
-        <Link className="back-link" to="/">
+        <Link className="back-link" to="/projects">
           ← 프로젝트 목록으로
         </Link>
         <div className="detail-header__top">
