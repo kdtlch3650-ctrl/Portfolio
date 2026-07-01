@@ -947,39 +947,15 @@
   width: 1.8rem;
 }
 
-.featured-slider__progress {
-  background: rgba(55, 66, 82, 0.12);
-  height: 0.18rem;
-  overflow: hidden;
-}
-
-.featured-slider__progress span {
-  animation: featuredProjectProgress 5s linear forwards;
-  background: #2b313a;
-  display: block;
-  height: 100%;
-  transform-origin: left center;
-}
-
 @keyframes featuredProjectReveal {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateX(18px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes featuredProjectProgress {
-  from {
-    transform: scaleX(0);
-  }
-
-  to {
-    transform: scaleX(1);
+    transform: translateX(0);
   }
 }
 

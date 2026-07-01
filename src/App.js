@@ -375,9 +375,6 @@ function ProjectsPage() {
               />
             ))}
           </div>
-          <div key={activeFeaturedProject.slug} className="featured-slider__progress" aria-hidden="true">
-            <span></span>
-          </div>
         </section>
       ) : null}
 
