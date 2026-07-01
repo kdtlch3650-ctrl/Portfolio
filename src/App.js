@@ -259,6 +259,7 @@ function AboutPage() {
 
 function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
+  const [activeFeaturedIndex, setActiveFeaturedIndex] = useState(0);
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === 'all') {
@@ -267,6 +268,21 @@ function ProjectsPage() {
 
     return projects.filter((project) => project.categories.includes(activeCategory));
   }, [activeCategory]);
+
+  const representativeProjects = useMemo(() => {
+    const representativeOrder = ['youtube-mood', 'oneulfarm', 'csas'];
+    return representativeOrder
+      .map((slug) => projects.find((project) => project.slug === slug))
+      .filter(Boolean);
+  }, []);
+
+  const activeFeaturedProject = representativeProjects[activeFeaturedIndex] ?? representativeProjects[0];
+
+  const moveFeaturedProject = (step) => {
+    setActiveFeaturedIndex((currentIndex) => (
+      currentIndex + step + representativeProjects.length
+    ) % representativeProjects.length);
+  };
 
   return (
     <div className="panel__content">
@@ -278,6 +294,78 @@ function ProjectsPage() {
         <p className="section-heading__description">
           진행한 프로젝트를 정리했습니다.
         </p>
+      </section>
+
+      {activeFeaturedProject ? (
+        <section className="featured-projects">
+          <div className="featured-projects__header">
+            <div>
+              <p className="eyebrow">FEATURED</p>
+              <h2>대표 프로젝트</h2>
+            </div>
+            <p>가장 먼저 보여주고 싶은 프로젝트를 큰 화면으로 정리했습니다.</p>
+          </div>
+          <article className="featured-slider">
+            <button
+              className="featured-slider__control featured-slider__control--prev"
+              type="button"
+              onClick={() => moveFeaturedProject(-1)}
+              aria-label="이전 대표 프로젝트 보기"
+            >
+              {'<'}
+            </button>
+            <Link className="featured-project" to={`/project/${activeFeaturedProject.slug}`}>
+              <div className="featured-project__thumb">
+                <img src={activeFeaturedProject.thumbnail} alt={`${activeFeaturedProject.title} thumbnail`} />
+              </div>
+              <div className="featured-project__body">
+                <p className="project-card__meta">{activeFeaturedProject.label}</p>
+                <h3>{activeFeaturedProject.title}</h3>
+                <div className="project-card__section">
+                  <span>서비스</span>
+                  <p>{activeFeaturedProject.summary}</p>
+                </div>
+                <div className="project-card__section">
+                  <span>담당</span>
+                  <p>{activeFeaturedProject.contribution || activeFeaturedProject.role}</p>
+                </div>
+                <div className="project-card__tags">
+                  {activeFeaturedProject.stacks.slice(0, 5).map((stack) => (
+                    <span key={stack}>{stack}</span>
+                  ))}
+                </div>
+                <span className="featured-project__link">상세 보기</span>
+              </div>
+            </Link>
+            <button
+              className="featured-slider__control featured-slider__control--next"
+              type="button"
+              onClick={() => moveFeaturedProject(1)}
+              aria-label="다음 대표 프로젝트 보기"
+            >
+              {'>'}
+            </button>
+          </article>
+          <div className="featured-slider__dots" aria-label="대표 프로젝트 목록">
+            {representativeProjects.map((project, index) => (
+              <button
+                key={project.slug}
+                className={`featured-slider__dot${index === activeFeaturedIndex ? ' is-active' : ''}`}
+                type="button"
+                onClick={() => setActiveFeaturedIndex(index)}
+                aria-label={`${project.title} 대표 프로젝트 보기`}
+              />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="section-heading section-heading--compact">
+        <div className="section-heading__title">
+          <span>ALL PROJECTS</span>
+          <div className="section-heading__line"></div>
+        </div>
+        <p className="section-heading__description">전체 프로젝트를 같은 기준으로 비교할 수 있게 정리했습니다.</p>
       </section>
 
       <section className="filters">
@@ -297,7 +385,7 @@ function ProjectsPage() {
         {filteredProjects.map((project) => (
           <Link
             key={project.slug}
-            className={`project-card project-card--minimal${project.featured ? ' project-card--featured' : ''}`}
+            className="project-card project-card--minimal"
             to={`/project/${project.slug}`}
           >
             <div className="project-card__thumb">
@@ -307,7 +395,14 @@ function ProjectsPage() {
             <div className="project-card__body">
               <p className="project-card__meta">{project.period}</p>
               <h2>{project.title}</h2>
-              <p className="project-card__role">{project.role}</p>
+              <div className="project-card__section">
+                <span>서비스</span>
+                <p>{project.summary}</p>
+              </div>
+              <div className="project-card__section">
+                <span>담당</span>
+                <p>{project.contribution || project.role}</p>
+              </div>
               <div className="project-card__tags">
                 {project.stacks.slice(0, 3).map((stack) => (
                   <span key={stack}>{stack}</span>
