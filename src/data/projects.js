@@ -39,13 +39,84 @@ const asset = (path) => {
   return `${base}${normalizedPath}`;
 };
 
+const csasPptAsset = (fileName) => `https://yuyoungkwang.github.io/CSAS_PPT/${fileName}`;
+
 export const projectCategories = [
   { id: 'all', label: '전체' },
   { id: 'java', label: 'JAVA' },
   { id: 'react', label: 'REACT' },
+  { id: 'ai', label: 'AI' },
+  { id: 'infra', label: '인프라' },
 ];
 
+const learningGoalSection = ({
+  title,
+  description,
+  focusPoints,
+  items,
+  documentTitle,
+  documentDescription,
+  documentImage,
+  referenceLinks = [],
+}) => ({
+  id: 'learning-goals',
+  label: '학습 목표',
+  title,
+  description,
+  focusPoints,
+  items,
+  documentTitle,
+  documentDescription,
+  documentImage,
+  referenceLinks,
+});
+
 const doctorLinkSections = [
+  learningGoalSection({
+    title: 'React 기반 의료 서비스 화면 흐름 학습',
+    description:
+      'DoctorLink는 건강 기록, 사전 문진, 병원 예약 흐름을 React 화면 안에서 자연스럽게 연결하는 경험을 목표로 진행한 프로젝트입니다.',
+    focusPoints: ['React 화면 구성', '사용자 입력 흐름', '의료 서비스 UX'],
+    items: [
+      {
+        title: '사전 문진 입력 흐름',
+        image: asset('/media/docs/doctorlink-overview.png'),
+        points: [
+          '진료 전 건강 상태와 생활 기록을 미리 정리하면 환자와 의료진 모두에게 도움이 된다는 문제의식에서 출발했습니다.',
+          '의료 서비스처럼 입력 단계가 많은 화면에서 사용자가 이탈하지 않도록 흐름을 나누는 방법을 학습하고자 했습니다.',
+        ],
+      },
+      {
+        title: '예약과 캘린더 연동',
+        image: asset('/media/docs/doctorlink-planning.png'),
+        points: [
+          'React 컴포넌트 기반으로 예약, 문진, 복약 체크, 캘린더 화면을 연결하는 방식을 경험했습니다.',
+          '백엔드가 없는 환경에서 localStorage와 이벤트 흐름으로 화면 간 상태를 맞추는 방법을 익혔습니다.',
+        ],
+      },
+      {
+        title: '로컬 상태 관리 구조',
+        image: asset('/media/docs/doctorlink-engineering.png'),
+        points: [
+          'React 페이지 컴포넌트를 중심으로 사용자 입력 흐름을 나누고, 캘린더와 사이드바 상태를 로컬 저장소에 연결했습니다.',
+          '배포된 정적 React 프로젝트에서 사용자가 바로 확인할 수 있는 서비스 화면을 구성했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'DoctorLink 학습 목표',
+    documentDescription: '의료 서비스 화면 흐름과 React 상태 관리 학습 방향을 요약했습니다.',
+    documentImage: asset('/media/docs/doctorlink-engineering.png'),
+    referenceLinks: [
+      {
+        label: '서비스 프로세스 흐름도 원본',
+        href: 'https://drive.google.com/file/d/17sfOpinnojs19LjRU_cjDvLLl_T3tri4/view?usp=drive_link',
+      },
+      {
+        label: '배포 페이지',
+        href: 'https://kdtlch3650-ctrl.github.io/DoctorLink/',
+      },
+    ],
+  }),
   {
     id: 'overview',
     label: '메인 소개',
@@ -68,13 +139,6 @@ const doctorLinkSections = [
           '환자의 상태 기록과 사전 문진을 연결해 지속적인 건강 기록을 만드는 서비스입니다.',
           '문진을 기록으로, 기록을 진료로 연결하는 구조를 핵심 메시지로 설정했습니다.',
           '환자와 의료진 모두에게 도움이 되는 건강 관리 서비스를 지향했습니다.',
-        ],
-      },
-      {
-        title: '내가 맡아 구현한 영역',
-        points: [
-          '문진 작성 페이지를 연결하고 통증 기록 저장, 생활 습관 입력, 제출 흐름을 구현했습니다.',
-          '병원 예약 날짜 저장, 캘린더 이벤트 저장, 사이드바 약 복용 체크 연동처럼 사용자가 바로 체감하는 흐름을 맡아 정리했습니다.',
         ],
       },
     ],
@@ -212,6 +276,51 @@ const doctorLinkSections = [
 ];
 
 const oneulFarmSections = [
+  learningGoalSection({
+    title: '커머스 흐름과 외부 API 연결 구조 학습',
+    description:
+      'OneulFarm은 농산물 시세, 레시피, 주문, 결제, 배송 흐름이 하나의 커머스 서비스 안에서 어떻게 연결되는지 학습하기 위해 진행한 프로젝트입니다.',
+    focusPoints: ['풀스택 커머스 흐름', '외부 API 연동', '주문/배송 상태 관리'],
+    items: [
+      {
+        title: '공공 API 연동',
+        image: asset('/media/docs/oneulfarm-engineering.png'),
+        points: [
+          '공공 시세 데이터를 단순 정보가 아니라 실제 구매 판단과 절약 경험으로 연결하는 구조를 확인하고자 했습니다.',
+          '사용자 계정, 상품, 주문, 결제, 배송이 이어지는 커머스 흐름을 프로젝트 단위로 경험하는 것이 목표였습니다.',
+        ],
+      },
+      {
+        title: '커머스 주문 흐름',
+        image: asset('/media/docs/oneulfarm-overview.png'),
+        points: [
+          'React와 Spring Framework, MyBatis, OracleDB를 연결해 화면과 데이터가 이어지는 풀스택 구조를 학습했습니다.',
+          'KAMIS, 레시피 API, PortOne, OpenAI API처럼 외부 서비스를 실제 기능에 붙일 때 필요한 예외 흐름을 경험했습니다.',
+        ],
+      },
+      {
+        title: '데이터 기준 정리',
+        image: asset('/media/docs/oneulfarm-trouble.png'),
+        points: [
+          'React 화면에서 Spring API를 호출하고, MyBatis를 통해 OracleDB의 회원, 주문, 배송 데이터를 다루는 구조로 구현했습니다.',
+          '시세 데이터와 레시피, 장바구니, 결제, 배송 상태를 연결해 사용자가 구매 흐름을 끝까지 따라갈 수 있게 설계했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'OneulFarm 학습 목표',
+    documentDescription: '커머스 서비스 구조와 외부 API 연동에서 학습한 핵심 방향을 요약했습니다.',
+    documentImage: asset('/media/docs/oneulfarm-engineering.png'),
+    referenceLinks: [
+      {
+        label: '시스템 아키텍처 원본',
+        href: 'https://www.figma.com/board/3DA1PbA0J58eG2HIPOTEnX/%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90?node-id=0-1&t=rDDYZlpcM89BqaS7-1',
+      },
+      {
+        label: '프로젝트 GitHub',
+        href: 'https://github.com/kdtlch3650-ctrl/oneulFarm',
+      },
+    ],
+  }),
   {
     id: 'overview',
     label: '메인 소개',
@@ -234,14 +343,6 @@ const oneulFarmSections = [
           '공공 시세 데이터를 사용자 구매 판단에 연결해 가격 비교와 절약 효과를 더 직관적으로 전달하는 것을 목표로 했습니다.',
           '레시피 콘텐츠와 상품을 연결해 재료 활용도를 높이고, 레시피 탐색이 실제 장바구니와 결제로 이어지도록 설계했습니다.',
           'AI 챗봇을 통해 사용자 상황에 맞는 식단을 제안하고, 그 식단이 다시 재료 구매 흐름과 연결되는 구조를 프로젝트 차별점으로 잡았습니다.',
-        ],
-      },
-      {
-        title: '내가 맡은 역할과 확장된 구현 범위',
-        points: [
-          '프로젝트 문서상 초기 담당은 마이페이지, 주문관리, 최종 발표였고, 일정표에는 사용자 구매 행동 분석 모듈과 개인별 절약 가치 리포트, 성과 지표 시각화가 정리되어 있었습니다.',
-          '실제 구현 단계에서는 마이페이지와 주문관리 화면에 더해 개인정보 수정, 배송지 관리, 찜/리뷰 관리, 대시보드 절약 지표, 주문 상세와 배송 흐름 고도화까지 맡았습니다.',
-          '발표 준비 단계에서는 시연 스크립트와 체크리스트, 발표 지원 문서를 정리하며 구현 결과가 발표 메시지로 자연스럽게 이어지도록 마무리했습니다.',
         ],
       },
     ],
@@ -448,6 +549,51 @@ const oneulFarmSections = [
 ];
 
 const hashTripSections = [
+  learningGoalSection({
+    title: 'Java 기반 추천 서비스 구조 학습',
+    description:
+      'hashTrip은 사용자 성향과 공공데이터를 연결해 여행지를 추천하고, 추천 결과를 일정 작성 흐름으로 이어가는 Java 웹 서비스 구조를 학습한 프로젝트입니다.',
+    focusPoints: ['Spring MVC 구조', '추천 데이터 흐름', 'DB/API 연결'],
+    items: [
+      {
+        title: '공공데이터 추천 흐름',
+        image: asset('/media/docs/hashtrip-overview.png'),
+        points: [
+          '많은 여행 정보 중 사용자 취향에 맞는 장소를 빠르게 찾도록 돕는 추천 흐름을 구현하고자 했습니다.',
+          '성향 분석 결과가 실제 추천 결과와 일정 작성 화면으로 이어지는 서비스 구조를 경험하는 것이 목표였습니다.',
+        ],
+      },
+      {
+        title: 'Spring MVC 데이터 구조',
+        image: asset('/media/docs/hashtrip-engineering.png'),
+        points: [
+          'Java Spring MVC, JSP, MyBatis, OracleDB 기반의 전통적인 웹 서비스 구조를 학습했습니다.',
+          '성향 태그, 장소 데이터, 추천 조건을 DB와 API 흐름 안에서 어떻게 연결하는지 경험했습니다.',
+        ],
+      },
+      {
+        title: '일정 작성과 지도 UX',
+        image: asset('/media/docs/hashtrip-planning.png'),
+        points: [
+          'Spring MVC 컨트롤러와 JSP 화면, MyBatis 매퍼, OracleDB를 연결해 추천 결과와 여행 일정 데이터를 다뤘습니다.',
+          '공공데이터와 내부 장소 데이터를 활용해 성향 기반 추천 결과를 만들고, 일정 작성 화면으로 연결했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'hashTrip 학습 목표',
+    documentDescription: 'Java 기반 웹 서비스와 추천 데이터 흐름에서 학습한 방향을 요약했습니다.',
+    documentImage: asset('/media/docs/hashtrip-engineering.png'),
+    referenceLinks: [
+      {
+        label: '프로젝트 GitHub',
+        href: 'https://github.com/kdtlch3650-ctrl/hifive.git',
+      },
+      {
+        label: 'ERD 원본',
+        href: 'https://www.erdcloud.com/d/wHzr3PvNt2YFQscJW',
+      },
+    ],
+  }),
   {
     id: 'overview',
     label: '메인 소개',
@@ -470,14 +616,6 @@ const hashTripSections = [
           '10가지 성향 질문으로 여행 스타일을 분석하고, 분석 결과를 태그 형태로 정리합니다.',
           '분석된 태그를 API와 서비스 내부 장소 데이터에 매핑해 사용자에게 맞는 여행지 후보를 추천합니다.',
           '추천 결과를 여행 일정 작성과 기록 공유 흐름까지 연결해 하나의 사용자 여정을 완성하도록 설계했습니다.',
-        ],
-      },
-      {
-        title: '기대 효과',
-        points: [
-          '여행 계획에 들어가는 검색 시간과 동선 짜기 시간을 줄이는 것을 기대했습니다.',
-          '내 취향에 맞는 장소를 발견하게 하여 여행 만족도를 높이고자 했습니다.',
-          '축적된 성향 데이터를 바탕으로 이후 더 정교한 추천과 트렌드 분석으로 확장할 수 있는 기반을 만들었습니다.',
         ],
       },
     ],
@@ -631,6 +769,358 @@ const hashTripSections = [
   },
 ];
 
+const csasSections = [
+  learningGoalSection({
+    title: '시스템 아키텍처와 데이터 흐름 학습',
+    description:
+      'CSAS는 프론트엔드, Spring Boot 백엔드, AI 서버, S3, Weaviate가 함께 동작하는 서비스입니다. 학습 목표는 각 구성요소가 어떤 역할을 맡고, 이미지 업로드부터 분석 기록 조회까지 데이터가 어떻게 이동하는지 이해하는 것입니다.',
+    focusPoints: ['시스템 아키텍처', '클라우드 아키텍처', '데이터 흐름도'],
+    items: [
+      {
+        title: '시스템 아키텍처: 프론트엔드, 백엔드, AI, 저장소 연결',
+        image: asset('/media/docs/csas-system-architecture.png'),
+        points: [
+          '프론트엔드는 React/Vite/Axios로 화면과 요청을 담당하고, 백엔드는 Spring Boot/Spring Web/Gradle 기반으로 REST API와 서비스 흐름을 제어합니다.',
+          '백엔드는 AI 서버에는 multipart/form-data로 분석 요청을 보내고, Weaviate에는 Java Client로 분석 기록을 저장/조회하며, S3에는 AWS SDK와 presigned URL로 이미지 업로드/조회를 연결합니다.',
+        ],
+      },
+      {
+        title: '클라우드 아키텍처: ECR, EKS, S3, Weaviate 배포 흐름',
+        image: asset('/media/docs/csas-cloud-architecture.png'),
+        points: [
+          'AWS Cloud 안에서 ECR은 CSAS 컨테이너 이미지를 보관하고, EKS는 컨테이너 기반 애플리케이션 플랫폼으로 서비스 요청을 처리하는 구조입니다.',
+          '사용자는 CSAS 서비스에 접속하고, EKS 워크로드는 필요한 이미지를 ECR에서 pull하며, 분석 데이터는 S3와 Weaviate에 저장/조회되는 흐름으로 분리됩니다.',
+        ],
+      },
+      {
+        title: '데이터 흐름도: 로그인부터 사진첩 조회까지',
+        image: asset('/media/docs/csas-data-flow.png'),
+        points: [
+          '사용자는 Google OAuth로 인증하고, 이미지 파일과 사용자 ID를 백엔드로 전달합니다. 백엔드는 이미지를 resize한 뒤 S3에 저장하고 접근 URL을 관리합니다.',
+          '이미지 정보는 AI 분석 서버로 전달되고, 결함 분석 결과는 사용자 ID와 함께 Weaviate에 분석 기록으로 저장됩니다. 이후 사진첩 조회는 ID 기반으로 기록을 가져오고 S3 접근 URL로 이미지를 다시 보여줍니다.',
+        ],
+      },
+    ],
+  }),
+  {
+    id: 'overview',
+    label: '메인 소개',
+    title: 'AI 기반 건물 결함 분류 및 탐색 서비스',
+    description:
+      'CSAS는 사용자가 건물 이미지를 업로드하면 AI가 결함을 분석하고, 분석 결과를 사진첩과 검색 흐름에서 다시 활용할 수 있도록 만든 서비스입니다.',
+    focusPoints: ['이미지 업로드', 'AI 결함 분석', '사진첩과 검색 흐름'],
+    items: [
+      {
+        title: '프로젝트 목적',
+        points: [
+          '건물 결함 이미지를 사람이 직접 분류하고 확인하는 과정을 보조하기 위해 AI 분석 기능을 서비스에 연결하는 것을 목표로 했습니다.',
+          '단순 모델 실행 예제가 아니라 사용자가 이미지를 올리고 결과를 저장한 뒤 사진첩에서 다시 확인하는 흐름까지 포함했습니다.',
+        ],
+      },
+      {
+        title: '구성 방식',
+        points: [
+          '프론트엔드는 이미지 업로드와 결과 확인 화면을 담당하고, Spring Boot는 인증, API, 데이터 저장 흐름을 관리합니다.',
+          'AI 분석 서버는 모델 추론을 담당하고, 저장소 영역에서는 S3와 Weaviate를 통해 이미지와 분석 데이터를 분리해 다룹니다.',
+        ],
+      },
+    ],
+    documentTitle: 'CSAS 프로젝트 개요',
+    documentDescription: 'AI 분석 기능을 실제 서비스 흐름과 사진첩 기능에 연결한 프로젝트입니다.',
+    documentImage: csasPptAsset('solution_total.png'),
+  },
+  {
+    id: 'planning',
+    label: '기획 / 구조',
+    title: 'AI 분석 결과를 서비스 데이터로 저장하는 구조 설계',
+    description:
+      'AI 결과를 화면에 한 번 보여주는 데서 끝내지 않고, 사용자별 사진첩과 검색 흐름에서 다시 활용할 수 있는 데이터로 저장하는 데 초점을 맞췄습니다.',
+    focusPoints: ['요청 흐름 정리', '백엔드 API 책임', '결과 데이터 관리'],
+    items: [
+      {
+        title: '서비스 흐름 정리',
+        points: [
+          '사용자는 이미지를 업로드하고, 백엔드는 업로드된 이미지 정보와 사용자 정보를 기준으로 AI 분석 요청을 생성합니다.',
+          'AI 분석 결과는 사용자에게 보여줄 응답이면서 동시에 사진첩에서 다시 조회할 수 있는 저장 데이터가 됩니다.',
+        ],
+      },
+      {
+        title: '백엔드 역할 기준',
+        points: [
+          'Spring Boot는 Google OAuth, 사용자 API, 이미지 메타데이터, 분석 결과 저장처럼 서비스 데이터 흐름을 관리합니다.',
+          'AI 모델 실행 영역과 서비스 API를 분리하면 모델이 변경되어도 사용자 API와 사진첩 기능의 책임을 비교적 안정적으로 유지할 수 있습니다.',
+        ],
+      },
+    ],
+    documentTitle: '서비스 구조 학습',
+    documentDescription: '프론트엔드, Spring Boot, AI 분석 서버 사이의 책임 분리를 정리했습니다.',
+    documentImage: asset('/media/docs/csas-data-flow.png'),
+  },
+  {
+    id: 'engineering',
+    label: '개발 / 인프라',
+    title: 'Spring Boot API와 AI 분석 저장소를 연결한 구조',
+    description:
+      '백엔드 API가 인증, 이미지 저장, 분석 결과 저장을 담당하고 AI 분석 서버와 S3, Weaviate를 연결하는 흐름을 정리했습니다.',
+    focusPoints: ['Spring Boot API', 'S3 이미지 저장', 'Weaviate Vector DB'],
+    items: [
+      {
+        title: '기술 스택',
+        points: [
+          '프론트엔드는 React, 백엔드는 Spring Boot, AI 분석 영역은 EfficientNet-B0와 SegFormer 기반 모델 흐름으로 구성했습니다.',
+          '백엔드는 Google OAuth, API 요청 처리, 데이터 저장, 사진첩 기능을 담당하도록 역할을 정리했습니다.',
+        ],
+      },
+      {
+        title: '저장소와 분석 결과 흐름',
+        points: [
+          '업로드된 원본 이미지는 S3에 저장하고, 분석 결과와 검색에 필요한 데이터는 Weaviate Vector DB와 연결되는 구조를 확인했습니다.',
+          '이미지 파일, 분석 메타데이터, 사용자별 사진첩 데이터를 분리해 생각해야 기능이 섞이지 않는다는 점을 학습했습니다.',
+        ],
+      },
+      {
+        title: '외부 리소스 관리',
+        points: [
+          'AI 모델 파일과 이미지 저장소처럼 크거나 민감한 리소스는 애플리케이션 코드와 분리해 관리하는 방향을 검토했습니다.',
+          'S3, Weaviate, Secret처럼 배포 환경에서 필요한 요소를 프로젝트 구조 안에서 구분했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'CSAS 데이터 흐름',
+    documentDescription: '이미지 업로드, AI 분석, S3, Weaviate로 이어지는 데이터 흐름을 시각화했습니다.',
+    documentImage: asset('/media/docs/csas-system-architecture.png'),
+  },
+  {
+    id: 'trouble',
+    label: '트러블 슈팅',
+    title: '이미지 분석 결과를 사진첩 데이터로 연결하며 생기는 경계 문제 정리',
+    description:
+      'AI 분석은 모델 코드만으로 끝나지 않기 때문에, 파일 저장 방식, 분석 결과 저장, 사용자별 사진첩 조회 흐름을 함께 맞추는 과정이 중요했습니다.',
+    focusPoints: ['파일 저장 방식', '분석 결과 저장', '사진첩 조회 흐름'],
+    items: [
+      {
+        title: '이미지 전달 경계',
+        points: [
+          '프론트엔드에서 업로드한 이미지는 파일 자체, S3 저장 위치, 사용자 정보, 분석 결과 메타데이터로 나누어 다뤄야 했습니다.',
+          'AI 분석 서버가 필요한 입력과 백엔드가 사진첩에서 관리해야 하는 데이터 형식이 다르기 때문에 API 계약을 명확히 잡는 것이 중요했습니다.',
+        ],
+      },
+      {
+        title: '사진첩 조회 흐름',
+        points: [
+          '분석 결과를 한 번 보여주는 것과 사용자가 나중에 사진첩에서 다시 찾을 수 있게 저장하는 것은 다른 문제입니다.',
+          '사용자 ID와 이미지 ID를 기준으로 저장/조회 흐름을 맞춰야 사진첩 기능이 단순 목록이 아니라 분석 이력 관리 기능으로 동작할 수 있습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'CSAS 트러블 슈팅 관점',
+    documentDescription: '이미지 저장, 분석 결과 저장, 사진첩 조회에서 확인해야 하는 경계 문제를 정리했습니다.',
+  },
+  {
+    id: 'feeling',
+    label: '느낀점',
+    title: 'AI 기능은 모델보다 서비스 연결 구조가 먼저 중요하다는 점을 학습',
+    description:
+      'AI 프로젝트라고 해서 모델 정확도만 중요한 것이 아니라, 사용자가 분석 결과를 저장하고 다시 확인할 수 있도록 API와 저장소 구조가 함께 맞아야 한다는 점을 배웠습니다.',
+    focusPoints: ['서비스화 관점', '저장소 구조 이해', '다음 개선 방향'],
+    items: [
+      {
+        title: '프로젝트를 통해 배운 점',
+        points: [
+          'AI 모델을 실행하는 것과 AI 기능을 서비스로 제공하는 것은 다른 문제이며, 인증, 저장, 조회 흐름이 특히 중요하다는 점을 확인했습니다.',
+          '사진첩 기능을 구현하면서 분석 결과가 사용자 경험에서 다시 활용되려면 데이터 저장 구조가 먼저 명확해야 한다는 점을 배웠습니다.',
+        ],
+      },
+      {
+        title: '다음 개선 방향',
+        points: [
+          'AI 분석 결과를 더 명확한 데이터 모델로 저장하고, 사용자 화면에서 분석 이력을 더 쉽게 비교할 수 있는 방향으로 확장할 수 있습니다.',
+          'Weaviate 검색 결과와 사진첩 UI를 더 자연스럽게 연결하면 분석 이력 탐색 경험을 개선할 수 있습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'CSAS 회고',
+    documentDescription: 'AI 기능을 인증, 저장소, 사진첩 기능에 연결하며 배운 점을 정리했습니다.',
+  },
+];
+
+const youtubeMoodSections = [
+  learningGoalSection({
+    title: '자연어 감정 분석과 추천 서비스 인프라 학습',
+    description:
+      'YouTube Mood는 사용자가 입력한 감정과 상황 문장을 AI가 분석하고, 그 결과를 YouTube 음악 추천으로 연결하는 흐름을 학습하기 위해 진행한 프로젝트입니다.',
+    focusPoints: ['감정 분류 AI', 'YouTube 추천 API 연동', 'Docker/Kubernetes/EKS 구조'],
+    items: [
+      {
+        title: '자연어 감정 분석',
+        image: asset('/media/docs/youtube-mood-ai-flow.svg'),
+        points: [
+          '사용자의 문장을 단순 키워드 검색으로 처리하지 않고, 감정 그룹과 분위기 태그로 변환해 추천 검색 조건을 만드는 흐름을 학습했습니다.',
+          'KOTE 기반 데이터와 RoBERTa 계열 모델을 사용하면서 모델 결과를 서비스에서 이해할 수 있는 형태로 가공하는 과정을 경험했습니다.',
+        ],
+      },
+      {
+        title: '추천 API 흐름',
+        image: asset('/media/docs/youtube-mood-recommendation-flow.svg'),
+        points: [
+          'React 화면에서 받은 감정 문장이 FastAPI를 거쳐 YouTube Data API 검색 조건으로 바뀌고, 다시 추천 결과로 돌아오는 흐름을 구성했습니다.',
+          'AI 결과를 바로 보여주는 것이 아니라 추천 품질을 높이기 위한 검색어, 장르, 톤 정보로 변환하는 구조를 정리했습니다.',
+        ],
+      },
+      {
+        title: '인프라 확장 학습',
+        image: asset('/media/docs/youtube-mood-infra-flow.svg'),
+        points: [
+          '로컬 Docker Compose 실행에서 시작해 Kubernetes, EKS, OpenSearch 저장 구조까지 단계적으로 문서화했습니다.',
+          '기능을 먼저 작게 검증한 뒤 배포 구조를 넓히는 방식이 포트폴리오 프로젝트에서 더 안전하다는 점을 확인했습니다.',
+        ],
+      },
+    ],
+  }),
+  {
+    id: 'overview',
+    label: '메인 소개',
+    title: '감정 문장을 음악 추천으로 연결하는 AI 추천 서비스',
+    description:
+      'YouTube Mood는 사용자가 지금의 감정이나 상황을 자연어로 입력하면, AI가 분위기를 분석하고 YouTube 음악과 플레이리스트 추천으로 연결하는 프로젝트입니다.',
+    focusPoints: ['자연어 감정 입력', 'AI 분위기 분석', 'YouTube 음악 추천'],
+    items: [
+      {
+        title: '프로젝트 목적',
+        points: [
+          '사용자가 직접 장르나 키워드를 고르지 않아도 현재 감정에 맞는 음악을 찾을 수 있는 추천 흐름을 만드는 것이 목표였습니다.',
+          '감정 분석 결과를 단순 라벨로 끝내지 않고, 실제 YouTube 검색과 플레이리스트 추천으로 이어지도록 구성했습니다.',
+        ],
+      },
+      {
+        title: '서비스 흐름',
+        points: [
+          'React 화면에서 감정 문장을 입력하면 FastAPI 백엔드가 AI 분석과 YouTube Data API 호출을 담당합니다.',
+          '추천 결과는 분위기 태그, 장르 키워드, 영상 목록 형태로 사용자에게 돌아오도록 설계했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'YouTube Mood 프로젝트 개요',
+    documentDescription: '자연어 감정 분석을 YouTube 음악 추천으로 연결한 서비스입니다.',
+    documentImage: asset('/media/thumb-youtube-mood.png'),
+  },
+  {
+    id: 'planning',
+    label: '기획 / UX',
+    title: '사용자 감정을 추천 조건으로 바꾸는 흐름 설계',
+    description:
+      '사용자가 입력한 문장을 그대로 검색하는 방식보다, 감정 그룹과 추천 의도를 분리해 더 설명 가능한 추천 흐름을 만드는 데 초점을 맞췄습니다.',
+    focusPoints: ['사용자 입력 흐름', '감정 그룹 정의', '추천 결과 표현'],
+    items: [
+      {
+        title: '사용자 입력 구조',
+        points: [
+          '사용자는 “퇴근 후 차분한 음악이 듣고 싶다”처럼 자연어 문장을 입력하고, 서비스는 문장에서 감정과 상황을 추출합니다.',
+          '입력값을 감정 그룹, 분위기 태그, 장르 키워드로 나누면 추천 결과를 설명하기 쉬워집니다.',
+        ],
+      },
+      {
+        title: '추천 화면 방향',
+        points: [
+          '추천 결과를 영상 목록만 보여주는 데서 끝내지 않고, 왜 이 추천이 나왔는지 이해할 수 있도록 분위기와 키워드를 함께 표시하는 방향을 잡았습니다.',
+          '국내 음악 중심 옵션과 전역 추천 옵션을 구분해 사용자가 원하는 추천 범위를 선택할 수 있게 설계했습니다.',
+        ],
+      },
+    ],
+    documentTitle: '기획 / UX 흐름',
+    documentDescription: '요구사항, 사용자 흐름, 화면 초안을 바탕으로 추천 서비스 방향을 정리했습니다.',
+    documentImage: asset('/media/docs/youtube-mood-recommendation-flow.svg'),
+  },
+  {
+    id: 'engineering',
+    label: '개발 / 인프라',
+    title: 'FastAPI AI 추천 서버와 배포 문서화',
+    description:
+      'AI 모델을 서비스 API와 연결하고, 로컬 실행부터 Kubernetes/EKS 확장까지 단계적으로 정리했습니다.',
+    focusPoints: ['FastAPI 추천 API', 'PyTorch/Transformers 모델', 'Docker/Kubernetes/EKS'],
+    items: [
+      {
+        title: 'AI 추천 구조',
+        points: [
+          'FastAPI 서버에서 감정 분류 모델을 불러오고, 분석 결과를 YouTube 검색어와 추천 조건으로 변환하는 흐름을 구성했습니다.',
+          '모델 로딩은 그룹 감정 모델, 원본 모델, fallback 순서로 처리해 로컬 개발 중에도 서비스가 완전히 멈추지 않도록 방향을 잡았습니다.',
+        ],
+      },
+      {
+        title: '검증 방식',
+        points: [
+          '추천 테스트 케이스를 작성해 감정 입력이 어떤 검색어와 추천 결과로 이어지는지 반복 확인했습니다.',
+          'README 기준 16개의 추천 테스트가 통과하는 상태를 확인하며 추천 흐름의 기본 동작을 검증했습니다.',
+        ],
+      },
+      {
+        title: '인프라 문서화',
+        points: [
+          'Docker Compose로 로컬 실행 흐름을 정리하고, Kubernetes와 EKS 문서로 배포 단계를 확장했습니다.',
+          'OpenSearch 저장 구조는 추천 이력과 검색 기록을 나중에 다루기 위한 초안으로 분리해 정리했습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'AI와 인프라 설계',
+    documentDescription: 'AI 연동, Docker, Kubernetes, EKS, OpenSearch 흐름을 요약했습니다.',
+    documentImage: asset('/media/docs/youtube-mood-infra-flow.svg'),
+  },
+  {
+    id: 'trouble',
+    label: '트러블 슈팅',
+    title: '모델 결과를 서비스 추천으로 바꾸는 과정에서 확인한 문제',
+    description:
+      'AI 모델이 감정을 맞히는 것과 사용자가 납득할 만한 추천 결과를 제공하는 것은 다른 문제이기 때문에, 중간 변환 로직과 fallback 흐름을 중요하게 다뤘습니다.',
+    focusPoints: ['모델 로딩 안정성', '추천 품질 검증', '서비스 fallback'],
+    items: [
+      {
+        title: '모델 결과 해석',
+        points: [
+          '모델이 반환한 감정 라벨을 그대로 사용자에게 보여주기보다, 추천 검색어와 분위기 태그로 바꾸는 과정이 필요했습니다.',
+          '이 중간 변환 로직이 명확해야 추천 결과가 왜 나왔는지 설명할 수 있습니다.',
+        ],
+      },
+      {
+        title: 'fallback 흐름',
+        points: [
+          '모델 파일이나 환경 설정이 준비되지 않은 상황에서도 서비스 구조를 확인할 수 있도록 fallback 방향을 정리했습니다.',
+          '추천 테스트 케이스를 통해 감정 입력이 예상 가능한 추천 흐름으로 이어지는지 반복 확인했습니다.',
+        ],
+      },
+    ],
+    documentTitle: '트러블 슈팅 정리',
+    documentDescription: '모델 오류 분석과 추천 테스트 케이스를 통해 검증한 내용을 요약했습니다.',
+    documentImage: asset('/media/docs/youtube-mood-ai-flow.svg'),
+  },
+  {
+    id: 'feeling',
+    label: '느낀점',
+    title: 'AI 추천 서비스는 모델, API, UX가 함께 맞아야 완성된다는 점을 학습',
+    description:
+      '감정 분석 모델만 준비되어도 추천 서비스가 완성되는 것은 아니며, 사용자 입력, 중간 변환, 외부 API 호출, 결과 표현이 하나의 흐름으로 연결되어야 한다는 점을 배웠습니다.',
+    focusPoints: ['AI 서비스화', '추천 검증', '인프라 단계화'],
+    items: [
+      {
+        title: '프로젝트를 통해 배운 점',
+        points: [
+          'AI 기능은 모델 정확도뿐 아니라 사용자에게 어떤 형태로 설명되고 전달되는지가 중요하다는 점을 확인했습니다.',
+          '추천 서비스는 결과가 주관적이기 때문에 테스트 케이스와 예시 입력을 통해 품질을 반복 확인하는 과정이 필요했습니다.',
+        ],
+      },
+      {
+        title: '다음 개선 방향',
+        points: [
+          '추천 이력과 사용자 피드백을 저장하면 추천 품질을 개선할 수 있고, OpenSearch 같은 검색 저장소를 실제 서비스 흐름에 연결할 수 있습니다.',
+          'EKS 배포 문서는 단계별로 충분히 쪼개져 있으므로, 다음 단계에서는 실제 운영 환경 검증과 자동화 범위를 좁혀 진행하는 것이 좋습니다.',
+        ],
+      },
+    ],
+    documentTitle: 'YouTube Mood 회고',
+    documentDescription: 'AI 추천 기능을 서비스와 인프라까지 연결하며 배운 점을 정리했습니다.',
+    documentImage: asset('/media/docs/youtube-mood-recommendation-flow.svg'),
+  },
+];
+
 export const projects = [
   {
     slug: 'oneulfarm',
@@ -683,6 +1173,57 @@ export const projects = [
     liveUrl: 'https://kdtlch3650-ctrl.github.io/tricky-quiz/',
     repoUrl: 'https://github.com/kdtlch3650-ctrl/tricky-quiz',
     sections: [
+      learningGoalSection({
+        title: 'OAuth와 풀스택 서비스 흐름 학습',
+        description:
+          'TRICKY-QUIZ는 개인 프로젝트로 Google 로그인, 퀴즈 진행, 결과 저장, 랭킹 조회가 이어지는 서비스 흐름을 직접 설계하고 구현하기 위해 만들었습니다.',
+        focusPoints: ['Google OAuth', 'React/Spring 분리 구조', '결과/랭킹 데이터 흐름'],
+        items: [
+          {
+            title: 'Google OAuth 로그인',
+            points: [
+              '로그인 후 사용자가 퀴즈를 풀고 결과를 확인하는 짧지만 완결된 서비스 흐름을 직접 만들고자 했습니다.',
+              '프론트엔드와 백엔드를 분리한 개인 프로젝트에서 인증, 상태, API, 배포 흐름을 한 번에 점검하는 것이 목표였습니다.',
+            ],
+          },
+          {
+            title: '퀴즈 진행 화면 흐름',
+            points: [
+              'Google OAuth와 Spring Security OAuth2를 활용해 로그인 기반 진입 흐름을 구성하는 방법을 학습했습니다.',
+              'React, TypeScript, Vite, Spring Boot, PostgreSQL을 나누어 사용하며 화면 상태와 서버 데이터를 연결하는 경험을 쌓았습니다.',
+            ],
+          },
+          {
+            title: '결과 저장과 랭킹',
+            image: asset('/media/docs/tricky-quiz-result.png'),
+            points: [
+              'React 화면에서 카테고리 선택, 퀴즈 진행, 결과 확인을 담당하고 Spring Boot API가 사용자, 문제, 랭킹 데이터를 처리하도록 나눴습니다.',
+              'PostgreSQL과 Docker Compose를 기준으로 로컬 실행 환경을 잡고, 프론트엔드는 GitHub Pages 배포 흐름까지 연결했습니다.',
+            ],
+          },
+        ],
+        documentTitle: 'TRICKY-QUIZ 학습 목표',
+        documentDescription: 'OAuth, 풀스택 분리 구조, 결과 저장 흐름을 중심으로 학습 방향을 요약했습니다.',
+        documentImage: asset('/media/thumb-tricky-quiz.png'),
+        referenceLinks: [
+          {
+            label: '기술 스택',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/05-tech-stack.md',
+          },
+          {
+            label: 'DB 설계',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/06-database-design.md',
+          },
+          {
+            label: 'API 명세',
+            href: 'https://github.com/kdtlch3650-ctrl/tricky-quiz/blob/main/docs/07-api-spec.md',
+          },
+          {
+            label: '배포 페이지',
+            href: 'https://kdtlch3650-ctrl.github.io/tricky-quiz/',
+          },
+        ],
+      }),
       {
         id: 'overview',
         label: '메인 소개',
@@ -705,14 +1246,6 @@ export const projects = [
               'Google OAuth 로그인 후 카테고리를 선택하고 퀴즈를 시작합니다.',
               '문제를 풀면 정답 여부와 해설을 확인하고, 결과는 랭킹 흐름으로 이어집니다.',
               '모바일에서도 버튼과 카드 배치가 깨지지 않도록 반응형 UI를 유지했습니다.',
-            ],
-          },
-          {
-            title: '기대 효과',
-            points: [
-              '학습형 퀴즈와 게임 요소를 함께 담아 짧게 즐기고 다시 돌아올 수 있는 구조를 만들었습니다.',
-              '결과와 랭킹을 연결해 사용자의 참여 동기를 높이는 방향을 반영했습니다.',
-              '포트폴리오 관점에서는 인증, 상태 관리, 화면 전환, API 연동을 한 번에 보여줄 수 있는 프로젝트가 되었습니다.',
             ],
           },
         ],
@@ -951,6 +1484,98 @@ export const projects = [
         ],
       },
     ],
+  },
+  {
+    slug: 'csas',
+    label: 'AI / 인프라 프로젝트',
+    title: 'CSAS',
+    subtitle: 'AI 기반 건물 결함 분류와 사진첩 탐색을 연결한 서비스',
+    period: '2026.06 - 진행 중',
+    team: '팀 프로젝트',
+    role: '백엔드 개발 · Google OAuth · API/데이터 저장 · 사진첩 기능',
+    contribution:
+      'Google OAuth 로그인 · 백엔드 API 개발 · 이미지/분석 결과 저장 흐름 정리 · 사진첩 조회 기능 · S3/Weaviate 데이터 흐름 이해',
+    summary:
+      '건물 이미지를 업로드하면 AI가 결함을 분석하고, 사용자가 분석 결과를 사진첩에서 다시 확인할 수 있도록 백엔드 API와 저장 흐름을 구성한 AI/인프라 프로젝트입니다.',
+    focusAreas: ['Google OAuth 인증', '이미지 분석 결과 저장', '사진첩 조회와 탐색 흐름'],
+    outcomes: ['사용자 인증 기반 API 흐름 정리', 'S3와 Weaviate 저장 구조 이해', 'AI 분석 결과의 서비스 데이터화'],
+    stacks: ['React', 'Spring Boot', 'Python', 'PyTorch', 'EfficientNet-B0', 'SegFormer', 'AWS S3', 'Weaviate', 'Docker'],
+    categories: ['ai', 'infra', 'react', 'java'],
+    thumbnail: csasPptAsset('solution_total.png'),
+    galleryImages: [
+      {
+        label: '분석 앨범',
+        src: csasPptAsset('screen4.png'),
+        alt: 'CSAS 분석 앨범 화면',
+      },
+      {
+        label: '메인 화면',
+        src: csasPptAsset('screen1.png'),
+        alt: 'CSAS 메인 화면',
+      },
+      {
+        label: '촬영 분석',
+        src: csasPptAsset('screen2.png'),
+        alt: 'CSAS 균열 사진 촬영 및 분석 화면',
+      },
+      {
+        label: '해결방안',
+        src: csasPptAsset('solution_total.png'),
+        alt: 'CSAS AI 이미지 분석과 사진 관리 해결방안',
+      },
+    ],
+    liveUrl: '',
+    presentationUrl: 'https://yuyoungkwang.github.io/CSAS_PPT/',
+    repoUrl: 'https://github.com/YuYoungKwang/CSAS',
+    referenceLinks: [
+      { label: 'GitHub 저장소', href: 'https://github.com/YuYoungKwang/CSAS' },
+      { label: '발표자료', href: 'https://yuyoungkwang.github.io/CSAS_PPT/' },
+      {
+        label: '요구사항 명세서',
+        href: 'https://docs.google.com/spreadsheets/d/1aiqu87V2KDY0PBbYnfstAkHWHa6vCQV71QRniigLyPE/edit?gid=569124936#gid=569124936',
+      },
+      {
+        label: '모델 연구 보고서',
+        href: 'https://docs.google.com/document/d/12EZSaN4Y_FY36i_SUjerE4h7nlRUxR_4VTxXz1jEcUk/edit?tab=t.0',
+      },
+    ],
+    sections: csasSections,
+  },
+  {
+    slug: 'youtube-mood',
+    label: 'AI / 인프라 프로젝트',
+    title: 'YouTube Mood',
+    subtitle: '자연어 감정 분석으로 YouTube 음악과 플레이리스트를 추천하는 서비스',
+    period: '2026.06 - 진행 중',
+    team: '개인 프로젝트',
+    role: 'AI 추천 로직 · FastAPI 백엔드 · React UI · Docker/Kubernetes 인프라 문서화',
+    contribution:
+      '감정 분류 모델 연동 · 추천 검색어 생성 흐름 설계 · YouTube Data API 연동 · Docker Compose/k8s/EKS 문서화 · 추천 테스트 케이스 정리',
+    summary:
+      '사용자의 감정 문장을 AI가 분석해 분위기 태그와 장르 키워드로 변환하고, YouTube 음악 추천으로 연결하는 AI 추천 서비스입니다.',
+    focusAreas: ['자연어 감정 분석', 'YouTube 추천 API 흐름', 'Docker/Kubernetes/EKS 인프라 학습'],
+    outcomes: ['감정 그룹 기반 추천 검색어 생성', '추천 테스트 케이스 16개 검증', 'EKS/OpenSearch 확장 문서화'],
+    stacks: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'FastAPI',
+      'PyTorch',
+      'Transformers',
+      'YouTube Data API',
+      'Docker',
+      'Kubernetes',
+      'EKS',
+      'OpenSearch',
+    ],
+    categories: ['ai', 'infra', 'react'],
+    thumbnail: asset('/media/thumb-youtube-mood.png'),
+    liveUrl: '',
+    repoUrl: 'https://github.com/kdtlch3650-ctrl/youtube-mood',
+    referenceLinks: [
+      { label: 'GitHub 저장소', href: 'https://github.com/kdtlch3650-ctrl/youtube-mood' },
+    ],
+    sections: youtubeMoodSections,
   },
   {
     slug: 'doctorlink',

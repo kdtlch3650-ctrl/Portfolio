@@ -11,6 +11,13 @@ const asset = (path) => {
 };
 
 function ProjectMedia({ project }) {
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+  const galleryImages = project.galleryImages ?? [];
+
+  useEffect(() => {
+    setActiveGalleryIndex(0);
+  }, [project.slug]);
+
   if (project.videoUrl) {
     return (
       <div className="detail-hero__video-wrap">
@@ -21,6 +28,56 @@ function ProjectMedia({ project }) {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         />
+      </div>
+    );
+  }
+
+  if (galleryImages.length > 0) {
+    const activeImage = galleryImages[activeGalleryIndex] ?? galleryImages[0];
+    const moveGallery = (step) => {
+      setActiveGalleryIndex((currentIndex) => (currentIndex + step + galleryImages.length) % galleryImages.length);
+    };
+
+    return (
+      <div className="project-gallery">
+        <img className="project-gallery__image" src={activeImage.src} alt={activeImage.alt ?? `${project.title} preview`} />
+        {galleryImages.length > 1 ? (
+          <>
+            <button
+              className="project-gallery__control project-gallery__control--prev"
+              type="button"
+              onClick={() => moveGallery(-1)}
+              aria-label="이전 이미지 보기"
+            >
+              {'<'}
+            </button>
+            <button
+              className="project-gallery__control project-gallery__control--next"
+              type="button"
+              onClick={() => moveGallery(1)}
+              aria-label="다음 이미지 보기"
+            >
+              {'>'}
+            </button>
+            <div className="project-gallery__dots" aria-label="이미지 목록">
+              {galleryImages.map((image, index) => (
+                <button
+                  key={image.src}
+                  className={`project-gallery__dot${index === activeGalleryIndex ? ' is-active' : ''}`}
+                  type="button"
+                  onClick={() => setActiveGalleryIndex(index)}
+                  aria-label={`${image.label ?? `${index + 1}번 이미지`} 보기`}
+                />
+              ))}
+            </div>
+          </>
+        ) : null}
+        <div className="project-gallery__meta">
+          <span>{activeImage.label ?? project.title}</span>
+          <span>
+            {activeGalleryIndex + 1} / {galleryImages.length}
+          </span>
+        </div>
       </div>
     );
   }
@@ -43,8 +100,10 @@ function ScrollTop() {
 }
 
 function AppShell({ children, theme, onToggleTheme }) {
+  const location = useLocation();
   const topbarRef = useRef(null);
   const [topbarHeight, setTopbarHeight] = useState(96);
+  const isProjectWorkspace = location.pathname === '/projects' || location.pathname.startsWith('/project/');
 
   useLayoutEffect(() => {
     if (!topbarRef.current) {
@@ -76,7 +135,7 @@ function AppShell({ children, theme, onToggleTheme }) {
 
   return (
     <div
-      className={`site-shell ${theme}`}
+      className={`site-shell ${theme}${isProjectWorkspace ? ' site-shell--project-workspace' : ''}`}
       style={{ '--topbar-height': `${topbarHeight}px` }}
     >
       <ScrollTop />
@@ -97,16 +156,18 @@ function AppShell({ children, theme, onToggleTheme }) {
         </nav>
       </header>
 
-      <main className="layout">
-        <aside className="sidebar">
-          <div className="sidebar__image-wrap">
-            <img className="sidebar__image" src={asset('/media/hero-photo.png')} alt="workspace desk visual" />
-          </div>
-          <div className="sidebar__footer">
-            <p>Copyright © 2026</p>
-            <p>{profile.name}</p>
-          </div>
-        </aside>
+      <main className={`layout${isProjectWorkspace ? ' layout--wide' : ''}`}>
+        {!isProjectWorkspace ? (
+          <aside className="sidebar">
+            <div className="sidebar__image-wrap">
+              <img className="sidebar__image" src={asset('/media/hero-photo.png')} alt="workspace desk visual" />
+            </div>
+            <div className="sidebar__footer">
+              <p>Copyright © 2026</p>
+              <p>{profile.name}</p>
+            </div>
+          </aside>
+        ) : null}
 
         <section className="panel">{children}</section>
       </main>
@@ -313,14 +374,14 @@ function LandingPage() {
 
 function ProjectDetailPage() {
   const { slug } = useParams();
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState('learning-goals');
   const [expandedImage, setExpandedImage] = useState(null);
   const tabBarRef = useRef(null);
   const tabPanelRef = useRef(null);
   const project = projects.find((item) => item.slug === slug);
 
   useEffect(() => {
-    setActiveTab('overview');
+    setActiveTab('learning-goals');
     setExpandedImage(null);
   }, [slug]);
 
@@ -358,6 +419,10 @@ function ProjectDetailPage() {
   const activeSection = project.sections.find((section) => section.id === activeTab) ?? project.sections[0];
   const hasOriginalDocument = Boolean(project.docUrl && project.docUrl !== '#');
   const showDocumentPreview = Boolean(activeSection.documentImage);
+  const isLearningSection = activeSection.id === 'learning-goals';
+  const primaryActionUrl = project.liveUrl || project.presentationUrl;
+  const primaryActionLabel = project.liveUrl ? '배포 페이지' : project.presentationUrl ? '상세 PPT' : '';
+  const primaryBadgeLabel = project.liveUrl ? 'LIVE' : project.presentationUrl ? 'PPT' : '';
   const referenceLinks = [
     ...(activeSection.referenceLinks?.filter((link) => link.href) ?? []),
     ...(project.referenceLinks?.filter((link) => link.href) ?? []),
@@ -393,21 +458,21 @@ function ProjectDetailPage() {
           <div>
             <p className="eyebrow">{project.label}</p>
             <h1 className="detail-header__title-wrap">
-              {project.liveUrl ? (
-                <a className="detail-header__title-link" href={project.liveUrl} target="_blank" rel="noreferrer">
+              {primaryActionUrl ? (
+                <a className="detail-header__title-link" href={primaryActionUrl} target="_blank" rel="noreferrer">
                   {project.title}
                 </a>
               ) : (
                 project.title
               )}
-              {project.liveUrl ? <span className="detail-header__badge">LIVE</span> : null}
+              {primaryBadgeLabel ? <span className="detail-header__badge">{primaryBadgeLabel}</span> : null}
             </h1>
             <p className="detail-header__subtitle">{project.subtitle}</p>
           </div>
           <div className="detail-header__links">
-            {project.liveUrl ? (
-              <a className="detail-header__links--primary" href={project.liveUrl} target="_blank" rel="noreferrer">
-                배포 페이지
+            {primaryActionUrl ? (
+              <a className="detail-header__links--primary" href={primaryActionUrl} target="_blank" rel="noreferrer">
+                {primaryActionLabel}
               </a>
             ) : null}
             {project.repoUrl ? (
@@ -466,13 +531,13 @@ function ProjectDetailPage() {
             className={`tab-bar__button${activeTab === section.id ? ' is-active' : ''}`}
             onClick={() => handleTabChange(section.id)}
           >
-            <span className="tab-bar__index">{String(index + 1).padStart(2, '0')}</span>
+            <span className="tab-bar__index">{String(index).padStart(2, '0')}</span>
             <span className="tab-bar__label">{section.label}</span>
           </button>
         ))}
       </section>
 
-      <section className="tab-panel" ref={tabPanelRef}>
+      <section className={`tab-panel${isLearningSection ? ' tab-panel--learning' : ''}`} ref={tabPanelRef}>
         <div className="tab-panel__header">
           <p className="eyebrow">{activeSection.label}</p>
           <h2>{activeSection.title}</h2>
@@ -485,20 +550,42 @@ function ProjectDetailPage() {
             </div>
           ) : null}
         </div>
-        <div className="tab-panel__body">
-          <div className="tab-panel__content">
+        <div className={`tab-panel__body${isLearningSection ? ' tab-panel__body--learning' : ''}`}>
+          <div className={`tab-panel__content${isLearningSection ? ' tab-panel__content--learning' : ''}`}>
             {activeSection.items.map((item, index) => (
-              <article key={item.title} className="content-block">
-                <p className="content-block__index">{String(index + 1).padStart(2, '0')}</p>
-                <h3>{item.title}</h3>
-                <ul>
-                  {item.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
+              <article
+                key={item.title}
+                className={`content-block${isLearningSection ? ' content-block--learning' : ''}${
+                  isLearningSection && item.image ? ' content-block--with-image' : ''
+                }`}
+              >
+                <div className={isLearningSection ? 'content-block__text' : undefined}>
+                  <p className="content-block__index">{String(index + 1).padStart(2, '0')}</p>
+                  <h3>{item.title}</h3>
+                  <ul>
+                    {item.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+                {isLearningSection && item.image ? (
+                  <button
+                    type="button"
+                    className="content-block__image-button"
+                    onClick={() =>
+                      setExpandedImage({
+                        src: item.image,
+                        alt: `${project.title} ${item.title}`,
+                      })
+                    }
+                  >
+                    <img className="content-block__image" src={item.image} alt={`${project.title} ${item.title}`} />
+                  </button>
+                ) : null}
               </article>
             ))}
           </div>
+          {!isLearningSection ? (
           <aside className="document-card">
             <p className="eyebrow">DOCUMENT</p>
             <h3>{activeSection.documentTitle}</h3>
@@ -546,6 +633,7 @@ function ProjectDetailPage() {
               </a>
             ) : null}
           </aside>
+          ) : null}
         </div>
       </section>
       {expandedImage ? (

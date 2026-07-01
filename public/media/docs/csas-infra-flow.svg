@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">CSAS EKS infrastructure flow</title>
+  <desc id="desc">Docker image, ECR, and EKS deployment flow</desc>
+  <rect width="1280" height="720" fill="#fff7ed"/>
+  <rect x="76" y="88" width="1128" height="544" rx="42" fill="#ffffff"/>
+  <text x="112" y="154" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#1e293b">CSAS Infra Flow</text>
+  <g font-family="Arial, sans-serif" font-weight="800" text-anchor="middle">
+    <rect x="120" y="278" width="180" height="118" rx="22" fill="#334155"/>
+    <text x="210" y="344" font-size="22" fill="#f8fafc">Docker</text>
+    <rect x="396" y="278" width="180" height="118" rx="22" fill="#0369a1"/>
+    <text x="486" y="344" font-size="22" fill="#e0f2fe">ECR</text>
+    <rect x="672" y="278" width="180" height="118" rx="22" fill="#15803d"/>
+    <text x="762" y="344" font-size="22" fill="#dcfce7">EKS</text>
+    <rect x="948" y="278" width="180" height="118" rx="22" fill="#b45309"/>
+    <text x="1038" y="330" font-size="22" fill="#fffbeb">Service</text>
+    <text x="1038" y="360" font-size="17" fill="#fde68a">Ingress</text>
+  </g>
+  <path d="M320 337h56M596 337h56M872 337h56" stroke="#475569" stroke-width="12" stroke-linecap="round"/>
+  <path d="M376 337l-26-18v36zM652 337l-26-18v36zM928 337l-26-18v36z" fill="#475569"/>
+  <rect x="146" y="476" width="988" height="70" rx="20" fill="#f1f5f9"/>
+  <text x="640" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#334155">backend, frontend, and python AI server are deployed as separate workloads.</text>
+</svg>
