@@ -278,6 +278,20 @@ function ProjectsPage() {
 
   const activeFeaturedProject = representativeProjects[activeFeaturedIndex] ?? representativeProjects[0];
 
+  useEffect(() => {
+    if (representativeProjects.length <= 1) {
+      return undefined;
+    }
+
+    const timerId = window.setInterval(() => {
+      setActiveFeaturedIndex((currentIndex) => (currentIndex + 1) % representativeProjects.length);
+    }, 5000);
+
+    return () => {
+      window.clearInterval(timerId);
+    };
+  }, [activeFeaturedIndex, representativeProjects.length]);
+
   const moveFeaturedProject = (step) => {
     setActiveFeaturedIndex((currentIndex) => (
       currentIndex + step + representativeProjects.length
@@ -314,7 +328,11 @@ function ProjectsPage() {
             >
               {'<'}
             </button>
-            <Link className="featured-project" to={`/project/${activeFeaturedProject.slug}`}>
+            <Link
+              key={activeFeaturedProject.slug}
+              className="featured-project"
+              to={`/project/${activeFeaturedProject.slug}`}
+            >
               <div className="featured-project__thumb">
                 <img src={activeFeaturedProject.thumbnail} alt={`${activeFeaturedProject.title} thumbnail`} />
               </div>
@@ -356,6 +374,9 @@ function ProjectsPage() {
                 aria-label={`${project.title} 대표 프로젝트 보기`}
               />
             ))}
+          </div>
+          <div key={activeFeaturedProject.slug} className="featured-slider__progress" aria-hidden="true">
+            <span></span>
           </div>
         </section>
       ) : null}
