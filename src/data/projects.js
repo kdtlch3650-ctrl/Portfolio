@@ -953,7 +953,7 @@ const youtubeMoodSections = [
     items: [
       {
         title: '자연어 감정 분석',
-        image: asset('/media/docs/youtube-mood-ai-flow.svg'),
+        image: asset('/media/docs/youtube-mood-recommendation-improvement.png'),
         points: [
           '사용자의 문장을 단순 키워드 검색으로 처리하지 않고, 감정 그룹과 분위기 태그로 변환해 추천 검색 조건을 만드는 흐름을 학습했습니다.',
           'KOTE 기반 데이터와 RoBERTa 계열 모델을 사용하면서 모델 결과를 서비스에서 이해할 수 있는 형태로 가공하는 과정을 경험했습니다.',
@@ -961,7 +961,7 @@ const youtubeMoodSections = [
       },
       {
         title: '추천 API 흐름',
-        image: asset('/media/docs/youtube-mood-recommendation-flow.svg'),
+        image: asset('/media/docs/youtube-mood-natural-language-flow.png'),
         points: [
           'React 화면에서 받은 감정 문장이 FastAPI를 거쳐 YouTube Data API 검색 조건으로 바뀌고, 다시 추천 결과로 돌아오는 흐름을 구성했습니다.',
           'AI 결과를 바로 보여주는 것이 아니라 추천 품질을 높이기 위한 검색어, 장르, 톤 정보로 변환하는 구조를 정리했습니다.',
@@ -969,7 +969,7 @@ const youtubeMoodSections = [
       },
       {
         title: '인프라 확장 학습',
-        image: asset('/media/docs/youtube-mood-infra-flow.svg'),
+        image: asset('/media/docs/youtube-mood-cloud-architecture.png'),
         points: [
           '로컬 Docker Compose 실행에서 시작해 Kubernetes, EKS, OpenSearch 저장 구조까지 단계적으로 문서화했습니다.',
           '기능을 먼저 작게 검증한 뒤 배포 구조를 넓히는 방식이 포트폴리오 프로젝트에서 더 안전하다는 점을 확인했습니다.',
@@ -1002,7 +1002,7 @@ const youtubeMoodSections = [
     ],
     documentTitle: 'YouTube Mood 프로젝트 개요',
     documentDescription: '자연어 감정 분석을 YouTube 음악 추천으로 연결한 서비스입니다.',
-    documentImage: asset('/media/thumb-youtube-mood.png'),
+    documentImage: asset('/media/docs/youtube-mood-natural-language-flow.png'),
   },
   {
     id: 'planning',
@@ -1029,7 +1029,7 @@ const youtubeMoodSections = [
     ],
     documentTitle: '기획 / UX 흐름',
     documentDescription: '요구사항, 사용자 흐름, 화면 초안을 바탕으로 추천 서비스 방향을 정리했습니다.',
-    documentImage: asset('/media/docs/youtube-mood-recommendation-flow.svg'),
+    documentImage: asset('/media/docs/youtube-mood-recommendation-improvement.png'),
   },
   {
     id: 'engineering',
@@ -1063,7 +1063,7 @@ const youtubeMoodSections = [
     ],
     documentTitle: 'AI와 인프라 설계',
     documentDescription: 'AI 연동, Docker, Kubernetes, EKS, OpenSearch 흐름을 요약했습니다.',
-    documentImage: asset('/media/docs/youtube-mood-infra-flow.svg'),
+    documentImage: asset('/media/docs/youtube-mood-cloud-architecture.png'),
   },
   {
     id: 'trouble',
@@ -1090,7 +1090,7 @@ const youtubeMoodSections = [
     ],
     documentTitle: '트러블 슈팅 정리',
     documentDescription: '모델 오류 분석과 추천 테스트 케이스를 통해 검증한 내용을 요약했습니다.',
-    documentImage: asset('/media/docs/youtube-mood-ai-flow.svg'),
+    documentImage: asset('/media/docs/youtube-mood-recommendation-improvement.png'),
   },
   {
     id: 'feeling',
@@ -1117,7 +1117,6 @@ const youtubeMoodSections = [
     ],
     documentTitle: 'YouTube Mood 회고',
     documentDescription: 'AI 추천 기능을 서비스와 인프라까지 연결하며 배운 점을 정리했습니다.',
-    documentImage: asset('/media/docs/youtube-mood-recommendation-flow.svg'),
   },
 ];
 

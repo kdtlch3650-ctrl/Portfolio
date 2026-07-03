@@ -305,9 +305,6 @@ function ProjectsPage() {
           <span>PROJECTS</span>
           <div className="section-heading__line"></div>
         </div>
-        <p className="section-heading__description">
-          진행한 프로젝트를 정리했습니다.
-        </p>
       </section>
 
       {activeFeaturedProject ? (
@@ -317,7 +314,6 @@ function ProjectsPage() {
               <p className="eyebrow">FEATURED</p>
               <h2>대표 프로젝트</h2>
             </div>
-            <p>가장 먼저 보여주고 싶은 프로젝트를 큰 화면으로 정리했습니다.</p>
           </div>
           <article className="featured-slider">
             <button
@@ -406,26 +402,28 @@ function ProjectsPage() {
             className="project-card project-card--minimal"
             to={`/project/${project.slug}`}
           >
-            <div className="project-card__thumb">
-              <img src={project.thumbnail} alt={`${project.title} thumbnail`} />
-              {project.liveUrl ? <span className="project-card__badge">LIVE</span> : null}
+            <div className="project-card__top">
+              <div className="project-card__thumb">
+                <img src={project.thumbnail} alt={`${project.title} thumbnail`} />
+                {project.liveUrl ? <span className="project-card__badge">LIVE</span> : null}
+              </div>
+              <div className="project-card__body">
+                <p className="project-card__meta">{project.period}</p>
+                <h2>{project.title}</h2>
+                <div className="project-card__section project-card__section--service">
+                  <span>서비스</span>
+                  <p>{project.summary}</p>
+                </div>
+              </div>
             </div>
-            <div className="project-card__body">
-              <p className="project-card__meta">{project.period}</p>
-              <h2>{project.title}</h2>
-              <div className="project-card__section">
-                <span>서비스</span>
-                <p>{project.summary}</p>
-              </div>
-              <div className="project-card__section">
-                <span>담당</span>
-                <p>{project.contribution || project.role}</p>
-              </div>
-              <div className="project-card__tags">
-                {project.stacks.slice(0, 3).map((stack) => (
-                  <span key={stack}>{stack}</span>
-                ))}
-              </div>
+            <div className="project-card__section project-card__section--role">
+              <span>담당</span>
+              <p>{project.contribution || project.role}</p>
+            </div>
+            <div className="project-card__tags">
+              {project.stacks.slice(0, 3).map((stack) => (
+                <span key={stack}>{stack}</span>
+              ))}
             </div>
           </Link>
         ))}
