@@ -946,33 +946,33 @@ const csasSections = [
 
 const youtubeMoodSections = [
   learningGoalSection({
-    title: '자연어 감정 분석과 추천 서비스 인프라 학습',
+    title: '감정 문장을 추천 조건으로 바꾸는 과정',
     description:
-      'YouTube Mood는 사용자가 입력한 감정과 상황 문장을 AI가 분석하고, 그 결과를 YouTube 음악 추천으로 연결하는 흐름을 학습하기 위해 진행한 프로젝트입니다.',
-    focusPoints: ['감정 분류 AI', 'YouTube 추천 API 연동', 'Docker/Kubernetes/EKS 구조'],
+      '감정 문장을 그대로 검색하지 않고, AI 해석과 YouTube 추천 조건을 연결해 더 자연스러운 결과가 나오도록 흐름을 단계별로 다듬었습니다.',
+    focusPoints: ['감정 해석', '추천 조건 변환', '배포 구조 이해'],
     items: [
       {
-        title: '자연어 감정 분석',
+        title: '감정 태그 분리',
         image: asset('/media/docs/youtube-mood-recommendation-improvement.png'),
         points: [
-          '사용자의 문장을 단순 키워드 검색으로 처리하지 않고, 감정 그룹과 분위기 태그로 변환해 추천 검색 조건을 만드는 흐름을 학습했습니다.',
-          'KOTE 기반 데이터와 RoBERTa 계열 모델을 사용하면서 모델 결과를 서비스에서 이해할 수 있는 형태로 가공하는 과정을 경험했습니다.',
+          '처음에는 단순 키워드 검색으로 시작했지만, 감정과 요청 의도를 함께 처리하려면 입력을 나누는 구조가 필요했습니다.',
+          '문제, 해결, 결과가 한눈에 읽히도록 개선 과정을 단계별로 정리해 학습 흐름이 보이게 했습니다.',
         ],
       },
       {
-        title: '추천 API 흐름',
+        title: '추천 조건 재구성',
         image: asset('/media/docs/youtube-mood-natural-language-flow.png'),
         points: [
-          'React 화면에서 받은 감정 문장이 FastAPI를 거쳐 YouTube Data API 검색 조건으로 바뀌고, 다시 추천 결과로 돌아오는 흐름을 구성했습니다.',
-          'AI 결과를 바로 보여주는 것이 아니라 추천 품질을 높이기 위한 검색어, 장르, 톤 정보로 변환하는 구조를 정리했습니다.',
+          'React 화면에서 받은 문장을 FastAPI가 받아 감정 태그와 검색 키워드로 바꾸고, YouTube 검색 조건으로 연결하는 흐름을 만들었습니다.',
+          'AI 결과를 바로 보여주기보다 추천 조건으로 다시 구성해, 사용자 입장에서 이해하기 쉬운 구조를 학습했습니다.',
         ],
       },
       {
-        title: '인프라 확장 학습',
+        title: '서비스 연결 구조',
         image: asset('/media/docs/youtube-mood-cloud-architecture.png'),
         points: [
-          '로컬 Docker Compose 실행에서 시작해 Kubernetes, EKS, OpenSearch 저장 구조까지 단계적으로 문서화했습니다.',
-          '기능을 먼저 작게 검증한 뒤 배포 구조를 넓히는 방식이 포트폴리오 프로젝트에서 더 안전하다는 점을 확인했습니다.',
+          '로컬 Docker 실행에서 시작해 Kubernetes, EKS, OpenSearch로 확장되는 구조를 함께 정리했습니다.',
+          '기능 검증과 배포 구조를 분리해, 서비스가 커져도 유지 가능한 형태로 학습 목표를 잡았습니다.',
         ],
       },
     ],
@@ -1034,62 +1034,72 @@ const youtubeMoodSections = [
   {
     id: 'engineering',
     label: '개발 / 인프라',
-    title: 'FastAPI AI 추천 서버와 배포 문서화',
+    title: 'FastAPI 추천 서비스의 컨테이너와 배포 구조',
     description:
-      'AI 모델을 서비스 API와 연결하고, 로컬 실행부터 Kubernetes/EKS 확장까지 단계적으로 정리했습니다.',
-    focusPoints: ['FastAPI 추천 API', 'PyTorch/Transformers 모델', 'Docker/Kubernetes/EKS'],
+      'YouTube Mood는 감정 입력을 받아 추천 조건으로 바꾸는 서비스를 프론트엔드, FastAPI, 모델, OpenSearch로 나누고, Docker Compose와 Kubernetes/EKS로 실행 환경을 확장한 프로젝트입니다.',
+    focusPoints: ['서비스 계층 분리', '컨테이너 실행 구조', 'Kubernetes/EKS 배포'],
     items: [
       {
-        title: 'AI 추천 구조',
+        title: '서비스 계층 분리',
         points: [
-          'FastAPI 서버에서 감정 분류 모델을 불러오고, 분석 결과를 YouTube 검색어와 추천 조건으로 변환하는 흐름을 구성했습니다.',
-          '모델 로딩은 그룹 감정 모델, 원본 모델, fallback 순서로 처리해 로컬 개발 중에도 서비스가 완전히 멈추지 않도록 방향을 잡았습니다.',
+          '프론트엔드는 감정 문장을 입력받고, FastAPI는 추천 요청을 받아 모델 결과를 해석하는 역할을 맡았습니다.',
+          'AI 모델은 감정을 분류하는 계산만 담당하고, 추천 결과는 검색 조건으로 다시 가공해 서비스가 설명 가능한 형태로 보이게 했습니다.',
+          '추천 이력과 검색 기록은 OpenSearch에 분리해 저장해서, 분석과 조회 책임이 섞이지 않도록 구조를 나눴습니다.',
         ],
       },
       {
-        title: '검증 방식',
+        title: 'Docker Compose 기반 로컬 실행',
         points: [
-          '추천 테스트 케이스를 작성해 감정 입력이 어떤 검색어와 추천 결과로 이어지는지 반복 확인했습니다.',
-          'README 기준 16개의 추천 테스트가 통과하는 상태를 확인하며 추천 흐름의 기본 동작을 검증했습니다.',
+          'Docker Compose로 FastAPI, 모델 실행 환경, 검색 저장소를 함께 띄워 로컬에서 먼저 전체 흐름을 재현했습니다.',
+          '포트와 환경변수를 분리해도 동일한 동작이 나오도록 맞추면서, 배포 전에 의존성 문제를 먼저 확인했습니다.',
+          '로컬 단계에서 추천 테스트 케이스를 돌려 감정 입력이 어떤 검색어와 추천 결과로 이어지는지 반복 검증했습니다.',
         ],
       },
       {
-        title: '인프라 문서화',
+        title: 'Kubernetes와 EKS 배포 구조',
         points: [
-          'Docker Compose로 로컬 실행 흐름을 정리하고, Kubernetes와 EKS 문서로 배포 단계를 확장했습니다.',
-          'OpenSearch 저장 구조는 추천 이력과 검색 기록을 나중에 다루기 위한 초안으로 분리해 정리했습니다.',
+          'Kubernetes는 컨테이너 실행 단위를 배포하기 위한 오케스트레이션 계층으로 두고, EKS는 그 구성을 AWS 환경에서 운영하는 단계로 확장했습니다.',
+          '컨테이너 이미지를 기준으로 배포 단계를 나눠서, 로컬에서 검증한 구조를 클라우드에서도 같은 방식으로 재현할 수 있게 정리했습니다.',
+          'OpenSearch는 추천 이력과 검색 기록을 저장하는 저장소로 분리해, 실행 계층과 데이터 계층이 명확히 나뉘도록 했습니다.',
         ],
       },
     ],
-    documentTitle: 'AI와 인프라 설계',
-    documentDescription: 'AI 연동, Docker, Kubernetes, EKS, OpenSearch 흐름을 요약했습니다.',
+    documentTitle: 'AI와 클라우드 배포 구조',
+    documentDescription: '프론트엔드, FastAPI, 모델, OpenSearch, Docker, Kubernetes/EKS의 역할과 흐름을 요약했습니다.',
     documentImage: asset('/media/docs/youtube-mood-cloud-architecture.png'),
   },
   {
     id: 'trouble',
     label: '트러블 슈팅',
-    title: '모델 결과를 서비스 추천으로 바꾸는 과정에서 확인한 문제',
+    title: '추천 결과를 서비스 추천으로 바꾸는 과정에서 확인한 문제',
     description:
-      'AI 모델이 감정을 맞히는 것과 사용자가 납득할 만한 추천 결과를 제공하는 것은 다른 문제이기 때문에, 중간 변환 로직과 fallback 흐름을 중요하게 다뤘습니다.',
+      'AI 모델이 감정을 맞히는 것과 사용자가 납득할 만한 추천 결과를 만드는 것은 다른 문제라서, 중간 변환 로직과 fallback 흐름을 함께 다뤘습니다.',
     focusPoints: ['모델 로딩 안정성', '추천 품질 검증', '서비스 fallback'],
     items: [
       {
-        title: '모델 결과 해석',
+        title: '회피 표현이 추천 분위기에 반영되지 않는 문제',
         points: [
-          '모델이 반환한 감정 라벨을 그대로 사용자에게 보여주기보다, 추천 검색어와 분위기 태그로 바꾸는 과정이 필요했습니다.',
-          '이 중간 변환 로직이 명확해야 추천 결과가 왜 나왔는지 설명할 수 있습니다.',
+          '모델이 회피 표현을 약하게 해석하면 추천 분위기가 원하는 방향으로 바뀌지 않는 문제가 있었습니다.',
+          '감정 태그와 분위기 태그를 따로 확인하도록 해서, 회피 의도가 추천 결과에 제대로 반영되게 정리했습니다.',
         ],
       },
       {
-        title: 'fallback 흐름',
+        title: '사용자가 말한 장르가 추천 검색어에 반영되지 않는 문제',
         points: [
-          '모델 파일이나 환경 설정이 준비되지 않은 상황에서도 서비스 구조를 확인할 수 있도록 fallback 방향을 정리했습니다.',
-          '추천 테스트 케이스를 통해 감정 입력이 예상 가능한 추천 흐름으로 이어지는지 반복 확인했습니다.',
+          '사용자가 직접 언급한 장르가 최종 검색어에 빠지면 추천 결과가 너무 일반적으로 나오는 문제가 있었습니다.',
+          '장르 키워드를 별도 추출해 검색어에 포함시키고, 추천 테스트로 반영 여부를 반복 검증했습니다.',
+        ],
+      },
+      {
+        title: '검색 결과가 해외 결과에 치중되는 문제',
+        points: [
+          '검색 결과가 해외 영상에 치우치면 사용자가 기대한 분위기와 다르게 보일 수 있었습니다.',
+          '검색 조건에 지역성과 언어 기준을 보완해, 국내 사용자에게 더 자연스럽게 보이는 추천 결과로 조정했습니다.',
         ],
       },
     ],
-    documentTitle: '트러블 슈팅 정리',
-    documentDescription: '모델 오류 분석과 추천 테스트 케이스를 통해 검증한 내용을 요약했습니다.',
+    documentTitle: 'YouTube Mood 트러블 슈팅',
+    documentDescription: '추천 결과 해석과 검색 조건 보정 과정에서 확인한 문제를 정리했습니다.',
     documentImage: asset('/media/docs/youtube-mood-recommendation-improvement.png'),
   },
   {
