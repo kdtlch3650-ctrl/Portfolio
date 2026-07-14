@@ -1555,9 +1555,9 @@ export const projects = [
     label: 'AI / 인프라 프로젝트',
     title: 'YouTube Mood',
     subtitle: '자연어 감정 분석으로 YouTube 음악과 플레이리스트를 추천하는 서비스',
-    period: '2026.06 - 진행 중',
+    period: '2026.06 - 2026.07',
     team: '개인 프로젝트',
-    role: 'AI 추천 로직 · FastAPI 백엔드 · React UI · Docker/Kubernetes 인프라 문서화',
+    role: 'AI 학습 및 추천 로직 구현 · K8s 인프라 구현',
     contribution:
       '감정 분류 모델 연동 · 추천 검색어 생성 흐름 설계 · YouTube Data API 연동 · Docker Compose/k8s/EKS 문서화 · 추천 테스트 케이스 정리',
     summary:
@@ -1579,7 +1579,7 @@ export const projects = [
     ],
     categories: ['ai', 'infra', 'react'],
     thumbnail: asset('/media/thumb-youtube-mood.png'),
-    liveUrl: '',
+    liveUrl: 'https://kdtlch3650-ctrl.github.io/youtube-mood/',
     repoUrl: 'https://github.com/kdtlch3650-ctrl/youtube-mood',
     referenceLinks: [
       { label: 'GitHub 저장소', href: 'https://github.com/kdtlch3650-ctrl/youtube-mood' },
