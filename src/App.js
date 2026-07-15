@@ -180,7 +180,22 @@ function AppShell({ children, theme, onToggleTheme }) {
 }
 
 function AboutPage() {
-  const homeStacks = ['HTML/CSS', 'JavaScript', 'React', 'Java', 'Spring Framework', 'MyBatis', 'OracleDB', 'Git/GitHub'];
+  const homeStacks = [
+    'Java',
+    'Spring Boot',
+    'Spring Framework',
+    'React',
+    'TypeScript',
+    'JavaScript',
+    'FastAPI',
+    'Python',
+    'OracleDB',
+    'PostgreSQL',
+    'Docker',
+    'Kubernetes',
+    'AWS',
+    'Git/GitHub',
+  ];
 
   return (
     <div className="panel__content">

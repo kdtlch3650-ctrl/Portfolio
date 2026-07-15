@@ -28,7 +28,7 @@ export const profile = {
       description: '전공 과정 이수',
     },
   ],
-  certifications: ['SQLD', 'ITQ 엑셀'],
+  certifications: ['정보처리산업기사', 'SQLD', 'ITQ 엑셀'],
   email: 'kdtlch3650@gmail.com',
   github: 'https://github.com/kdtlch3650-ctrl',
 };
