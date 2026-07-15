@@ -1,0 +1,10 @@
+<svg width="800" height="620" viewBox="0 0 800 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="620" fill="#3D3D3D"/>
+  <rect x="54" y="56" width="692" height="508" rx="22" fill="#1F1F1F"/>
+  <rect x="88" y="96" width="242" height="422" rx="18" fill="#EAEAEA"/>
+  <rect x="358" y="96" width="348" height="112" rx="18" fill="#F8F8F8"/>
+  <rect x="358" y="236" width="348" height="118" rx="18" fill="#CACACA"/>
+  <rect x="358" y="382" width="166" height="136" rx="18" fill="#A5A5A5"/>
+  <rect x="540" y="382" width="166" height="136" rx="18" fill="#7C7C7C"/>
+  <text x="358" y="88" fill="#EAEAEA" font-family="Arial" font-size="24">HiFive</text>
+</svg>
